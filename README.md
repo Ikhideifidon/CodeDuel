@@ -1,4 +1,4 @@
-# [<img align="left" alt="Code Duel" width="45px" style="padding-right:10px;" src="https://github.com/user-attachments/assets/53ca1165-8fb5-433c-9b1d-1e11a53d901f"/> **`Code Duel`**](https://www.youtube.com/@codeduel)
+# [<img align="left" alt="Code Duel" width="45px" style="padding-right:10px;" src="src/main/resources/codeduel.png"/> **`Code Duel`**](https://www.youtube.com/@codeduel)
 
 **`Algorithm Showdown`**
 

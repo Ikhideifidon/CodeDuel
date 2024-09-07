@@ -168,8 +168,86 @@ public class Algorithm {
     }
 
     public static int maxProfit(int[] prices) {
-
+        int leastBuyingPrice = Integer.MAX_VALUE;
+        int maxGain = 0;
+        for (int price : prices) {
+           if (price < leastBuyingPrice)
+               leastBuyingPrice = price;
+           maxGain = Math.max(maxGain, price - leastBuyingPrice);
+        }
+        return maxGain;
     }
+
+    public static int maxProfitII(int[] prices) {
+        int maxProfit = 0;
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] > prices[i - 1])
+                maxProfit += prices[i] - prices[i - 1];
+        }
+        return maxProfit;
+    }
+
+    // **************************************************** START CAN JUMP *********************************************
+    public static boolean canJumpGreedy(int[] nums) {
+        int n = nums.length;
+        if (n == 1)
+            return true;
+        int i = n - 2;
+        int destination = n - 1;
+        while (i >= 0) {
+            if (nums[i] >= (destination - i))
+                destination = i;
+            i--;
+        }
+        return destination == 0;
+    }
+
+    public static boolean canJumpRecursion(int[] nums) {
+        return canJumpHelper(nums, 0);
+    }
+
+    private static boolean canJumpHelper(int[] nums, int start) {
+        if (start == nums.length - 1)           // Last Index of nums
+            return true;
+
+        if (start >= nums.length)
+            return false;                       // Out of bounds
+
+        for (int step = 1; step <= nums[start]; step++) {
+            if (canJumpHelper(nums, start + step))
+                return true;
+        }
+        return false;
+    }
+
+    public static boolean canJumpMemoized(int[] nums) {
+        return canJumpMemoizedHelper(nums, 0, new boolean[10_001]);
+    }
+
+    private static boolean canJumpMemoizedHelper(int[] nums, int start, boolean[] memo) {
+        if (start == nums.length - 1)
+            return true;
+
+        if (start >= nums.length)
+            return false;
+
+        if (memo[start])
+            return memo[start];
+
+        for (int step = 1; step <= nums[start]; step++) {
+            if (canJumpMemoizedHelper(nums, start + step, memo)) {
+                memo[start] = true;
+                return true;
+            }
+        }
+        memo[start] = false;
+        return false;
+    }
+
+
+    // **************************************************** END CAN JUMP ***********************************************
+
+
 
 
 }

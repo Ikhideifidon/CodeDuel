@@ -70,4 +70,25 @@ class AlgorithmTest {
         Algorithm.rotateMethod3(nums, k);
         Assertions.assertEquals(Arrays.toString(result), Arrays.toString(nums));
     }
+
+    @Test
+    void maxProfit() {
+        int[] prices = {6, 1, 3, 2, 4, 7};
+        int answer = 6;
+        Assertions.assertEquals(answer, Algorithm.maxProfit(prices));
+    }
+
+    @Test
+    void maxProfitII() {
+        int[] prices = {6, 1, 3, 2, 4, 7};
+        int answer = 7;
+        Assertions.assertEquals(answer, Algorithm.maxProfitII(prices));
+    }
+
+    @Test
+    void canJump() {
+        int[] nums = {3, 2, 1, 0, 4};
+        boolean answer = true;
+        Assertions.assertEquals(answer, Algorithm.canJumpRecursion(nums));
+    }
 }

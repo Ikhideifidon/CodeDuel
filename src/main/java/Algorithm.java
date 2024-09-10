@@ -1,5 +1,4 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /*
     Leetcode Top Interview 150 Questions
@@ -187,7 +186,7 @@ public class Algorithm {
         return maxProfit;
     }
 
-    // **************************************************** START CAN JUMP *********************************************
+    // **************************************************** START canJump *********************************************
     public static boolean canJumpGreedy(int[] nums) {
         int n = nums.length;
         if (n == 1)
@@ -244,10 +243,246 @@ public class Algorithm {
         return false;
     }
 
+    public static boolean canJumpBottomUp(int[] nums) {
+        int n = nums.length;
+        boolean[] dp = new boolean[n];
+        dp[0] = true;                   // The first element is always reachable.
 
-    // **************************************************** END CAN JUMP ***********************************************
+        for (int i = 1; i < n; i++) {
+            for (int j = i - 1; j >= 0; j--) {                      // Can the second element be reached form the first element???
+                if (dp[j] && j + nums[j] >= i) {
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }
+        return dp[n - 1];
+    }
+    // **************************************************** END canJump ***********************************************
 
 
+    // **************************************************** START jump *********************************************
+    public static int jumpRecursive(int[] nums) {
+        return jumpRecursiveHelper(nums, 0);
+    }
 
+    private static int jumpRecursiveHelper(int[] nums, int start) {
+        if (start >= nums.length - 1)
+            return 0;
+
+        int minJump = Integer.MAX_VALUE;
+
+        // Explore all possible jumps from current index.
+        for (int step = 1; step <= nums[start]; step++) {
+            int jumps = jumpRecursiveHelper(nums, start + step);
+            if (jumps != Integer.MAX_VALUE)
+                minJump = Math.min(minJump, 1 + jumps);
+        }
+        return minJump;
+    }
+
+    public static int jumpMemoized(int[] nums) {
+        int[] memo = new int[nums.length];
+        Arrays.fill(memo, -1);
+        return jumpMemoizedHelper(nums, 0, memo);
+    }
+
+    private static int jumpMemoizedHelper(int[] nums, int start, int[] memo) {
+        if (start >= nums.length - 1)
+            return 0;
+
+        if (memo[start] != -1)
+            return memo[start];
+
+        int minJump = Integer.MAX_VALUE;
+
+        // Explore all possible jumps from current index.
+        for (int step = 1; step <= nums[start]; step++) {
+            int jumps = jumpMemoizedHelper(nums, start + step, memo);
+            if (jumps != Integer.MAX_VALUE)
+                minJump = Math.min(minJump, 1 + jumps);
+        }
+        memo[start] = minJump;
+        return memo[start];
+    }
+
+    public static int jumpGreedy(int[] nums) {
+        int n = nums.length;
+        if (n == 0)
+            return 0;
+        int jumps = 0;
+        int currentEnd = 0;
+        int currentFarthestIndex = 0;
+        for (int currentBegin = 0; currentBegin < n - 1; currentBegin++) {
+            currentFarthestIndex = Math.max(currentFarthestIndex, currentBegin + nums[currentBegin]);
+            if (currentBegin == currentEnd) {
+                jumps++;
+                currentEnd = currentFarthestIndex;
+            }
+        }
+        return jumps;
+    }
+
+    public static int jumpDynamicProgramming(int[] nums) {
+        int n = nums.length;
+        if (n == 1)
+            return 0;
+        int[] dp = new int[n];
+        Arrays.fill(dp, Integer.MAX_VALUE);
+        dp[0] = 0;
+
+        for (int i = 0; i < n; i++) {
+            // For each index i, check all possible positions we can jump to.
+            for (int j = i + 1; j <= i + nums[i] && j < n; j++)
+                dp[j] = Math.min(dp[j], dp[i] + 1);
+        }
+        return dp[n - 1];
+    }
+    // **************************************************** End jump ***************************************************
+
+    // **************************************************** START hIndex ***********************************************
+    public static int hIndex(int[] citations) {
+        int n = citations.length;
+        Arrays.sort(citations);
+
+        int hIndex = 0;
+        for(int i = 0; i < n; i++) {
+            int h = n - i;
+            if (citations[i] >= h) {
+                hIndex = h;
+                break;
+            }
+        }
+        return hIndex;
+    }
+
+    public static int hIndexOptimized(int[] citations) {
+        int n = citations.length;
+        int[] bucket = new int[n + 1];
+
+        for (int citation : citations) {
+            if (citation < n)
+                bucket[citation]++;
+            else
+                bucket[n]++;
+        }
+
+        int count = 0;
+        for (int i = n; i >= 0; i--) {
+            count += bucket[i];
+            if (i == count)
+                break;
+        }
+        return count;
+    }
+
+    static class RandomizedSet { ;
+        private final Map<Integer, Integer> unique;
+        private final List<Integer> container;
+        private int available;
+        private final Random random;
+
+        public RandomizedSet() {
+            this.container = new ArrayList<>();
+            this.unique = new HashMap<>();
+            this.available = 0;
+            this.random = new Random();
+        }
+
+        public boolean insert(int val) {
+            if (!unique.containsKey(val)) {
+                unique.put(val, available);
+                container.add(val);
+                available++;
+                return true;
+            }
+            return false;
+        }
+
+        public boolean remove(int val) {
+            if (unique.containsKey(val)) {
+                int index = unique.get(val);
+
+                int lastElement = container.get(available - 1);
+                container.set(index, lastElement);
+                unique.put(lastElement, index);                 // Update the index of the swapped last element.
+
+                unique.remove(val);
+                available--;
+                return true;
+            }
+            return false;
+        }
+
+        public int getRandom() {
+            return container.get(random.nextInt(available));
+        }
+    }
+
+     /*
+    class RandomizedSet {
+        private final Map<Integer, Integer> unique;
+        private final List<Integer> container;
+        private final Random random;
+
+        public RandomizedSet() {
+            this.container = new ArrayList<>();
+            this.unique = new HashMap<>();
+            this.random = new Random();
+        }
+
+        public boolean insert(int val) {
+            if (!unique.containsKey(val)) {
+                unique.put(val, container.size());
+                container.add(val);
+                return true;
+            }
+            return false;
+        }
+
+        public boolean remove(int val) {
+            if (unique.containsKey(val)) {
+                int index = unique.get(val);
+
+                if (index < container.size() - 1) {
+                    int lastElement = container.get(container.size() - 1);
+                    container.set(index, lastElement);
+                    unique.put(lastElement, index);
+                }// Update the index of the swapped last element.
+
+                unique.remove(val);
+                container.remove(container.size() - 1);
+                return true;
+            }
+            return false;
+        }
+
+        public int getRandom() {
+            return container.get(random.nextInt(container.size()));
+        }
+    }
+     */
+
+    public static int[] productExceptSelf(int[] nums) {
+        int n = nums.length;
+        int[] result = new int[n];
+
+        int left = 1;
+        // Perform Leftwards prefix product except itself
+        for (int i = 0; i < n; i++) {
+            if (i > 0)
+                left *= nums[i - 1];
+            result[i] = left;
+        }
+
+        int right = 1;
+        // Perform Rightwards suffix product except itself
+        for (int i = n - 1; i >= 0; i--) {
+            if (i < n - 1)
+                right *= nums[i + 1];
+            result[i] *= right;
+        }
+        return result;
+    }
 
 }

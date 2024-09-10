@@ -91,4 +91,23 @@ class AlgorithmTest {
         boolean answer = true;
         Assertions.assertEquals(answer, Algorithm.canJumpRecursion(nums));
     }
+
+    @Test
+    void jump() {
+        int[] nums = {2, 3, 1, 1, 4};
+        System.out.println(Algorithm.jumpRecursive(nums));
+        System.out.println(Algorithm.jumpMemoized(nums));
+    }
+
+    @Test
+    void hIndex() {
+        int[] citations = {10, 8, 5, 4, 3};
+        System.out.println(Algorithm.hIndex(citations));
+    }
+
+    @Test
+    void productExceptSelf() {
+        int[] nums = {1, 2, 3, 4};
+        System.out.println(Arrays.toString(Algorithm.productExceptSelf(nums)));
+    }
 }

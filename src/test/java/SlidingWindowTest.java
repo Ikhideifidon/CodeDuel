@@ -34,14 +34,21 @@ class SlidingWindowTest {
     @Test
     void subarrayWithMaximumContinuousOnes() {
         int[] nums = {0, 1, 0, 1, 0, 0, 1, 1};
-        int flip = 2;
+        int flip = 3;
         System.out.println(Arrays.toString(SlidingWindow.subarrayWithMaximumContinuousOnes(nums, flip)));
     }
 
     @Test
     void continuousOnes() {
         int[] nums = {0, 1, 0, 1, 0, 0, 1, 1};
-        int flip = 2;
+        int flip = 3;
         System.out.println(SlidingWindow.continuousOnes(nums, flip));
+    }
+
+    @Test
+    void shortestSubstring() {
+        String s = "ADOBECODEBANC";
+        String word = "ABC";
+        System.out.println(SlidingWindow.shortestSubstring(s, word));
     }
 }

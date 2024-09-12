@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class SlidingWindow {
     public static int[] maximumSumSubarray(int[] nums, int k) {
@@ -111,5 +109,55 @@ public class SlidingWindow {
             right++;
         }
         return Arrays.copyOfRange(nums, start, end + 1);
+    }
+
+    public static String shortestSubstring(String s, String word) {
+        int n = s.length();
+        int m = word.length();
+
+        if (n == 0 || m > n)
+            return "";
+
+        Map<Character, Integer> requiredCharacters = new HashMap<>();                       // Frequency of all required characters in word
+        for (char character : word.toCharArray())
+            requiredCharacters.put(character, requiredCharacters.getOrDefault(character, 0) + 1);
+
+        int windowStart = 0, windowLength = Integer.MAX_VALUE, start = 0;
+        int matched = 0;                // Keep track of matched characters
+        Map<Character, Integer> windowCharacters = new HashMap<>();                        // Frequency of all required characters in the valid window
+
+        // Expand the window with the right pointer
+        for (int right = 0; right < n; right++) {
+            char c = s.charAt(right);
+
+            // Include the current character
+            if (requiredCharacters.containsKey(c)) {
+                windowCharacters.put(c, windowCharacters.getOrDefault(c, 0) + 1);
+
+                // Only increase matched count when window contains enough of characters
+                if (windowCharacters.get(c).intValue() == requiredCharacters.get(c).intValue())
+                    matched++;
+            }
+
+            // Shrink the window when all characters are matched
+            while (matched == requiredCharacters.size()) {
+                // Update the shortest valid window
+                if (right - windowStart + 1 < windowLength) {
+                    windowLength = right - windowStart + 1;
+                    start = windowStart;
+                }
+
+                // Shrink from the left
+                char leftCharacter = s.charAt(windowStart);
+                windowStart++;
+
+                if (requiredCharacters.containsKey(leftCharacter)) {
+                    if (windowCharacters.get(leftCharacter).intValue() == requiredCharacters.get(leftCharacter).intValue())
+                        matched--;
+                    windowCharacters.put(leftCharacter, windowCharacters.get(leftCharacter) - 1);
+                }
+            }
+        }
+        return windowLength == Integer.MAX_VALUE ? "" : s.substring(start, start + windowLength);
     }
 }

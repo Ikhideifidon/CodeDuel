@@ -110,4 +110,17 @@ class AlgorithmTest {
         int[] nums = {1, 2, 3, 4};
         System.out.println(Arrays.toString(Algorithm.productExceptSelf(nums)));
     }
+
+    @Test
+    void canCompleteCircuit() {
+        int[] gas = {1, 2, 3, 4, 5};
+        int[] cost = {3, 4, 5, 1, 2};
+        System.out.println(Algorithm.canCompleteCircuit(gas, cost));
+    }
+
+    @Test
+    void candy() {
+        int[] ratings = {1, 3, 2, 2, 1};
+        System.out.println(Algorithm.candy(ratings));
+    }
 }

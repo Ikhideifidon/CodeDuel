@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53e9e4ad-d120-4c42-9905-481d88489533" name="Changes" comment="Initial Commit">
+      <change afterPath="$PROJECT_DIR$/src/main/java/SlidingWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/SlidingWindowTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Algorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Algorithm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CodeDuel/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/AlgorithmTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AlgorithmTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,9 +47,11 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Application.Main.executor": "Run",
+    "Application.Main.executor": "Debug",
+    "JUnit.AlgorithmTest.canCompleteCircuit.executor": "Run",
     "JUnit.AlgorithmTest.canJump.executor": "Run",
     "JUnit.AlgorithmTest.canJumpI.executor": "Run",
+    "JUnit.AlgorithmTest.candy.executor": "Run",
     "JUnit.AlgorithmTest.executor": "Run",
     "JUnit.AlgorithmTest.hIndex.executor": "Run",
     "JUnit.AlgorithmTest.jump.executor": "Run",
@@ -59,6 +64,9 @@
     "JUnit.AlgorithmTest.removeDuplicatesII.executor": "Run",
     "JUnit.AlgorithmTest.rotate.executor": "Run",
     "JUnit.AlgorithmTest.rotateI.executor": "Run",
+    "JUnit.SlidingWindowTest.continuousOnes.executor": "Run",
+    "JUnit.SlidingWindowTest.maximumSumSubarray.executor": "Run",
+    "JUnit.SlidingWindowTest.subarrayWithDesiredSum.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -85,52 +93,52 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AlgorithmTest.productExceptSelf">
-    <configuration name="AlgorithmTest.canJump" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.SlidingWindowTest.continuousOnes">
+    <configuration name="AlgorithmTest.canCompleteCircuit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="AlgorithmTest" />
-      <option name="METHOD_NAME" value="canJump" />
+      <option name="METHOD_NAME" value="canCompleteCircuit" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AlgorithmTest.canJumpI" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AlgorithmTest.candy" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="AlgorithmTest" />
-      <option name="METHOD_NAME" value="canJumpI" />
+      <option name="METHOD_NAME" value="candy" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AlgorithmTest.hIndex" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SlidingWindowTest.continuousOnes" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AlgorithmTest" />
-      <option name="METHOD_NAME" value="hIndex" />
+      <option name="MAIN_CLASS_NAME" value="SlidingWindowTest" />
+      <option name="METHOD_NAME" value="continuousOnes" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AlgorithmTest.jump" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SlidingWindowTest.maximumSumSubarray" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AlgorithmTest" />
-      <option name="METHOD_NAME" value="jump" />
+      <option name="MAIN_CLASS_NAME" value="SlidingWindowTest" />
+      <option name="METHOD_NAME" value="maximumSumSubarray" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AlgorithmTest.productExceptSelf" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SlidingWindowTest.subarrayWithDesiredSum" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AlgorithmTest" />
-      <option name="METHOD_NAME" value="productExceptSelf" />
+      <option name="MAIN_CLASS_NAME" value="SlidingWindowTest" />
+      <option name="METHOD_NAME" value="subarrayWithDesiredSum" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -138,11 +146,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AlgorithmTest.productExceptSelf" />
-        <item itemvalue="JUnit.AlgorithmTest.hIndex" />
-        <item itemvalue="JUnit.AlgorithmTest.jump" />
-        <item itemvalue="JUnit.AlgorithmTest.canJump" />
-        <item itemvalue="JUnit.AlgorithmTest.canJumpI" />
+        <item itemvalue="JUnit.SlidingWindowTest.continuousOnes" />
+        <item itemvalue="JUnit.SlidingWindowTest.subarrayWithDesiredSum" />
+        <item itemvalue="JUnit.SlidingWindowTest.maximumSumSubarray" />
+        <item itemvalue="JUnit.AlgorithmTest.candy" />
+        <item itemvalue="JUnit.AlgorithmTest.canCompleteCircuit" />
       </list>
     </recent_temporary>
   </component>
@@ -162,7 +170,7 @@
       <option name="presentableId" value="Default" />
       <updated>1724126060893</updated>
       <workItem from="1724126061935" duration="3559000" />
-      <workItem from="1725461861758" duration="46714000" />
+      <workItem from="1725461861758" duration="61594000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -236,7 +244,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725717947422</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Initial Commit">
+      <option name="closed" value="true" />
+      <created>1725981798033</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1725981798033</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,13 +267,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Algorithm.java</url>
-          <line>485</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Algorithm.java</url>
-          <line>466</line>
-          <option name="timeStamp" value="12" />
+          <line>488</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

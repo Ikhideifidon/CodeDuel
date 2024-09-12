@@ -485,4 +485,44 @@ public class Algorithm {
         return result;
     }
 
+    public static int canCompleteCircuit(int[] gas, int[] cost) {
+        int n = gas.length;
+        int startIndex = 0;
+        int totalGas = 0;
+        int totalCost = 0;
+        int fuel = 0;
+
+        for (int i = 0; i < n; i++) {
+            totalGas += gas[i];
+            totalCost += cost[i];
+            fuel += gas[i] - cost[i];
+
+            if (fuel < 0) {
+                startIndex = i + 1;
+                fuel = 0;
+            }
+        }
+        return (totalGas >= totalCost) ? startIndex : -1;
+    }
+
+    public static int candy(int[] ratings) {
+        int n = ratings.length;
+        int[] result = new int[n];
+        Arrays.fill(result, 1);
+
+        // Left to Right Pass
+        for (int i = 1; i < n; i++) {
+            if (ratings[i - 1] < ratings[i])
+                result[i] = result[i - 1] + 1;
+        }
+        // Right to Left Pass
+        int sum = result[n - 1];
+        for (int i = n - 2; i >= 0; i--) {
+            if (ratings[i] > ratings[i + 1])
+                result[i] = Math.max(result[i], result[i + 1] + 1);
+            sum += result[i];
+        }
+        return sum;
+    }
+
 }

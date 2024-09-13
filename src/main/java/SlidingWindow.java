@@ -183,6 +183,5 @@ public class SlidingWindow {
             windowLength = Math.max(windowLength, right - windowStart + 1);
         }
         return windowLength;
-
     }
 }

@@ -47,8 +47,14 @@ class SlidingWindowTest {
 
     @Test
     void shortestSubstring() {
-        String s = "ADOBECODEBANC";
-        String word = "ABC";
+        String s = "fa4achba4c";
+        String word = "abcc";
         System.out.println(SlidingWindow.shortestSubstring(s, word));
+    }
+
+    @Test
+    void lengthOfLongestSubstring() {
+        String s = "aabbbac";
+        System.out.println(SlidingWindow.lengthOfLongestSubstring(s));
     }
 }

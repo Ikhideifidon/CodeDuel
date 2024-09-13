@@ -160,4 +160,29 @@ public class SlidingWindow {
         }
         return windowLength == Integer.MAX_VALUE ? "" : s.substring(start, start + windowLength);
     }
+
+    public static int lengthOfLongestSubstring(String s) {
+        int n = s.length();
+        int windowStart = 0;
+        int windowLength = 0;
+        Map<Character, Integer> unique = new HashMap<>();
+
+        // Expand the Window
+        for (int right = 0; right < n; right++) {
+            char c = s.charAt(right);
+
+            // If the character is already in the map, move the windowStart to the right of the previous occurrence
+            if (unique.containsKey(c))
+                // Move windowStart to max of its current position and one right of the last occurrence.
+                windowStart = Math.max(windowStart, unique.get(c) + 1);
+
+            // Update the latest position of the current character
+            unique.put(c, right);
+
+            // Update the maximum window length
+            windowLength = Math.max(windowLength, right - windowStart + 1);
+        }
+        return windowLength;
+
+    }
 }

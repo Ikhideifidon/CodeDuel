@@ -57,4 +57,19 @@ class SlidingWindowTest {
         String s = "aabbbac";
         System.out.println(SlidingWindow.lengthOfLongestSubstring(s));
     }
+
+    @Test
+    void findSubstring() {
+        String s = "barfoothefoobarman";
+        String[] words = {"foo", "bar"};
+        System.out.println(SlidingWindow.findSubstring(s, words));
+    }
+
+    @Test
+    void minWindow() {
+        String s = "FAADOBECBDEBANC";
+        String t = "ABBC";
+        System.out.println(SlidingWindow.minWindow(s, t));
+
+    }
 }

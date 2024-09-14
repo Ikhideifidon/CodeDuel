@@ -184,4 +184,103 @@ public class SlidingWindow {
         }
         return windowLength;
     }
+
+    public static List<Integer> findSubstring(String s, String[] words) {
+        // s = "pbarfoofoobarmanpbarbarfoo", words = ["foo", "bar"]
+        int n = s.length();
+        int m = words.length;
+        int eachWordLength = words[0].length();
+        int totalWindowLength = m * eachWordLength;
+
+        if (eachWordLength > n || totalWindowLength > n)
+            return new ArrayList<>();
+
+        List<Integer> result = new ArrayList<>();
+        Map<String, Integer> wordRequired = new HashMap<>();
+
+        // Build the word frequency map from the "words" array
+        for (String word : words)
+            wordRequired.put(word, wordRequired.getOrDefault(word, 0) + 1);
+
+        // Iterate over each possible start point
+        for (int i = 0; i < eachWordLength; i++) {
+            int left = i;
+            Map<String, Integer> seenWords = new HashMap<>();
+            int matchedWords = 0;
+
+            for (int right = i; right <= n - eachWordLength; right += eachWordLength) {
+                String currentWord = s.substring(right, right + eachWordLength);
+
+                if (wordRequired.containsKey(currentWord)) {
+                    seenWords.put(currentWord, seenWords.getOrDefault(currentWord, 0) + 1);
+                    matchedWords++;
+
+                    // If the word count exceeds the required, shrink the window
+                    while (seenWords.get(currentWord) > wordRequired.get(currentWord)) {
+                        String leftWord = s.substring(left, left + eachWordLength);
+                        seenWords.put(leftWord, seenWords.get(leftWord) - 1);
+                        matchedWords--;
+                        left += eachWordLength;
+                    }
+
+                    // If we've matched all words, record the start index
+                    if (matchedWords == m)
+                        result.add(left);
+                } else {
+                    // Reset the window if a non-matching word is found
+                    seenWords.clear();
+                    matchedWords = 0;
+                    left = right + eachWordLength;
+                }
+            }
+        }
+        return result;
+    }
+
+    public static String minWindow(String s, String t) {
+        if (s == null || s.isEmpty() || t == null || t.isEmpty())
+            return "";
+
+        // Frequency map of characters in t
+        Map<Character, Integer> tCharacters = new HashMap<>();
+        for (char character : t.toCharArray())
+            tCharacters.put(character, tCharacters.getOrDefault(character, 0) + 1);
+
+        int left = 0, matched = 0, minLength = Integer.MAX_VALUE;
+        int startIndex = 0; // The start index of the minimum window
+        Map<Character, Integer> windowChars = new HashMap<>();
+
+        // Expand the window with the right pointer
+        for (int right = 0; right < s.length(); right++) {
+            char c = s.charAt(right);
+
+            // If the character is part of t, add it to the window
+            if (tCharacters.containsKey(c)) {
+                windowChars.put(c, windowChars.getOrDefault(c, 0) + 1);
+
+                // Only increment 'matched' if the frequency in window matches t's frequency
+                if (windowChars.get(c).intValue() == tCharacters.get(c).intValue())
+                    matched++;
+            }
+
+            // Shrink the window from the left until it's no longer valid
+            while (matched == tCharacters.size()) {
+                // Update the minimum window
+                if (right - left + 1 < minLength) {
+                    minLength = right - left + 1;
+                    startIndex = left;
+                }
+
+                // Try to remove the left character to shrink the window
+                char leftChar = s.charAt(left);
+                if (tCharacters.containsKey(leftChar)) {
+                    if (windowChars.get(leftChar).intValue() == tCharacters.get(leftChar).intValue())
+                        matched--;
+                    windowChars.put(leftChar, windowChars.get(leftChar) - 1);
+                }
+                left++;
+            }
+        }
+        return minLength == Integer.MAX_VALUE ? "" : s.substring(startIndex, startIndex + minLength);
+    }
 }

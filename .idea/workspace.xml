@@ -7,6 +7,7 @@
     <list default="true" id="53e9e4ad-d120-4c42-9905-481d88489533" name="Changes" comment="Initial Commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/SlidingWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SlidingWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/SlidingWindowTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SlidingWindowTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +27,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/SlidingWindow.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -61,6 +65,7 @@
     "JUnit.AlgorithmTest.rotate.executor": "Run",
     "JUnit.AlgorithmTest.rotateI.executor": "Run",
     "JUnit.SlidingWindowTest.continuousOnes.executor": "Run",
+    "JUnit.SlidingWindowTest.findSubstring.executor": "Run",
     "JUnit.SlidingWindowTest.lengthOfLongestSubstring.executor": "Run",
     "JUnit.SlidingWindowTest.maximumSumSubarray.executor": "Run",
     "JUnit.SlidingWindowTest.shortestSubstring.executor": "Run",
@@ -71,6 +76,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "full.screen.before.presentation.mode": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
@@ -92,7 +98,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SlidingWindowTest.lengthOfLongestSubstring">
+  <component name="RunManager" selected="JUnit.SlidingWindowTest.minWindow">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="CodeDuel.Main" />
       <module name="CodeDuel" />
@@ -106,11 +112,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SlidingWindowTest.continuousOnes" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SlidingWindowTest.findSubstring" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="SlidingWindowTest" />
-      <option name="METHOD_NAME" value="continuousOnes" />
+      <option name="METHOD_NAME" value="findSubstring" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -126,6 +132,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SlidingWindowTest.minWindow" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CodeDuel" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="SlidingWindowTest" />
+      <option name="METHOD_NAME" value="minWindow" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SlidingWindowTest.shortestSubstring" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
       <option name="PACKAGE_NAME" value="" />
@@ -136,23 +152,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SlidingWindowTest.subarrayWithMaximumContinuousOnes" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CodeDuel" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="SlidingWindowTest" />
-      <option name="METHOD_NAME" value="subarrayWithMaximumContinuousOnes" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SlidingWindowTest.minWindow" />
+        <item itemvalue="JUnit.SlidingWindowTest.findSubstring" />
         <item itemvalue="JUnit.SlidingWindowTest.lengthOfLongestSubstring" />
         <item itemvalue="JUnit.SlidingWindowTest.shortestSubstring" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.SlidingWindowTest.continuousOnes" />
-        <item itemvalue="JUnit.SlidingWindowTest.subarrayWithMaximumContinuousOnes" />
       </list>
     </recent_temporary>
   </component>
@@ -172,7 +178,7 @@
       <option name="presentableId" value="Default" />
       <updated>1724126060893</updated>
       <workItem from="1724126061935" duration="3559000" />
-      <workItem from="1725461861758" duration="75109000" />
+      <workItem from="1725461861758" duration="87900000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -278,7 +284,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726193363426</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Initial Commit">
+      <option name="closed" value="true" />
+      <created>1726230198934</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1726230198934</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

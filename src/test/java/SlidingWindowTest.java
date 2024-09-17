@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -71,5 +72,32 @@ class SlidingWindowTest {
         String t = "ABBC";
         System.out.println(SlidingWindow.minWindow(s, t));
 
+    }
+
+    @Test
+    void findRepeatedDnaSequences() {
+        String s = "AAAAAGGGGGTGAAAAAGGGGG";
+        System.out.println(SlidingWindow.findRepeatedDnaSequences(s));
+    }
+
+    @Test
+    void minSubArrayLen() {
+        int[] nums = {1, 1, 1, 1, 1, 1, 1, 1};
+        int target = 11;
+        System.out.println(SlidingWindow.minSubArrayLen(target, nums));
+    }
+
+    @Test
+    void containsNearbyDuplicate() {
+        int[] nums = {1, 2, 3, 1};
+        int k = 3;
+        System.out.println(SlidingWindow.containsNearbyDuplicate(nums, k));
+    }
+
+    @Test
+    void constrainedSubsetSum() {
+        int[] nums = {10, -2, -10, -5, 20};
+        int k = 2;
+        Assertions.assertEquals(23, SlidingWindow.constrainedSubsetSum(nums, k));
     }
 }

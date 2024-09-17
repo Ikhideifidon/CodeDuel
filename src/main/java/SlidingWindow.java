@@ -283,4 +283,97 @@ public class SlidingWindow {
         }
         return minLength == Integer.MAX_VALUE ? "" : s.substring(startIndex, startIndex + minLength);
     }
+
+    public static List<String> findRepeatedDnaSequences(String s) {
+        // s = "s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"
+        // s = "AAAAAGGGGGTGAAAAAGGGGG"
+        if (s == null || s.isEmpty())
+            return new ArrayList<>();
+
+        final Map<String, Integer> validSequence = new HashMap<>();
+        List<String> result = new ArrayList<>();
+
+        for (int i = 0; i <= s.length() - 10 ; i++) {
+            String temp = s.substring(i, i + 10);
+            validSequence.put(temp, validSequence.getOrDefault(temp, 0) + 1);
+
+            // Do we have this "temp" at least twice?
+            if (validSequence.get(temp) == 2)
+                result.add(temp);
+        }
+        return result;
+    }
+
+    public static int minSubArrayLen(int target, int[] nums) {
+        int n = nums.length;
+        int left = 0;
+        int windowLength = Integer.MAX_VALUE;
+        int sum = 0;
+
+        for (int right = 0; right < n; right++) {
+            sum += nums[right];
+            // is sum >= target?
+            while (left <= right && sum >= target) {                    // A valid window is found
+                // Let's attempt to shrink the window
+                if (windowLength > right - left + 1)
+                    windowLength = right - left + 1;
+                // Remove the element at "left"
+                sum -= nums[left];
+                left++;
+            }
+        }
+        return windowLength == Integer.MAX_VALUE ? 0 : windowLength;
+    }
+
+    public static boolean containsNearbyDuplicate(int[] nums, int k) {
+        // nums = [1, 2, 3, 1, 2, 3], k = 2
+        // nums = [1, 1], k = 5
+        int n = nums.length;
+        if (n == 1 || k == 0)
+            return false;
+
+        Map<Integer, Integer> frequency = new HashMap<>();
+
+        // Sliding window approach
+        for (int right = 0; right < n; right++) {
+            // If the element already exists in the map and is within the distance of k
+            if (frequency.containsKey(nums[right]) && right - frequency.get(nums[right]) <= k)
+                return true;
+
+            // Update the map with the current index of the element
+            frequency.put(nums[right], right);
+        }
+        return false;
+    }
+
+    public static int constrainedSubsetSum(int[] nums, int k) {
+        if (nums == null || nums.length == 1)
+            return Integer.MIN_VALUE;
+
+        int n = nums.length;
+        int globalMaximum = nums[0];
+        int currentMaximum;
+        Comparator<int[]> comp = (o1, o2) -> {
+            if (o1[0] < o2[0])
+                return 1;
+            else if (o1[0] > o2[0])
+                return -1;
+            return 0;
+        };
+
+        // Comparator<int[]> comp = (o1, o2) -> Integer.compare(o2[0], o1[0])
+        PriorityQueue<int[]> maxHeap = new PriorityQueue<>(comp);
+        maxHeap.offer(new int[] {nums[0], 0});
+
+        for (int i = 1; i < n; i++) {
+            // Out of k window of length k + 1
+            while (!maxHeap.isEmpty() && i - maxHeap.peek()[1] > k)
+                maxHeap.poll();
+            assert maxHeap.peek() != null;
+            currentMaximum = Math.max(nums[i], nums[i] + maxHeap.peek()[0]);
+            globalMaximum = Math.max(globalMaximum, currentMaximum);
+            maxHeap.offer(new int[] {currentMaximum, i});
+        }
+        return globalMaximum;
+    }
 }

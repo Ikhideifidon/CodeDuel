@@ -65,11 +65,14 @@
     "JUnit.AlgorithmTest.rotate.executor": "Run",
     "JUnit.AlgorithmTest.rotateI.executor": "Run",
     "JUnit.SlidingWindowTest.constrainedSubsetSum.executor": "Run",
+    "JUnit.SlidingWindowTest.containsNearbyAlmostDuplicate.executor": "Run",
+    "JUnit.SlidingWindowTest.containsNearbyAlmostDuplicateOptimized.executor": "Run",
     "JUnit.SlidingWindowTest.containsNearbyDuplicate.executor": "Run",
     "JUnit.SlidingWindowTest.continuousOnes.executor": "Run",
     "JUnit.SlidingWindowTest.findRepeatedDnaSequences.executor": "Run",
     "JUnit.SlidingWindowTest.findSubstring.executor": "Run",
     "JUnit.SlidingWindowTest.lengthOfLongestSubstring.executor": "Run",
+    "JUnit.SlidingWindowTest.longestSubstring.executor": "Run",
     "JUnit.SlidingWindowTest.maximumSumSubarray.executor": "Run",
     "JUnit.SlidingWindowTest.minSubArrayLen.executor": "Run",
     "JUnit.SlidingWindowTest.minWindow.executor": "Debug",
@@ -103,12 +106,32 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SlidingWindowTest.constrainedSubsetSum">
+  <component name="RunManager" selected="JUnit.SlidingWindowTest.longestSubstring">
     <configuration name="SlidingWindowTest.constrainedSubsetSum" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="SlidingWindowTest" />
       <option name="METHOD_NAME" value="constrainedSubsetSum" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SlidingWindowTest.containsNearbyAlmostDuplicate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CodeDuel" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="SlidingWindowTest" />
+      <option name="METHOD_NAME" value="containsNearbyAlmostDuplicate" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SlidingWindowTest.containsNearbyAlmostDuplicateOptimized" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CodeDuel" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="SlidingWindowTest" />
+      <option name="METHOD_NAME" value="containsNearbyAlmostDuplicateOptimized" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -124,31 +147,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SlidingWindowTest.findRepeatedDnaSequences" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SlidingWindowTest.longestSubstring" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="SlidingWindowTest" />
-      <option name="METHOD_NAME" value="findRepeatedDnaSequences" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SlidingWindowTest.minSubArrayLen" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CodeDuel" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="SlidingWindowTest" />
-      <option name="METHOD_NAME" value="minSubArrayLen" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SlidingWindowTest.minWindow" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CodeDuel" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="SlidingWindowTest" />
-      <option name="METHOD_NAME" value="minWindow" />
+      <option name="METHOD_NAME" value="longestSubstring" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -156,11 +159,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SlidingWindowTest.longestSubstring" />
+        <item itemvalue="JUnit.SlidingWindowTest.containsNearbyAlmostDuplicateOptimized" />
+        <item itemvalue="JUnit.SlidingWindowTest.containsNearbyAlmostDuplicate" />
         <item itemvalue="JUnit.SlidingWindowTest.constrainedSubsetSum" />
         <item itemvalue="JUnit.SlidingWindowTest.containsNearbyDuplicate" />
-        <item itemvalue="JUnit.SlidingWindowTest.minSubArrayLen" />
-        <item itemvalue="JUnit.SlidingWindowTest.findRepeatedDnaSequences" />
-        <item itemvalue="JUnit.SlidingWindowTest.minWindow" />
       </list>
     </recent_temporary>
   </component>
@@ -180,7 +183,7 @@
       <option name="presentableId" value="Default" />
       <updated>1724126060893</updated>
       <workItem from="1724126061935" duration="3559000" />
-      <workItem from="1725461861758" duration="98981000" />
+      <workItem from="1725461861758" duration="107281000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -302,7 +305,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726346384705</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Initial Commit">
+      <option name="closed" value="true" />
+      <created>1726603507744</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1726603507744</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

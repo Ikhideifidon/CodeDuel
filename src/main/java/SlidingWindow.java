@@ -376,4 +376,95 @@ public class SlidingWindow {
         }
         return globalMaximum;
     }
+
+    // Time Complexity = O(n * indexDiff)
+    public static boolean containsNearbyAlmostDuplicateBruteForce(int[] nums, int indexDiff, int valueDiff) {
+        if (nums == null || nums.length == 0)
+            return false;
+
+        int n = nums.length;
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n && j <= i + indexDiff; j++) {
+                if (Math.abs(i - j) <= indexDiff)
+                    if (Math.abs(nums[i] - nums[j]) <= valueDiff)
+                        return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean containsNearbyAlmostDuplicateOptimized(int[] nums, int indexDiff, int valueDiff) {
+        if (nums == null || indexDiff == 0 || nums.length == 1)
+            return false;
+
+        int n = nums.length;
+        TreeSet<Integer> window = new TreeSet<>();
+
+        for (int i = 0; i < n; i++) {
+            /*\
+            Condition 1:
+            // Maintain the sliding window size of at most indexDiff elements
+             */
+            if (i > indexDiff)
+                // Remove the leftmost element from the window.
+                window.remove(nums[i - indexDiff - 1]);
+            /*
+            Condition 2:
+            abs(nums[i] - nums[j]) <= valueDiff
+            |(nums[i] - nums[j])| <= valueDiff
+
+            nums[j] >= nums[i] - valueDiff...............(1)
+            nums[j] <= nums[i] + valueDiff...............(2)
+             */
+            // Is there any value in window such that the value >= nums[i] - valueDiff?
+            Integer lowerBound = window.ceiling(nums[i] - valueDiff);
+
+            // If this value exists, is it <= nums[i] + valueDiff?
+            if (lowerBound != null && lowerBound <= nums[i] + valueDiff)
+                return true;
+
+            // Add the current element to the Sliding window;
+            window.add(nums[i]);
+        }
+        return false;
+
+    }
+
+    public static int longestSubstring(String s, int k) {
+        if (s == null)
+            return 0;
+        int n = s.length();
+        if (n == 0 || k > n)
+            return 0;
+        if (k == 0)
+            return n;
+
+        // Frequency map of characters in s
+        Map<Character, Integer> frequency = new HashMap<>();
+        for (char c : s.toCharArray())
+            frequency.put(c, frequency.getOrDefault(c, 0) + 1);
+
+        int left = 0;
+        while (left < n && frequency.get(s.charAt(left)) >= k)
+            left++;
+
+        // All elements in s occur at least k times
+        if (left == n)
+            return left;
+
+        // All elements in s before left occur at least k times
+        int leftResult = longestSubstring(s.substring(0, left), k);
+
+        // Check if all elements immediately after left occur less than k times
+        left++;
+        while (left < n && frequency.get(s.charAt(left)) < k)
+            left++;
+
+        // Check if all elements immediately after left occur at least k times
+        int rightResult = longestSubstring(s.substring(left, n), k);
+
+        return Math.max(leftResult, rightResult);
+    }
+
+
 }

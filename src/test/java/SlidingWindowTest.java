@@ -100,4 +100,27 @@ class SlidingWindowTest {
         int k = 2;
         Assertions.assertEquals(23, SlidingWindow.constrainedSubsetSum(nums, k));
     }
+
+    @Test
+    void containsNearbyAlmostDuplicateBruteForce() {
+        int[] nums = {1, 5, 9, 1, 5, 9};
+        int indexDiff = 2;
+        int valueDiff = 3;
+        System.out.println(SlidingWindow.containsNearbyAlmostDuplicateBruteForce(nums, indexDiff, valueDiff));
+    }
+
+    @Test
+    void containsNearbyAlmostDuplicateOptimized() {
+        int[] nums = {1, 2, 3, 1};
+        int indexDiff = 3;
+        int valueDiff = 0;
+        System.out.println(SlidingWindow.containsNearbyAlmostDuplicateOptimized(nums, indexDiff, valueDiff));
+    }
+
+    @Test
+    void longestSubstring() {
+        String s = "bacbcdacacbaaa";
+        int k = 3;
+        Assertions.assertEquals(3, SlidingWindow.longestSubstring(s, k));
+    }
 }

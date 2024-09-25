@@ -5,6 +5,7 @@ import java.util.*;
 /*
     Leetcode Top Interview 150 Questions
  */
+@SuppressWarnings({"unused", "CommentedOutCode"})
 public class Algorithm {
 
     public static void merge(int[]  nums1, int m, int[] nums2, int n) {
@@ -378,7 +379,7 @@ public class Algorithm {
         return count;
     }
 
-    static class RandomizedSet { ;
+    static class RandomizedSet {
         private final Map<Integer, Integer> unique;
         private final List<Integer> container;
         private int available;

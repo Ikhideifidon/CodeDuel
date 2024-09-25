@@ -5,15 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53e9e4ad-d120-4c42-9905-481d88489533" name="Changes" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/Trie.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/TrieUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Algorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/Algorithm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/CodeDuel/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SlidingWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/SlidingWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Sorting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/Sorting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/AlgorithmTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AlgorithmTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/SlidingWindowTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SlidingWindowTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CodeDuel/Trie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/Trie.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +24,7 @@
       <list>
         <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -89,9 +86,9 @@
     "JUnit.SlidingWindowTest.subarrayWithMaximumContinuousOnes.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "extract.method.default.visibility": "private",
     "full.screen.before.presentation.mode": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
@@ -118,6 +115,7 @@
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="CodeDuel.Main" />
       <module name="CodeDuel" />
+      <option name="PROGRAM_PARAMETERS" value="-ea" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="CodeDuel.*" />
@@ -168,6 +166,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.SlidingWindowTest.containsNearbyAlmostDuplicateOptimized" />
+      <item itemvalue="JUnit.SlidingWindowTest.longestDupSubstring" />
+      <item itemvalue="JUnit.SlidingWindowTest.longestDupSubstringOptimized" />
+      <item itemvalue="JUnit.SlidingWindowTest.longestSubstring" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -195,7 +200,7 @@
       <updated>1724126060893</updated>
       <workItem from="1724126061935" duration="3559000" />
       <workItem from="1725461861758" duration="113329000" />
-      <workItem from="1726969103574" duration="9126000" />
+      <workItem from="1726969103574" duration="18579000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -333,7 +338,23 @@
       <option name="project" value="LOCAL" />
       <updated>1726679939994</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Initial Commit">
+      <option name="closed" value="true" />
+      <created>1727238262591</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1727238262591</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Initial Commit">
+      <option name="closed" value="true" />
+      <created>1727238385520</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1727238385520</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

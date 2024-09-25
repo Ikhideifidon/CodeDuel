@@ -1,3 +1,5 @@
+package CodeDuel;
+
 import java.util.*;
 
 /*

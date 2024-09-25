@@ -1,6 +1,6 @@
 # [<img align="left" alt="Code Duel" width="45px" style="padding-right:10px;" src="src/main/resources/codeduel.png"/> **`Code Duel`**](https://www.youtube.com/@codeduel)
 
-**`Algorithm Showdown`**
+**`CodeDuel.Algorithm Showdown`**
 
 Welcome to **Code Duel** where Algorithms Battle for Supremacy
 Welcome to Code Duel, the ultimate arena where coding techniques and algorithms clash! Whether you're a seasoned developer or just starting, this channel is your go-to for mastering code optimization.

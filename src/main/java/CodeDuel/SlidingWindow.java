@@ -1,3 +1,5 @@
+package CodeDuel;
+
 import java.util.*;
 
 public class SlidingWindow {
@@ -464,6 +466,98 @@ public class SlidingWindow {
         int rightResult = longestSubstring(s.substring(left, n), k);
 
         return Math.max(leftResult, rightResult);
+    }
+
+    public static String longestDupSubstring(String s) {
+        if (s == null || s.length() < 2)
+            
+            return "";
+
+        int n = s.length();
+        int left = 0;
+        int right = n - 1;
+        // Create a frequency map of the characters in s
+        Map<Character, Integer> frequency = new HashMap<>();
+        for (char c : s.toCharArray())
+            frequency.put(c, frequency.getOrDefault(c, 0) + 1);
+
+        // Expand the window.
+
+        while (left < n && frequency.get(s.charAt(left)) < 2)
+            left++;
+
+        if (left >= n)
+            return "";
+
+        int middle = left + (right - left) / 2;
+
+        // left substring
+        String leftSubstringWithoutMiddle = s.substring(left, middle);
+        String leftSubstringWithMiddle = s.substring(left, middle + 1);
+
+        // Right substring
+        String rightSubstringWithoutMiddle = s.substring(middle + 1, right + 1);
+        String rightSubstringWithMiddle = s.substring(middle, right + 1);
+
+        if (leftSubstringWithoutMiddle.equals(rightSubstringWithoutMiddle))
+            return leftSubstringWithoutMiddle;
+
+        else if (leftSubstringWithMiddle.equals(rightSubstringWithMiddle))
+            return leftSubstringWithMiddle;
+
+        // Recurse
+//        String leftResultWithoutMiddle = longestDupSubstring(leftSubstringWithoutMiddle);
+        String leftResultWithMiddle = longestDupSubstring(leftSubstringWithMiddle);
+//        String rightResultWithoutMiddle = longestDupSubstring(rightSubstringWithoutMiddle);
+        String rightResultWithMiddle = longestDupSubstring(rightSubstringWithMiddle);
+
+//        String leftResult = leftResultWithoutMiddle.length() > leftResultWithMiddle.length() ? leftResultWithoutMiddle : leftResultWithMiddle;
+//        String rightResult = rightResultWithoutMiddle.length() > rightResultWithMiddle.length() ? rightResultWithoutMiddle : rightResultWithMiddle;
+
+        return leftResultWithMiddle.length() > rightResultWithMiddle.length() ? leftResultWithMiddle : rightResultWithMiddle;
+    }
+
+    public static String longestDupSubstringOptimized(String s) {
+        int n = s.length();
+        int left = 0, right = n - 1;
+        String result = "";
+
+        // Binary search to find the longest duplicate substring
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            String duplicate = searchForDuplicateSubstring(s, mid);
+            if (duplicate != null) {
+                result = duplicate;  // update result if duplicate found
+                left = mid + 1;      // try to find a longer one
+            } else
+                right = mid - 1;     // reduce length
+        }
+        return result;
+    }
+
+    // Rabin-Karp rolling hash to find duplicate substring of a specific length
+    private static String searchForDuplicateSubstring(String s, int length) {
+        long base = 31;
+        long mod = (long) 1e9 + 7;
+        long hash = 0;
+        long basePow = 1;  // base^length for rolling hash
+        Set<Long> seen = new HashSet<>();
+
+        for (int i = 0; i < length; i++) {
+            hash = (hash * base + s.charAt(i)) % mod;
+            basePow = (basePow * base) % mod;
+        }
+        seen.add(hash);
+
+        for (int i = length; i < s.length(); i++) {
+            // Slide the window: remove the old character and add the new one
+            hash = (hash * base + s.charAt(i) - s.charAt(i - length) * basePow % mod + mod) % mod;
+            if (seen.contains(hash)) {
+                return s.substring(i - length + 1, i + 1);
+            }
+            seen.add(hash);
+        }
+        return null;
     }
 
 

@@ -7,5 +7,6 @@ public interface TrieUtils {
     boolean isEmpty();
     int size();
     String longestPrefixOf(String word);
+    String longestCommonPrefix();
     Iterable<String> allPrefixOf(String word);
 }

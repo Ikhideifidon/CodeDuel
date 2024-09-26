@@ -528,4 +528,62 @@ public class Algorithm {
         return sum;
     }
 
+    public String longestCommonPrefix(String[] strs) {
+        if (strs == null || strs.length == 0)
+            return "";
+        Trie trie = new Trie();
+        for (String word : strs)
+            trie.insert(word);
+
+        return trie.search(strs[0], strs.length);
+    }
+
+    static class Trie {
+        private final TrieNode root;
+
+        // Lightweight TrieNode class
+        static class TrieNode {
+            private static final int R = 26;
+            private final TrieNode[] children;
+            private boolean isEnd;
+            private int size;
+
+            private TrieNode() {
+                children = new TrieNode[R];
+                isEnd = false;
+                size = 0;
+            }
+        }
+
+        private Trie() {
+            root = new TrieNode();
+        }
+
+        private void insert(String word) {
+            TrieNode node = root;
+            for (char c : word.toCharArray()) {
+                int index = c - 'a';
+                if (node.children[index] == null)
+                    node.children[index] = new TrieNode();
+
+                node.children[index].size++;
+                node = node.children[index];
+            }
+            node.isEnd = true;
+        }
+
+        private String search(String word, int n) {
+            TrieNode node = root;
+            for (int i = 0; i < word.length(); i++) {
+                char c = word.charAt(i);
+                int index = c - 'a';
+
+                if (node.children[index] != null && node.children[index].size == n)
+                    node = node.children[index];
+                else
+                    return word.substring(0, i);
+            }
+            return word;
+        }
+    }
 }

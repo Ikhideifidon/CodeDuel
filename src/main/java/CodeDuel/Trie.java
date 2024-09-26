@@ -100,6 +100,11 @@ public class Trie implements TrieUtils {
     }
 
     @Override
+    public String longestCommonPrefix() {
+        throw new UnsupportedOperationException("Method not implemented.");
+    }
+
+    @Override
     public Iterable<String> allPrefixOf(@NotNull String word) {
         List<String> result = new ArrayList<>();
         TrieNode node = root;

@@ -538,12 +538,13 @@ public class Algorithm {
         return trie.search(strs[0], strs.length);
     }
 
+    // ..........................Trie class starts...................................
     static class Trie {
         private final TrieNode root;
+        private static final int R = 26;
 
         // Lightweight TrieNode class
-        static class TrieNode {
-            private static final int R = 26;
+        private static class TrieNode {
             private final TrieNode[] children;
             private boolean isEnd;
             private int size;
@@ -585,5 +586,82 @@ public class Algorithm {
             }
             return word;
         }
+    }
+    //..........................................Trie class Ends..............................
+
+    public boolean wordBreakTrie(String s, List<String> wordDict) {
+        if (s == null)
+            return false;
+        if (s.isEmpty())
+            return true;
+
+        Trie trie = new Trie();
+        for (String word : wordDict)
+            trie.insert(word);
+
+        return dfs(s, 0, new HashMap<>(), trie);
+    }
+
+    private boolean dfs(String s, int start, Map<Integer, Boolean> memo, Trie trie) {
+        if (start == s.length())
+            return true;
+
+        if (memo.containsKey(start))
+            return memo.get(start);
+
+        Trie.TrieNode node = trie.root;
+        // Try every possible break point starting from 'start'
+        for (int i = start; i < s.length(); i++) {
+            char c = s.charAt(i);
+            int index = c - 'a';
+
+            if (node.children[index] == null)
+                break;
+
+            node = node.children[index];
+            // If a valid word is found in the trie, recursively check the remaining part of the string
+            if (node.isEnd) {
+                if (dfs(s, i + 1, memo, trie)) {
+                    memo.put(start, true);
+                    return true;
+                }
+            }
+        }
+
+        // No valid word break found
+        memo.put(start, false);
+        return false;
+    }
+
+
+    public boolean wordBreakRecursion(String s, List<String> wordDict) {
+        if (s == null)
+            return false;
+        if (s.isEmpty())
+            return true;
+        return wordBreakHelper(s, wordDict, new HashMap<>());
+    }
+
+    private boolean wordBreakHelper(String s, List<String> wordDict, HashMap<String, Boolean> memo) {
+        if (memo.containsKey(s))
+            return memo.get(s);
+
+        if (s.isEmpty())
+            return true;
+
+        for (String word : wordDict) {
+            // Does 'word' exist in s? If yes, is it a prefix or a suffix?
+            if (s.indexOf(word) == 0) {                     // Prefix check
+                String suffix = s.substring(word.length());
+                boolean result = wordBreakHelper(suffix, wordDict, memo);
+                if (result) {
+                    memo.put(s, true);
+                    return true;
+                }
+            }
+        }
+
+        memo.put(s, false);
+        return false;
     }
 }

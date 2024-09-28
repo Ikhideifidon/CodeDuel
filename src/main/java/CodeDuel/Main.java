@@ -40,7 +40,9 @@ public class Main {
         System.out.println(trie.longestPrefixOf("shells"));
         System.out.println(trie.longestPrefixOf("application"));
         System.out.println(trie.allPrefixOf("application"));
-        System.out.println(trie.longestCommonPrefix());
+//        System.out.println(trie.longestCommonPrefix());
         trie.printTrie();
+        String s = "wynwoods";
+        System.out.println(s.indexOf("wood"));
     }
 }

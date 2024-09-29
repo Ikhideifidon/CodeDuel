@@ -1,5 +1,8 @@
 package CodeDuel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello world!");
@@ -42,7 +45,9 @@ public class Main {
         System.out.println(trie.allPrefixOf("application"));
 //        System.out.println(trie.longestCommonPrefix());
         trie.printTrie();
-        String s = "wynwoods";
-        System.out.println(s.indexOf("wood"));
+        String s = "catsanddog";
+        List<String> wordDict = new ArrayList<>(List.of("cat","cats", "and", "sand", "dog"));
+        System.out.println(Algorithm.wordBreakSolution2(s, wordDict));
+
     }
 }

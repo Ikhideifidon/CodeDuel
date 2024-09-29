@@ -664,4 +664,57 @@ public class Algorithm {
         memo.put(s, false);
         return false;
     }
+
+    public static List<String> wordBreak(String s, List<String> wordDict) {
+        if (s == null || s.isEmpty() || wordDict == null || wordDict.isEmpty())
+            return new ArrayList<>();
+        List<String> result = new ArrayList<>();
+        wordBreakHelper(s, wordDict, result, new StringBuilder());
+        return result;
+    }
+
+    private static void wordBreakHelper(String s, List<String> wordDict, List<String> result, StringBuilder sb) {
+        if (s.isEmpty())
+            result.add(new String(sb));
+
+        for (String word : wordDict) {
+            // Is word a prefix of "s"?
+            if (s.indexOf(word) == 0) {
+                int lenBeforeAppend = sb.length(); // Store the length before appending
+                String suffix = s.substring(word.length());
+
+                sb.append(word).append(suffix.isEmpty() ? "" : " ");
+
+                wordBreakHelper(suffix, wordDict, result, sb);
+                sb.setLength(lenBeforeAppend);
+            }
+        }
+    }
+
+    public static List<String> wordBreakSolution2(String s, List<String> wordDict) {
+        if (s == null || s.isEmpty() || wordDict == null || wordDict.isEmpty())
+            return new ArrayList<>();
+        return wordBreakHelperII(s, wordDict, new HashMap<>());
+    }
+
+    private static List<String> wordBreakHelperII(String s, List<String> wordDict, Map<String, List<String>> memo) {
+        if (memo.containsKey(s))
+            return memo.get(s);
+
+        List<String> result = new ArrayList<>();
+        for (String word : wordDict) {
+            if (s.indexOf(word) == 0) {
+                String suffix = s.substring(word.length());
+                if (suffix.isEmpty())
+                    result.add(word);
+                else {
+                    List<String> suffixDecomposition = wordBreakHelperII(suffix, wordDict, memo);
+                    for (String sub : suffixDecomposition)
+                        result.add(word + " " + sub);
+                }
+            }
+        }
+        memo.put(s, result);
+        return result;
+    }
 }

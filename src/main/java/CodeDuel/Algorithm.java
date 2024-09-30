@@ -759,7 +759,7 @@ public class Algorithm {
         char temp = board[row][col];
         board[row][col] = '$';
 
-        // Explore all four directions
+        // Explore all directions
         for (int[] direction : directions) {
             int x = row + direction[0];
             int y = col + direction[1];
@@ -769,5 +769,49 @@ public class Algorithm {
         // Restore the cell and the word after exploring
         board[row][col] = temp;
         word.deleteCharAt(word.length() - 1); // Remove the last character
+    }
+
+    // 386. Lexicographical Numbers
+    public List<Integer> lexicalOrder(int n) {
+        List<Integer> result = new ArrayList<>();
+        for (int i = 1; i <= n; i++)
+            dfs(n, i, result);
+        return result;
+    }
+
+    private void dfs(int n, int current, List<Integer> result) {
+        if (current > n)
+            return;
+
+        result.add(current);
+        for (int i = 0; i <= n; i++) {
+            int next = current * 10 + i;
+            if (next > n)
+                break;
+            dfs(n, next, result);
+        }
+    }
+
+    
+    public List<Integer> lexicalOrderOptimized(int n) {
+         List<Integer> result = new ArrayList<>();
+         int current = 1;
+
+         for (int i = 0; i < n; i++) {
+             result.add(current);
+
+             if (current * 10 <= n)
+                 current *= 10;
+
+             else {
+                 if (current >= n)
+                     current /= 10;
+
+                 current++;
+                 while (current % 10 == 0)
+                     current /= 10;
+             }
+         }
+         return result;
     }
 }

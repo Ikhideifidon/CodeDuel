@@ -48,5 +48,11 @@ public class Main {
         String s = "catsanddog";
         List<String> wordDict = new ArrayList<>(List.of("cat","cats", "and", "sand", "dog"));
         System.out.println(Algorithm.wordBreakSolution2(s, wordDict));
+        List<String> sample = new ArrayList<>();
+        for (int i = 1; i <= 21; i++)
+            sample.add(String.valueOf(i));
+//        String[] a = Arrays.toString(sample).split("[\\[\\]]")[1].split(", ");
+        System.out.println(sample);
+        System.out.println('2' - '1');
     }
 }

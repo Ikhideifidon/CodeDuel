@@ -539,7 +539,7 @@ public class Algorithm {
     }
 
     // ..........................Trie class starts...................................
-    static class Trie {
+    private static class Trie {
         private final TrieNode root;
         private static final int R = 26;
 
@@ -716,5 +716,58 @@ public class Algorithm {
         }
         memo.put(s, result);
         return result;
+    }
+
+    public List<String> findWords(char[][] board, String[] words) {
+        int m = board.length;
+        int n = board[0].length;
+
+        List<String> result = new ArrayList<>();
+        final int[][] dirs = { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 } };
+        Trie trie = new Trie();
+
+        for (String word : words)
+            trie.insert(word);
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                dfs(board, i, j, result, trie.root, new StringBuilder(), new HashSet<>(), dirs);
+            }
+        }
+        return result;
+    }
+
+    private void dfs(char[][] board, int row, int col, List<String> result, Trie.TrieNode node, StringBuilder word, Set<String> foundWords, int[][] directions) {
+        // Check for out of bounds or visited cell
+        if (row < 0 || row >= board.length || col < 0 || col >= board[0].length || board[row][col] == '$')
+            return;
+
+        int index = board[row][col] - 'a';
+        if (node.children[index] == null)
+            return;
+
+        node = node.children[index];            // Move to the next trie node
+        word.append(board[row][col]);
+
+        // If a valid word is found
+        if (node.isEnd && !foundWords.contains(word.toString())) {
+            result.add(word.toString());
+            foundWords.add(word.toString()); // Avoid duplicates
+        }
+
+        // Mark the cell as visited
+        char temp = board[row][col];
+        board[row][col] = '$';
+
+        // Explore all four directions
+        for (int[] direction : directions) {
+            int x = row + direction[0];
+            int y = col + direction[1];
+            dfs(board, x, y, result, node, word, foundWords, directions);
+        }
+
+        // Restore the cell and the word after exploring
+        board[row][col] = temp;
+        word.deleteCharAt(word.length() - 1); // Remove the last character
     }
 }

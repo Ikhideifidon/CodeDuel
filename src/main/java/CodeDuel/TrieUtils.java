@@ -1,5 +1,6 @@
 package CodeDuel;
 
+@SuppressWarnings("unused")
 public interface TrieUtils {
     void insert(String word);
     boolean search(String word);

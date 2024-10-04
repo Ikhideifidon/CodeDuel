@@ -814,4 +814,385 @@ public class Algorithm {
          }
          return result;
     }
+
+    static class NumberTrie {
+        private static final int R = 10;
+        private final NumberTrieNode root;
+
+        // Lightweight NumberTrieNode class
+        private static class NumberTrieNode {
+            private final NumberTrieNode[] children;
+            private boolean isEnd;
+
+            private NumberTrieNode() {
+                children = new NumberTrieNode[R];
+                isEnd = false;
+            }
+        }
+
+        private NumberTrie() { root = new NumberTrieNode(); }
+
+        public void insert(int num) {
+            NumberTrieNode node = root;
+            String numString = String.valueOf(num);
+            for (char c : numString.toCharArray()) {
+                int index = c - '0';
+                if (node.children[index] == null)
+                    node.children[index] = new NumberTrieNode();
+
+                node = node.children[index];
+            }
+            node.isEnd = true;
+        }
+
+        private void dfs(List<Integer> result, NumberTrieNode node, StringBuilder path) {
+            if (node.isEnd)
+                result.add(Integer.parseInt(path.toString()));
+
+            for (int i = 0; i < NumberTrie.R; i++) {
+                if (node.children[i] != null) {
+                    path.append(i);
+                    dfs(result, node.children[i], path);
+                    path.deleteCharAt(path.length() - 1);
+                }
+            }
+        }
+    }
+
+    public List<Integer> lexicalOrderTrie(int n) {
+        NumberTrie trie = new NumberTrie();
+        for (int i = 1; i <= n; i++)
+            trie.insert(i);
+
+        List<Integer> result = new ArrayList<>();
+        trie.dfs(result, trie.root, new StringBuilder());
+        return result;
+    }
+
+    static class MapSum {
+        private final static int R = 26;
+        private final TrieNode root;
+        private final Map<String, Integer> map;
+        // Lightweight class
+        private static class TrieNode {
+            private final TrieNode[] children;
+            private boolean isEnd;
+            private int val;
+
+            private TrieNode() {
+                children = new TrieNode[R];
+                isEnd = false;
+                val = 0;
+            }
+        }
+
+        private MapSum() {
+            root = new TrieNode();
+            map = new HashMap<>();
+        }
+
+        public void insert(String key, int val) {
+            int delta = val - map.getOrDefault(key, 0);
+            map.put(key, val);
+
+            MapSum.TrieNode node = root;
+            for (char c : key.toCharArray()) {
+                int index = c - 'a';
+
+                if (node.children[index] == null)
+                    node.children[index] = new TrieNode();
+
+                node = node.children[index];
+                node.val += delta;
+            }
+            node.isEnd = true;
+        }
+
+        public int sum(String prefix) {
+            MapSum.TrieNode node = root;
+            for (char c : prefix.toCharArray()) {
+                int index = c - 'a';
+
+                if (node.children[index] == null)
+                    return 0;
+
+                node = node.children[index];
+            }
+            return node.val;
+        }
+    }
+
+    // Definition for singly-linked list.
+    public static class ListNode {
+        private int val;
+        private ListNode next = null;
+
+        private ListNode() {}
+        private ListNode(int val) { this.val = val; }
+        private ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+    }
+
+    public ListNode reverseKGroup(ListNode head, int k) {
+        final ListNode dummy = new ListNode(0, head);
+        ListNode previousGroup = dummy;
+
+        while (true) {
+            ListNode kthNode = getKthNode(previousGroup, k);
+            if (kthNode == null)
+                break;
+
+            ListNode nextGroup = kthNode.next;
+            ListNode previous = kthNode.next;
+            ListNode current = previousGroup.next;
+            /*
+                            dummy  head  kthNode    previous
+                                |    |         |    |
+                                0--->1--->2--->3--->4--->5--->6--->7--->null
+                                |    |              |
+                     previousGroup  current    nextKthGroup
+             */
+
+            // Reverse the group of k nodes
+            while (current != nextGroup.next) {
+                ListNode next = current.next;
+                current.next = previous;
+                previous = current;
+                current = next;
+            }
+
+            // Reconnect the previous group with the newly reversed group
+            ListNode next = previousGroup.next;
+            previousGroup.next = kthNode;
+            previousGroup = next;
+        }
+        return dummy.next;
+    }
+
+    private ListNode getKthNode(ListNode start, int k) {
+        while (start != null && k > 0){
+            start = start.next;
+            k--;
+        }
+        return start;
+    }
+
+    public static void rotate(int[][] matrix) {
+        if (matrix == null || matrix.length <= 1)
+            return;
+        int n = matrix.length;
+
+        // Reverse each column
+        for (int i = 0; i < n / 2; i++) {
+            int[] temp = matrix[i];
+            matrix[i] = matrix[n - 1 - i];
+            matrix[n - i - 1] = temp;
+        }
+
+        // Swap symmetrically
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
+            }
+        }
+    }
+
+    public static List<Integer> spiralOrder(int[][] matrix) {
+        if (matrix == null)
+            return new ArrayList<>();
+
+        if (matrix.length <= 1)
+            return new ArrayList<>(List.of(matrix[0][0]));
+
+        List<Integer> result = new ArrayList<>();
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int left = 0;
+        int right = n - 1;
+        int top = 0;
+        int bottom = m - 1;
+        int direction = 1;
+
+        while (left <= right && top <= bottom) {
+            if (direction == 1) {
+                for (int i = left; i <= right; i++)
+                    result.add(matrix[top][i]);
+                top++;
+                direction++;
+            }
+
+            else if (direction == 2) {
+                for (int i = top; i <= bottom; i++)
+                    result.add(matrix[i][right]);
+                right--;
+                direction++;
+            }
+
+            else if (direction == 3) {
+                for (int i = right; i >= left; i--)
+                    result.add(matrix[bottom][i]);
+                bottom--;
+                direction++;
+            }
+
+            else if (direction == 4) {
+                for (int i = bottom; i >= top; i--)
+                    result.add(matrix[i][left]);
+                left++;
+                direction = 1;
+            }
+        }
+        return result;
+    }
+
+    public static int[][] generateMatrix(int n) {
+        int[][] result = new int[n][n];
+        int left = 0;
+        int right = n - 1;
+        int top = 0;
+        int bottom = n - 1;
+        int direction = 1;
+        int num = 1;
+
+        while (left <= right && top <= bottom) {
+            if (direction == 1) {
+                for (int i = left; i <= right; i++)
+                    result[left][i] = num++;
+                top++;
+                direction++;
+            }
+
+            else if (direction == 2) {
+                for (int i = top; i <= bottom; i++)
+                    result[i][right] = num++;
+                right--;
+                direction++;
+            }
+
+            else if (direction == 3) {
+                for (int i = right; i >= left; i--)
+                    result[bottom][i] = num++;
+                bottom--;
+                direction++;
+            }
+
+            if (direction == 4) {
+                for (int i = bottom; i >= top; i--)
+                    result[i][left] = num++;
+                left++;
+                direction = 1;
+            }
+        }
+        return result;
+    }
+
+    public static int uniquePathsWithObstacles(int[][] obstacleGrid) {
+        if (obstacleGrid == null || obstacleGrid.length == 0 || obstacleGrid[0].length == 0)
+            return 0;
+
+        int m = obstacleGrid.length;
+        int n = obstacleGrid[0].length;
+        int[][] dp = new int[m][n];
+
+        dp[0][0] = obstacleGrid[0][0] == 1 ? 0 : 1;
+
+        // Fill the first row if reachable
+        for (int j = 1; j < n; j++)
+            dp[0][j] = (obstacleGrid[0][j] == 1 || dp[0][j - 1] == 0) ? 0 : 1;
+
+        // Fill the first column if reachable
+        for (int i = 1; i < m; i++)
+            dp[i][0] = (obstacleGrid[i][0] == 1 || dp[i - 1][0] == 0) ? 0 : 1;
+
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                if (obstacleGrid[i][j] == 1)
+                    dp[i][j] = 0;
+
+                else
+                    dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+            }
+        }
+        return dp[m - 1][n - 1];
+    }
+
+    public static int uniquePathsWithObstaclesOptimized(int[][] obstacleGrid) {
+        if (obstacleGrid == null || obstacleGrid.length == 0 || obstacleGrid[0].length == 0)
+            return 0;
+
+        int m = obstacleGrid.length;
+        int n = obstacleGrid[0].length;
+        int[] dp = new int[n];
+
+        dp[0] = obstacleGrid[0][0] == 1 ? 0 : 1;
+        for (int[] temp : obstacleGrid) {
+            for (int j = 0; j < n; j++) {
+                if (temp[j] == 1)
+                    dp[j] = 0;
+                else
+                    dp[j] += j > 0 ? dp[j - 1] : 0;
+            }
+        }
+        return dp[n - 1];
+    }
+
+    public static int uniquePathsIII(int[][] grid) {
+        if (grid == null || grid.length == 0 || grid[0].length == 0)
+            return 0;
+
+        int m = grid.length;
+        int n = grid[0].length;
+
+        int walkableCount = 0;
+        // Find the location of the start cell
+        int[] start = new int[2];
+        // Find the location of the end cell
+        int[] end = new int[2];
+        int[][] dirs = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
+        // Find start cell, end cell and walkableCount
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                // Starting cell
+                if (grid[i][j] == 1)
+                    start = new int[]{i, j};
+
+                // Ending cell
+                if (grid[i][j] == 2)
+                    end = new int[] {i, j};
+
+                // Possible walk over
+                if (grid[i][j] != -1)
+                    walkableCount++;
+            }
+        }
+        // Start DFS from the start position
+        return dfs(grid, start[0], start[1], end, 1, walkableCount, dirs);
+    }
+
+    private static int dfs(int[][] grid, int row, int col, int[] end, int visitedCount, int walkableCount, int[][] dirs) {
+        // Out of bounds, obstacle, or already visited
+        if (row >= grid.length || row < 0 || col >= grid[0].length || col < 0 || grid[row][col] == -1 || grid[row][col] == 3)
+            return 0;
+
+        // If we reach the end cell
+        if (row == end[0] && col == end[1])
+            return visitedCount == walkableCount ? 1 : 0;
+
+        // Mark the current cell as visited
+        int temp = grid[row][col];
+        grid[row][col] = 3;
+
+        int paths = 0;
+        for (int[] dir : dirs) {
+            int x = row + dir[0];
+            int y = col + dir[1];
+            paths += dfs(grid, x, y, end, visitedCount + 1, walkableCount, dirs);
+        }
+
+        // Backtrack by un-marking the current cell
+        grid[row][col] = temp;
+        return paths;
+    }
 }

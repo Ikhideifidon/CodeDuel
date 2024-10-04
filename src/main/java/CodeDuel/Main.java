@@ -1,6 +1,7 @@
 package CodeDuel;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -48,11 +49,28 @@ public class Main {
         String s = "catsanddog";
         List<String> wordDict = new ArrayList<>(List.of("cat","cats", "and", "sand", "dog"));
         System.out.println(Algorithm.wordBreakSolution2(s, wordDict));
-        List<String> sample = new ArrayList<>();
-        for (int i = 1; i <= 21; i++)
-            sample.add(String.valueOf(i));
-//        String[] a = Arrays.toString(sample).split("[\\[\\]]")[1].split(", ");
-        System.out.println(sample);
-        System.out.println('2' - '1');
+        int[][] matrix = {
+                {1, 2, 3, 4},
+                {5, 6, 7, 8},
+                {9, 10, 11, 12}
+        };
+//        Algorithm.rotate(matrix);
+        System.out.println(Arrays.deepToString(matrix));
+        System.out.println(Algorithm.spiralOrder(matrix));
+        System.out.println(Arrays.deepToString(Algorithm.generateMatrix(12)));
+
+        int[][] obstacleGrid = {
+                {0, 0, 0},
+                {0, 1, 0},
+                {0, 0, 0}
+        };
+        System.out.println(Algorithm.uniquePathsWithObstacles(obstacleGrid));
+
+        int[][] paths = {
+                {1, 0, 0, 0},
+                {0, 0, 0, 0},
+                {0, 0, 2, -1}
+        };
+        System.out.println(Algorithm.uniquePathsIII(paths));
     }
 }

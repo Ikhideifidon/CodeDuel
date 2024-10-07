@@ -72,5 +72,44 @@ public class Main {
                 {0, 0, 2, -1}
         };
         System.out.println(Algorithm.uniquePathsIII(paths));
+
+        int[][] grid = {
+                {1, 3, 1},
+                {1, 5, 1},
+                {4, 2, 1}
+        };
+        System.out.println(Algorithm.minPathSum(grid));
+
+        int[][] matrix2 = {
+                {1, 3, 5, 7},
+                {10, 11, 16, 20},
+                {23, 30, 34, 60}
+        };
+        int target = 3;
+        System.out.println(Algorithm.searchMatrix(matrix2, target));
+
+        int[][] zeroes = {
+                {1, 1, 1},
+                {1, 0, 1},
+                {1, 1, 1}
+        };
+
+        Algorithm.setZeroes(zeroes);
+        System.out.println(Arrays.deepToString(zeroes));
+
+        int[][] board = {
+                {0, 1, 0},
+                {0, 0, 1},
+                {1, 1, 1},
+                {0, 0, 0}
+        };
+        Algorithm.gameOfLife(board);
+        System.out.println(Arrays.deepToString(board));
+
+        String matchedWord = "dog cat cat dog";
+        String pattern = "abba";
+        System.out.println(Algorithm.wordPattern(pattern, matchedWord));
+
+
     }
 }

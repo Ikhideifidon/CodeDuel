@@ -1195,4 +1195,239 @@ public class Algorithm {
         grid[row][col] = temp;
         return paths;
     }
+
+    public static int minPathSum(int[][] grid) {
+        if (grid == null || grid.length == 0 || grid[0].length == 0)
+            return 0;
+        return dfs(grid, 0, 0, new int[grid.length][grid[0].length]);
+    }
+
+    private static int dfs(int[][] grid, int row, int col, int[][] memo) {
+        if (row >= grid.length || row < 0 || col >= grid[0].length || col < 0 || grid[row][col] == -1)
+            return Integer.MAX_VALUE;
+
+        if (row == grid.length - 1 && col == grid[0].length - 1)
+            return grid[row][col];
+
+        if (memo[row][col] != 0)
+            return memo[row][col];
+
+        int right = dfs(grid, row, col + 1, memo);
+        int down = dfs(grid, row + 1, col, memo);
+
+        memo[row][col] = grid[row][col] + Math.min(right, down);
+        return memo[row][col];
+    }
+
+    // O(log m * log n)
+    public static boolean searchMatrix(int[][] matrix, int target) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
+            return false;
+
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        int top = 0;
+        int bottom = m - 1;
+
+        while (top <= bottom) {
+            int middle = top + (bottom - top) / 2;
+
+            // Check if target is in this row
+            if (matrix[middle][0] <= target && matrix[middle][n - 1] >= target) {
+                // Check if target is at either extreme of this row.
+                if (matrix[middle][0] == target || matrix[middle][n - 1] == target)
+                    return true;
+
+                int leftward = 0;
+                int rightward = n - 1;
+
+                while (leftward <= rightward) {
+                    int mid = leftward + (rightward - leftward) / 2;
+                    if (matrix[middle][mid] == target)
+                        return true;
+                    else if (matrix[middle][mid] < target)
+                        leftward = mid + 1;
+                    else
+                        rightward = mid - 1;
+                }
+                return false;
+            }
+
+            else if (matrix[middle][n - 1] < target)
+                top = middle + 1;
+            else
+                bottom = middle - 1;
+        }
+        return false;
+    }
+
+    // O(log m + n)
+    // 2D flattening
+    public static boolean searchMatrixOptimized(int[][] matrix, int target) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
+            return false;
+
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        int left = 0;
+        int right = m * n - 1;
+
+        while (left <= right) {
+            int middle = left + (right - left) / 2;
+            int middleValue = matrix[middle / n][middle % n];
+
+            if (target == middleValue)
+                return true;
+            else if (target > middleValue)
+                left = middle + 1;
+            else
+                right = middle - 1;
+        }
+        return false;
+    }
+
+    public static void setZeroes(int[][] matrix) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
+            return;
+
+        int m = matrix.length;
+        int n = matrix[0].length;
+        boolean firstRowZero = false;
+        boolean firstColumnZero = false;
+
+        // Check first Row zero
+        for (int i = 0; i < n; i++) {
+            if (matrix[0][i] == 0) {
+                firstRowZero = true;
+                break;
+            }
+        }
+
+        // Check first Column zero
+        for (int[] mat : matrix) {
+            if (mat[0] == 0) {
+                firstColumnZero = true;
+                break;
+            }
+        }
+
+        // Use row and column as markers
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                if (matrix[i][j] == 0) {
+                    matrix[i][0] = 0;
+                    matrix[0][j] = 0;
+                }
+            }
+        }
+
+        // Zero out based on markers
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                if (matrix[i][0] == 0 || matrix[0][j] == 0)
+                    matrix[i][j] = 0;
+            }
+        }
+
+        // Zero out first row if necessary
+        if (firstRowZero) {
+            for (int i = 0; i < n; i++)
+                matrix[0][i] = 0;
+        }
+
+        // Zero out first column if necessary
+        if (firstColumnZero) {
+            for (int i = 0; i < m; i++)
+                matrix[i][0] = 0;
+        }
+    }
+
+    public static void gameOfLife(int[][] board) {
+        if (board == null || board.length == 0 || board[0].length == 0)
+            return;
+
+        int m = board.length;
+        int n = board[0].length;
+        int[][] dirs = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}, {1, 1}, {-1, -1}, {1, -1}, {-1, 1}};
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                int liveNeighborCounts = gameOfLifeDfs(board, i, j, dirs);
+
+                if (board[i][j] == 1) {                 // Current cell is alive
+                    if (liveNeighborCounts < 2 || liveNeighborCounts > 3)
+                        board[i][j] = -1;               // alive but marked dead
+
+                } else {                                // Current cell is dead
+                    if (liveNeighborCounts == 3)
+                        board[i][j] = -2;               // Dead but marked alive
+                }
+            }
+        }
+
+        // Finalize the board
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (board[i][j] == -1)
+                    board[i][j] = 0;
+
+                else if (board[i][j] == -2)
+                    board[i][j] = 1;
+            }
+        }
+    }
+
+    private static int gameOfLifeDfs(int[][] board, int row, int col, int[][] dirs) {
+        int counts = 0;
+        for (int[] dir : dirs) {
+            int x = row + dir[0];
+            int y = col + dir[1];
+            if (x >= 0 && x < board.length && y >= 0 && y < board[0].length) {
+                // Count original live cells (including temporarily marked -1 as live)
+                if (board[x][y] == 1 || board[x][y] == -1)
+                    counts++;
+            }
+        }
+        return counts;
+    }
+
+    public static boolean wordPattern(String pattern, String s) {
+        // Split the input string into words.
+        String[] words = s.split(" ");
+
+        // If the pattern length is not equal to the number of words, return false.
+        if (pattern.length() != words.length)
+            return false;
+
+        // Two hashmaps to store the character to word mapping and word to character mapping.
+        HashMap<Character, String> charToWord = new HashMap<>();
+        HashMap<String, Character> wordToChar = new HashMap<>();
+
+        // Iterate through the pattern and corresponding words.
+        for (int i = 0; i < pattern.length(); i++) {
+            char c = pattern.charAt(i);
+            String word = words[i];
+
+            // If the character is already mapped, check if it's mapped to the same word.
+            if (charToWord.containsKey(c)) {
+                if (!charToWord.get(c).equals(word)) {
+                    return false;
+                }
+            } else {
+                // If the word is already mapped to another character, return false.
+                if (wordToChar.containsKey(word)) {
+                    return false;
+                }
+
+                // Map the character to the word and vice versa.
+                charToWord.put(c, word);
+                wordToChar.put(word, c);
+            }
+        }
+
+        // If we passed through all the mappings without mismatch, the pattern is valid.
+        return true;
+    }
 }

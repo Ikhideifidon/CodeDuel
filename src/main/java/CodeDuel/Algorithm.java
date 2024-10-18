@@ -8,7 +8,7 @@ import java.util.*;
 @SuppressWarnings({"unused", "CommentedOutCode"})
 public class Algorithm {
 
-    public static void merge(int[]  nums1, int m, int[] nums2, int n) {
+    public static void merge(int[] nums1, int m, int[] nums2, int n) {
         int i = m - 1;      // Last non-zero element
         int j = n - 1;      // Last element
         int k = m + n - 1;  // Last position in nums1
@@ -93,9 +93,7 @@ public class Algorithm {
             if (count == 0) {
                 majorityElement = num;
                 count++;
-            }
-
-            else if (majorityElement == num)
+            } else if (majorityElement == num)
                 count++;
 
             else
@@ -173,9 +171,9 @@ public class Algorithm {
         int leastBuyingPrice = Integer.MAX_VALUE;
         int maxGain = 0;
         for (int price : prices) {
-           if (price < leastBuyingPrice)
-               leastBuyingPrice = price;
-           maxGain = Math.max(maxGain, price - leastBuyingPrice);
+            if (price < leastBuyingPrice)
+                leastBuyingPrice = price;
+            maxGain = Math.max(maxGain, price - leastBuyingPrice);
         }
         return maxGain;
     }
@@ -349,7 +347,7 @@ public class Algorithm {
         Arrays.sort(citations);
 
         int hIndex = 0;
-        for(int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             int h = n - i;
             if (citations[i] >= h) {
                 hIndex = h;
@@ -723,7 +721,7 @@ public class Algorithm {
         int n = board[0].length;
 
         List<String> result = new ArrayList<>();
-        final int[][] dirs = { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 } };
+        final int[][] dirs = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
         Trie trie = new Trie();
 
         for (String word : words)
@@ -792,27 +790,27 @@ public class Algorithm {
         }
     }
 
-    
+
     public List<Integer> lexicalOrderOptimized(int n) {
-         List<Integer> result = new ArrayList<>();
-         int current = 1;
+        List<Integer> result = new ArrayList<>();
+        int current = 1;
 
-         for (int i = 0; i < n; i++) {
-             result.add(current);
+        for (int i = 0; i < n; i++) {
+            result.add(current);
 
-             if (current * 10 <= n)
-                 current *= 10;
+            if (current * 10 <= n)
+                current *= 10;
 
-             else {
-                 if (current >= n)
-                     current /= 10;
+            else {
+                if (current >= n)
+                    current /= 10;
 
-                 current++;
-                 while (current % 10 == 0)
-                     current /= 10;
-             }
-         }
-         return result;
+                current++;
+                while (current % 10 == 0)
+                    current /= 10;
+            }
+        }
+        return result;
     }
 
     static class NumberTrie {
@@ -830,7 +828,9 @@ public class Algorithm {
             }
         }
 
-        private NumberTrie() { root = new NumberTrieNode(); }
+        private NumberTrie() {
+            root = new NumberTrieNode();
+        }
 
         public void insert(int num) {
             NumberTrieNode node = root;
@@ -873,6 +873,7 @@ public class Algorithm {
         private final static int R = 26;
         private final TrieNode root;
         private final Map<String, Integer> map;
+
         // Lightweight class
         private static class TrieNode {
             private final TrieNode[] children;
@@ -927,9 +928,17 @@ public class Algorithm {
         private int val;
         private ListNode next = null;
 
-        private ListNode() {}
-        private ListNode(int val) { this.val = val; }
-        private ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+        private ListNode() {
+        }
+
+        private ListNode(int val) {
+            this.val = val;
+        }
+
+        private ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
     }
 
     public ListNode reverseKGroup(ListNode head, int k) {
@@ -969,7 +978,7 @@ public class Algorithm {
     }
 
     private ListNode getKthNode(ListNode start, int k) {
-        while (start != null && k > 0){
+        while (start != null && k > 0) {
             start = start.next;
             k--;
         }
@@ -1020,23 +1029,17 @@ public class Algorithm {
                     result.add(matrix[top][i]);
                 top++;
                 direction++;
-            }
-
-            else if (direction == 2) {
+            } else if (direction == 2) {
                 for (int i = top; i <= bottom; i++)
                     result.add(matrix[i][right]);
                 right--;
                 direction++;
-            }
-
-            else if (direction == 3) {
+            } else if (direction == 3) {
                 for (int i = right; i >= left; i--)
                     result.add(matrix[bottom][i]);
                 bottom--;
                 direction++;
-            }
-
-            else if (direction == 4) {
+            } else if (direction == 4) {
                 for (int i = bottom; i >= top; i--)
                     result.add(matrix[i][left]);
                 left++;
@@ -1061,16 +1064,12 @@ public class Algorithm {
                     result[left][i] = num++;
                 top++;
                 direction++;
-            }
-
-            else if (direction == 2) {
+            } else if (direction == 2) {
                 for (int i = top; i <= bottom; i++)
                     result[i][right] = num++;
                 right--;
                 direction++;
-            }
-
-            else if (direction == 3) {
+            } else if (direction == 3) {
                 for (int i = right; i >= left; i--)
                     result[bottom][i] = num++;
                 bottom--;
@@ -1160,7 +1159,7 @@ public class Algorithm {
 
                 // Ending cell
                 if (grid[i][j] == 2)
-                    end = new int[] {i, j};
+                    end = new int[]{i, j};
 
                 // Possible walk over
                 if (grid[i][j] != -1)
@@ -1252,9 +1251,7 @@ public class Algorithm {
                         rightward = mid - 1;
                 }
                 return false;
-            }
-
-            else if (matrix[middle][n - 1] < target)
+            } else if (matrix[middle][n - 1] < target)
                 top = middle + 1;
             else
                 bottom = middle - 1;
@@ -1412,14 +1409,12 @@ public class Algorithm {
 
             // If the character is already mapped, check if it's mapped to the same word.
             if (charToWord.containsKey(c)) {
-                if (!charToWord.get(c).equals(word)) {
+                if (!charToWord.get(c).equals(word))
                     return false;
-                }
             } else {
                 // If the word is already mapped to another character, return false.
-                if (wordToChar.containsKey(word)) {
+                if (wordToChar.containsKey(word))
                     return false;
-                }
 
                 // Map the character to the word and vice versa.
                 charToWord.put(c, word);
@@ -1429,5 +1424,347 @@ public class Algorithm {
 
         // If we passed through all the mappings without mismatch, the pattern is valid.
         return true;
+    }
+
+    // Substring Search
+    public static int substringSearch(String pattern, String s) {
+        if (s == null || pattern == null || s.isEmpty() || pattern.isEmpty())
+            return -1;
+
+        int m = s.length();
+        int n = pattern.length();
+        if (n > m)
+            return -1;
+
+        for (int i = 0; i <= m - n; i++) {
+            int j;
+            for (j = 0; j < n; j++) {
+                if (s.charAt(i + j) != pattern.charAt(j))
+                    break;
+            }
+            if (j == n)
+                return i;
+        }
+        return -1;
+    }
+
+    public static int substringSearchKMP(String pattern, String s) {
+        if (pattern == null || s == null || pattern.isEmpty() || s.isEmpty())
+            return -1;
+
+        int n = s.length();
+        int m = pattern.length();
+
+        if (m > n)
+            return -1;
+
+        int[] lps = buildKMPArray(pattern);
+        int i = 0;
+        int j = 0;
+        while (i < n) {
+            if (s.charAt(i) == pattern.charAt(j)) {
+                i++;
+                j++;
+
+                // If a match is found
+                if (j == m)
+                    return i - m;
+            } else {
+                if (j != 0)
+                    j = lps[j - 1];
+                else
+                    i++;
+            }
+        }
+        return -1;
+    }
+
+    private static int[] buildKMPArray(String pattern) {
+        int m = pattern.length();
+        int[] lps = new int[m];
+
+        int i = 1;
+        int j = 0;
+        while (i < m) {
+            if (pattern.charAt(i) == pattern.charAt(j)) {
+                lps[i] = j + 1;
+                i++;
+                j++;
+            } else {
+                if (j != 0)
+                    j = lps[j - 1];
+                else
+                    i++;
+            }
+        }
+        return lps;
+    }
+
+    public static void solve(char[][] board) {
+        if (board == null || board.length == 0 || board[0].length == 0)
+            return;
+
+        int m = board.length;
+        int n = board[0].length;
+
+        int[][] dirs = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
+        // Check for "O" in the first  and last column.
+        for (int i = 0; i < m; i++) {
+            if (board[i][0] == 'O')
+                dfsSolver(board, i, 0, dirs);
+            if (board[i][n - 1] == 'O')
+                dfsSolver(board, i, n - 1, dirs);
+        }
+
+        // Check for "O" in the first and last row.
+        for (int i = 0; i < n; i++) {
+            if (board[0][i] == 'O')
+                dfsSolver(board, 0, i, dirs);
+            if (board[m - 1][i] == 'O')
+                dfsSolver(board, m - 1, i, dirs);
+        }
+
+        // Capture the "O" to "X" and revert the "T" to "O"
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (board[i][j] == 'O')
+                    board[i][j] = 'X';
+                if (board[i][j] == 'T')
+                    board[i][j] = 'O';
+            }
+        }
+    }
+
+    private static void dfsSolver(char[][] board, int row, int col, int[][] dirs) {
+        // Edge cell, out of bounds
+        if (row < 0 || row >= board.length || col < 0 || col >= board[0].length || board[row][col] != 'O')
+            return;
+
+        board[row][col] = 'T';
+        for (int[] dir : dirs) {
+            int x = row + dir[0];
+            int y = col + dir[1];
+            dfsSolver(board, x, y, dirs);
+        }
+    }
+
+    public int numIslands(char[][] grid) {
+        if (grid == null || grid.length == 0 || grid[0].length == 0)
+            return 0;
+
+        int countIsland = 0;
+        int m = grid.length;
+        int n = grid[0].length;
+        int[][] dirs = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] == '1') {
+                    countIsland++;
+                    dfsNumIsland(grid, i, j, dirs);
+                }
+            }
+        }
+
+        // If reverting is necessary
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] == '2')
+                    grid[i][j] = '1';
+            }
+        }
+
+        return countIsland;
+    }
+
+    private void dfsNumIsland(char[][] grid, int row, int col, int[][] dirs) {
+        // Out of bounds
+        if (row < 0 || row >= grid.length || col < 0 || col >= grid[0].length || grid[row][col] != '1')
+            return;
+
+        grid[row][col] = '2';
+        for (int[] dir : dirs) {
+            int x = row + dir[0];
+            int y = col + dir[1];
+            dfsNumIsland(grid, x, y, dirs);
+        }
+    }
+
+    public int kthSmallest(int[][] matrix, int k) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
+            throw new IllegalArgumentException("Matrix cannot be null or empty");
+
+        int n = matrix.length;
+        //noinspection ComparatorCombinators
+        PriorityQueue<int[]> minimumPriorityQueue = new PriorityQueue<>(
+                (a, b) -> Integer.compare(a[0], b[0])
+        );
+        // Insert the first element in each row.
+        for (int i = 0; i < n; i++)
+            minimumPriorityQueue.offer(new int[] {matrix[i][0], i, 0});
+
+        while (!minimumPriorityQueue.isEmpty() && k > 1) {
+            int[] temp = minimumPriorityQueue.poll();
+            int row = temp[1];
+            int col = temp[2];
+            k--;
+
+            if (col + 1 < n)
+                minimumPriorityQueue.offer(new int[] {matrix[row][col + 1], row, col + 1});
+        }
+        assert minimumPriorityQueue.peek() != null;
+        return minimumPriorityQueue.peek()[0];
+    }
+
+    public int kthSmallestOptimized(int[][] matrix, int k) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
+            throw new IllegalArgumentException("Matrix cannot be null or empty");
+
+        int low = matrix[0][0];
+        int high = matrix[matrix.length - 1][matrix.length - 1];
+
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+            int count = countLessOrEqual(matrix, mid);
+            if (count < k)
+                low = mid + 1;
+            else
+                high = mid;
+        }
+        return low;
+    }
+
+    private int countLessOrEqual(int[][] matrix, int target) {
+        int count = 0;
+        int row = matrix.length - 1;
+        int col = 0;
+
+        while (row >= 0 && col <  matrix.length) {
+            if (matrix[row][col] <= target) {
+                count += row + 1;
+                col++;
+            }
+            else
+                row--;
+        }
+        return count;
+    }
+
+    public int smallestDistancePair(int[] nums, int k) {
+        if (nums == null || nums.length == 0)
+            throw new IllegalArgumentException("nums cannot be null or empty.");
+
+        Comparator<Integer> comp = (o1, o2) -> Integer.compare(o2, o1);
+        PriorityQueue<Integer> maxPQ = new PriorityQueue<>(comp);
+        int n = nums.length;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                int distance = Math.abs(nums[i] - nums[j]);
+
+                // Add distance to heap if size is less than k, or it's smaller than the max
+                if (maxPQ.size() < k)
+                    maxPQ.offer(distance);
+                else if (!maxPQ.isEmpty() && distance < maxPQ.peek()) {
+                    maxPQ.poll(); // Remove the largest element
+                    maxPQ.offer(distance);
+                }
+            }
+        }
+
+        // The root of the heap will be the k-th smallest distance
+        assert maxPQ.peek() != null;
+        return maxPQ.peek();
+    }
+
+    public int smallestDistancePairOptimized(int[] nums, int k) {
+        if (nums == null || nums.length == 0)
+            throw new IllegalArgumentException("nums cannot be null or empty!");
+
+        Arrays.sort(nums);
+        int n = nums.length;
+        int low = 0;
+        int high = nums[n - 1] - nums[0];
+        int mid;
+        int count;
+
+        while (low < high) {
+            mid = low + (high - low) / 2;
+            count = countLessOrEqual(nums, mid);
+
+            if (count < k)
+                low = mid + 1;
+            else
+                high = mid;
+        }
+        return low;
+    }
+
+    private int countLessOrEqual(int[] nums, int target) {
+        int count = 0;
+
+        for (int right = 0, left = 0; right < nums.length; right++) {
+            // If nums[right] - nums[left] > target, just move left
+            while (nums[right] - nums[left] > target)
+                left++;
+            count += right - left;
+        }
+        return count;
+    }
+
+    public static List<Integer> findClosestElements(int[] arr, int k, int x) {
+        if (arr == null || arr.length == 0)
+            return new ArrayList<>();
+
+        int distance;
+        List<Integer> result = new ArrayList<>();
+        Comparator<int[]> comp = (a, b) -> Integer.compare(b[0], a[0]);
+        PriorityQueue<int[]> maxPQ = new PriorityQueue<>(comp);
+
+        for (int num : arr) {
+            distance = Math.abs(x - num);
+
+            if (maxPQ.size() < k)
+                maxPQ.offer(new int[] {distance, num});
+            else if (!maxPQ.isEmpty() && distance < maxPQ.peek()[0]){
+                maxPQ.poll();
+                maxPQ.offer(new int[] {distance, num});
+            }
+        }
+        // New Comparator
+        comp = Comparator.comparingInt(a -> a[1]);
+        PriorityQueue<int[]> minPQ = new PriorityQueue<>(comp);
+
+        while (!maxPQ.isEmpty())
+            minPQ.offer(maxPQ.poll());
+
+        while (!minPQ.isEmpty())
+            result.add(minPQ.poll()[1]);
+
+        return result;
+    }
+
+    public List<Integer> findClosestElementsOptimized(int[] arr, int k, int x) {
+        if (arr == null || arr.length == 0 || arr.length < k)
+            return new ArrayList<>();
+
+        List<Integer> result = new ArrayList<>();
+        int left = 0;
+        int right = arr.length - k;
+        int mid;
+
+        while (left < right) {
+            mid = left + (right - left) / 2;
+            if (x - arr[mid] > arr[mid + k] - x)
+                left = mid + 1;
+            else
+                right = mid;
+        }
+
+        for (int i = left; i < left + k; i++)
+           result.add(arr[i]);
+
+        return result;
     }
 }

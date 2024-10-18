@@ -111,5 +111,17 @@ public class Main {
         System.out.println(Algorithm.wordPattern(pattern, matchedWord));
 
 
+        String pattern1 = "ABCDABCY";
+        String s1 = "ABCXABCDABXABCDABCDABCY";
+        System.out.println(Algorithm.substringSearchKMP(pattern1, s1));
+        System.out.println(Algorithm.substringSearch(pattern1, s1));
+        {
+            int[] nums = {5, 12, 15, 16, 18, 21, 25};
+            int k = 4;
+            int x = 19;
+            System.out.println(Algorithm.findClosestElements(nums, k, x));
+        }
+
+
     }
 }

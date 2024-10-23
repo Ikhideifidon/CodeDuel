@@ -1,8 +1,6 @@
 package CodeDuel;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -121,6 +119,34 @@ public class Main {
             int x = 19;
             System.out.println(Algorithm.findClosestElements(nums, k, x));
         }
+        System.out.println(Algorithm.getMoneyAmountMemoization(20));
+        System.out.println(Algorithm.getMoneyAmountBottomUp(20));
+//        System.out.println(Algorithm.getMoneyAmountRecursion(50));
+        System.out.println(Algorithm.longestConsecutive(new int[] {100, 4, 200, 1, 3, 2}));
+
+        {
+            int[][] intervals = {
+                    {1, 3},
+                    {2, 6},
+                    {8, 10},
+                    {15, 18}
+            };
+            System.out.println(Arrays.deepToString(Algorithm.merge(intervals)));
+        }
+
+        {
+            int[][] intervals = {
+                    {1, 2},
+                    {3, 5},
+                    {6, 7},
+                    {8, 10},
+                    {12, 16}
+            };
+            int[] newInterval = {4, 8};
+            System.out.println(Arrays.deepToString(Algorithm.insert(intervals, newInterval)));
+        }
+
+
 
 
     }

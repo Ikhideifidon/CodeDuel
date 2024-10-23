@@ -1767,4 +1767,198 @@ public class Algorithm {
 
         return result;
     }
+
+    // Recursion
+    public static int getMoneyAmountRecursion(int n) {
+        if (n == 0 || n == 1)
+            return 0;
+        return dfsGetMoney(1, n);
+    }
+
+    private static int dfsGetMoney(int low, int high) {
+        if (low >= high)
+            return 0;
+
+        int result = Integer.MAX_VALUE;
+        for (int cost = low; cost <= high; cost++) {
+            int leftCost = dfsGetMoney(low, cost - 1);
+            int rightCost = dfsGetMoney(cost + 1, high);
+            result = Math.min(result, cost + Math.max(leftCost, rightCost));
+        }
+        return result;
+    }
+
+    // Recursion + Memoization
+    public static int getMoneyAmountMemoization(int n) {
+        if (n == 0 || n == 1)
+            return 0;
+        return dfsGetMoney(1, n, new HashMap<>());
+    }
+
+    private static int dfsGetMoney(int low, int high, Map<String, Integer> memo) {
+        if (low >= high)
+            return 0;
+
+        String key = low + "," +  high;
+        if (memo.containsKey(key))
+            return memo.get(key);
+
+        int result = Integer.MAX_VALUE;
+        for (int cost = low; cost <= high; cost++) {
+            int leftCost = dfsGetMoney(low, cost - 1, memo);
+            int rightCost = dfsGetMoney(cost + 1, high, memo);
+            result  = Math.min(result, cost + Math.max(leftCost, rightCost));
+        }
+        memo.put(key, result);
+        return memo.get(key);
+    }
+
+    // Tabulation
+    public static int getMoneyAmountBottomUp(int n) {
+        if (n == 0 || n == 1)
+            return 0;
+
+        final int[][] dp = new int[n + 1][n + 1];
+        // Length of Range
+        for (int length = 2; length <= n; length++) {
+            // Start point of Range
+            for (int i = 1; i <= n - length + 1; i++) {
+                // End point of range
+                int j = i + length - 1;
+                dp[i][j] = Integer.MAX_VALUE;
+
+                // Try every possible guess within the range (i, j)
+                for (int k = i; k < j; k++) {
+                    int cost = k + Math.max(dp[i][k - 1], dp[k + 1][j]);
+                    dp[i][j] = Math.min(dp[i][j], cost);
+                }
+            }
+        }
+        return dp[1][n];
+    }
+
+    public static int longestConsecutive(int[] nums) {
+        int n = nums.length;
+        if (n <= 1)
+            return n;
+
+        int maxCount = 1;
+        Set<Integer> occurrence = new HashSet<>();
+        for (int num : nums)
+            occurrence.add(num);
+
+        for (int num : occurrence) {
+            if (!occurrence.contains(num - 1)) {
+                int currentNum = num;
+                int count = 1;
+
+                while (occurrence.contains(currentNum + 1)) {
+                    count++;
+                    currentNum++;
+                }
+                maxCount = Math.max(maxCount, count);
+            }
+        }
+        return maxCount;
+    }
+
+    public static int[][] merge(int[][] intervals) {
+        if (intervals == null || intervals.length == 0 || intervals[0].length == 0)
+            return new int[][] {};
+
+        Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
+
+        List<int[]> merged = new ArrayList<>();
+        int[] current = intervals[0];
+
+        for (int i = 1; i < intervals.length; i++) {
+            int[] next = intervals[i];
+
+            // If current and next overlap
+            if (current[1] >= next[0])
+                current[1] = Math.max(current[1], next[1]);
+            else {
+                merged.add(current);
+                current = next;
+            }
+        }
+        // Add the last interval
+        merged.add(current);
+        return merged.toArray(new int[merged.size()][]);
+    }
+
+    public static int[][] insert(int[][] intervals, int[] newInterval) {
+        // intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]
+        if (intervals == null || intervals.length == 0)
+            return new int[][] {newInterval};
+
+        List<int[]> result = new ArrayList<>();
+
+        for (int[] interval : intervals) {
+            // If the current interval is before the newInterval
+            if (interval[1] < newInterval[0])
+                result.add(interval);
+
+            // If the current interval is after the newInterval, add the newInterval and update it.
+            else if (interval[0] > newInterval[1]) {
+                result.add(newInterval);
+                newInterval = interval;
+            }
+
+            // If there is overlap
+            else {
+                newInterval[0] = Math.min(interval[0], newInterval[0]);
+                newInterval[1] = Math.max(interval[1], newInterval[1]);
+            }
+        }
+        result.add(newInterval);
+        return result.toArray(new int[result.size()][]);
+    }
+
+    // DYNAMIC PROGRAMMING
+    public int findTargetSumWays(int[] nums, int target) {
+        return dfsTargetSum(nums, 0, target, new HashMap<>());
+    }
+
+    private int dfsTargetSum(int[] nums, int index, int target, Map<String, Integer> memo) {
+        if (index >= nums.length)
+            return target == 0 ? 1 : 0;
+
+        // Build key
+        String key = index + "," + target;
+        if (memo.containsKey(key))
+            return memo.get(key);
+
+        int left = dfsTargetSum(nums, index + 1, target + nums[index], memo);
+        int right = dfsTargetSum(nums, index + 1, target - nums[index], memo);
+        memo.put(key, (left + right));
+        return memo.get(key);
+    }
+
+    public int mincostTickets(int[] days, int[] costs) {
+        //  days = [1,4,6,7,8,20], costs = [2,7,15]
+        int[] pass = {1, 7, 30};
+        int[] dp = new int[days.length];
+        Arrays.fill(dp, Integer.MAX_VALUE);
+        return dfsMinimumCost(days, costs, 0, dp, pass);
+
+    }
+
+    private int dfsMinimumCost(int[] days, int[] costs, int start, int[] dp, int[] pass) {
+        if (start >= days.length)
+            return 0;
+
+        if (dp[start] != Integer.MAX_VALUE)
+            return dp[start];
+
+        for (int i = 0; i < costs.length; i++) {
+            int j = start;
+            while (j < days.length && days[j] < days[start] + pass[i])
+                j++;
+            dp[start] = Math.min(dp[start], costs[i] + dfsMinimumCost(days, costs, j, dp, pass));
+        }
+        return dp[start];
+    }
+
+
 }

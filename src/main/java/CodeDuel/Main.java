@@ -146,6 +146,50 @@ public class Main {
             System.out.println(Arrays.deepToString(Algorithm.insert(intervals, newInterval)));
         }
 
+        int[] coins  = {1, 2, 5}; int amount = 5;
+        System.out.println(Algorithm.coinChangeOptimizedRecursion(coins, amount));
+        System.out.println(Algorithm.change(amount, coins));
+        System.out.println(Algorithm.climbStairs(4));
+        System.out.println(Algorithm.climbStairsWithObstacle(7, 3, new int[] {1, 3, 4}));
+        System.out.println(Algorithm.climbStairsMinimumCost(8, new int[] {0, 3, 2, 4, 3, 2, 4, 3, 2}));
+        System.out.println(Algorithm.climbStairsMinimumCostOptimized(8, new int[] {0, 3, 2, 4, 3, 2, 4, 3, 2}));
+        System.out.println(Algorithm.reconstructPathOptimized(8, new int[] {0, 3, 2, 4, 6, 1, 1, 5, 3}));
+
+        {
+            int[][] profitMatrix = {
+                    {1, 3, 1, 1, 2},
+                    {2, 1, 1, 1, 1},
+                    {5, 4, 4, 2, 1}
+            };
+            System.out.println(Algorithm.maxProfit(profitMatrix));
+            System.out.println(Arrays.deepToString(Algorithm.reconstructMaxProfitPath(profitMatrix)));
+            System.out.println(Algorithm.paintFence(50, 45));
+            System.out.println(Algorithm.makeChange(6, new int[] {1, 2, 5}));
+            System.out.println(Algorithm.makeChangeOptimized(6, new int[] {1, 2, 5}));
+            System.out.println(Arrays.deepToString(Algorithm.lengthOfLongestSubsequence(new ArrayList<>(List.of(1, 2, 3, 4, 5)), 3)));
+            System.out.println(Arrays.toString(Algorithm.lls(new ArrayList<>(List.of(1, 2, 3, 4, 5)), 3)));
+
+            System.out.println("\n\nGraph Theory");
+            Graph G = new Graph("src/main/resources/G1edges.txt");
+//            Graph G = new Graph(13);
+//            G.addEdge(0, 5);
+//            G.addEdge(4, 3);
+//            G.addEdge(0, 1);
+//            G.addEdge(9, 12);
+//            G.addEdge(6, 4);
+//            G.addEdge(5, 4);
+//            G.addEdge(0, 2);
+//            G.addEdge(11, 12);
+//            G.addEdge(9, 10);
+//            G.addEdge(0, 6);
+//            G.addEdge(7, 8);
+//            G.addEdge(9, 11);
+//            G.addEdge(5, 3);
+
+            System.out.println(G);
+        }
+
+
 
 
 

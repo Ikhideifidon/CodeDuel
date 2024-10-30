@@ -1,6 +1,7 @@
 package CodeDuel;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /*
     Leetcode Top Interview 150 Questions
@@ -1938,10 +1939,7 @@ public class Algorithm {
     public int mincostTickets(int[] days, int[] costs) {
         //  days = [1,4,6,7,8,20], costs = [2,7,15]
         int[] pass = {1, 7, 30};
-        int[] dp = new int[days.length];
-        Arrays.fill(dp, Integer.MAX_VALUE);
-        return dfsMinimumCost(days, costs, 0, dp, pass);
-
+        return dfsMinimumCost(days, costs, 0, new int[days.length], pass);
     }
 
     private int dfsMinimumCost(int[] days, int[] costs, int start, int[] dp, int[] pass) {
@@ -1951,14 +1949,364 @@ public class Algorithm {
         if (dp[start] != Integer.MAX_VALUE)
             return dp[start];
 
+        dp[start] = Integer.MAX_VALUE;
         for (int i = 0; i < costs.length; i++) {
             int j = start;
+            // Skip day as ong as the present pass can cover it.
             while (j < days.length && days[j] < days[start] + pass[i])
                 j++;
             dp[start] = Math.min(dp[start], costs[i] + dfsMinimumCost(days, costs, j, dp, pass));
         }
         return dp[start];
     }
+
+    public static int coinChange(int[] coins, int amount) {
+        int result = dfs(coins, amount, 0, new HashMap<>());
+        return result == Integer.MAX_VALUE ? -1 : result;
+    }
+
+    private static int dfs(int[] coins, int amount, int start, Map<String, Integer> memo) {
+        if (amount == 0)
+            return 0;
+
+        if (amount < 0 || start >= coins.length)
+            return Integer.MAX_VALUE;
+
+        String key = start + "," + amount;
+        if (memo.containsKey(key))
+            return memo.get(key);
+
+        int take = dfs(coins, amount - coins[start], start, memo);
+        if (take != Integer.MAX_VALUE)
+            take += 1;
+
+        int notTake = dfs(coins, amount, start + 1, memo);
+
+        int result = Math.min(take, notTake);
+
+        memo.put(key, result);
+        return result;
+    }
+
+    public static int coinChangeOptimizedRecursion(int[] coins, int amount) {
+        int[] memo = new int[amount + 1];
+        int result = helper(coins, amount, memo);
+        return result == Integer.MAX_VALUE ? -1 : result;
+    }
+
+    private static int helper(int[] coins, int remainder, int[] memo) {
+        if (remainder == 0)
+            return 0;
+
+        if (remainder < 0)
+            return Integer.MAX_VALUE;
+
+        if (memo[remainder] != 0)
+            return memo[remainder];
+
+        int minSteps = Integer.MAX_VALUE;
+
+        for (int coin : coins) {
+            if (coin > remainder)
+                continue;
+            int result = helper(coins, remainder - coin, memo);
+            if (result != Integer.MAX_VALUE)
+                minSteps = Math.min(minSteps, result + 1);
+        }
+
+        memo[remainder] = minSteps;
+        return minSteps;
+    }
+
+    public static int coinChangeBottomUp(int[] coins, int amount) {
+        int[] dp = new int[amount + 1];
+        Arrays.fill(dp, Integer.MAX_VALUE);
+        dp[0] = 0;
+        for (int a = 1; a <= amount; a++) {
+            for (int coin : coins) {
+                if (a - coin >= 0)
+                    dp[a] = Math.min(dp[a], 1 + dp[a - coin]);
+            }
+        }
+        return dp[amount];
+    }
+
+    public static int change(int amount, int[] coins) {
+        return changeHelper(coins, amount, 0);
+    }
+
+    private static int changeHelper(int[] coins, int amount, int index) {
+        // Base cases:
+        if (amount == 0) return 1;
+        if (amount < 0 || index >= coins.length) return 0;
+
+        int takeCoin = changeHelper(coins, amount - coins[index], index);
+        int skipCoin = changeHelper(coins, amount, index + 1);
+
+        return takeCoin + skipCoin;
+    }
+
+    public static long climbStairs(long n) {
+        if (n <= 1)
+            return 1;
+        // 1, 1, 2, 3, 5, 8, 13, 21, 34, 55
+        long a = 1, b = 1, c;
+        while (n > 1) {
+            c = a + b;
+            a = b;
+            b = c;
+            n--;
+        }
+        return b;
+    }
+
+    public static int climbStairsWithObstacle(int n, int k, int[] obstacles) {
+        Set<Integer> set = Arrays.stream(obstacles)
+                .boxed()
+                .collect(Collectors.toSet());
+
+        int[] dp = new int[k];
+        dp[0] = 1;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j < k; j++) {
+                int l = i - j;
+                if (l >= 0) {
+                    // If the current stair is an obstacle
+                    if (!set.contains(i))
+                        dp[i % k] += dp[l % k];
+                    else
+                        dp[i % k] = 0;
+                }
+            }
+        }
+        return dp[n % k];
+    }
+
+    public static int climbStairsMinimumCost(int n, int[] price) {
+        if (n <= 1)
+            return price[n];
+
+        int leftCost = climbStairsMinimumCost(n - 1, price);
+        int rightCost = climbStairsMinimumCost(n - 2, price);
+        return price[n] + Math.min(leftCost, rightCost);
+    }
+
+    public static int  climbStairsMinimumCostOptimized(int n, int[] price) {
+        if (n <= 1)
+            return price[n];
+
+        int[] dp = new int[n + 1];
+        dp[0] = 0;
+        dp[1] = price[1];
+
+        for (int i = 2; i <= n; i++)
+            dp[i] = price[i] + Math.min(dp[i - 1], dp[i - 2]);
+
+        return dp[n];
+    }
+
+//    public static List<Integer> reconstructPath(int n, int[] price) {
+//        Set<Integer> path = new HashSet<>();
+//        reconstructPathHelper(n, price, path);
+//        path.add(n);
+//        return path.stream().toList();
+//    }
+//
+//    public static int reconstructPathHelper(int n, int[] price, Set<Integer> path) {
+//        if (n <= 1)
+//            return price[n];
+//
+//        int leftCost = reconstructPathHelper(n - 1, price, path);
+//        int rightCost = reconstructPathHelper(n - 2, price, path);
+//        path.add(Math.min(n - 1, n - 2));
+//        return price[n] + Math.min(leftCost, rightCost);
+//    }
+
+    public static List<Integer>  reconstructPathOptimized(int n, int[] price) {
+        int[] dp = new int[n + 1];
+        int[] from = new int[n + 1];
+        dp[0] = 0;
+        dp[1] = price[1];
+
+        for (int i = 2; i <= n; i++) {
+            dp[i] = price[i];
+            if (dp[i - 1] < dp[i - 2]) {
+                dp[i] += dp[i - 1];
+                from[i] = i - 1;
+            } else {
+                dp[i] += dp[i - 2];
+                from[i] = i - 2;
+            }
+        }
+        // Reconstruct the path from n back to 0
+        List<Integer> path = new ArrayList<>();
+        for (int i = n; i > 0; i = from[i])
+            path.add(i);
+
+        path.add(0);
+
+        // Convert the path to int array and reverse it
+        Collections.reverse(path);
+        return path;
+    }
+
+    public static int maxProfit(int[][] matrix) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int[][] dp = new int[m][n];
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                dp[i][j] = matrix[i][j];
+                if (i > 0 && j > 0)
+                    dp[i][j] += Math.max(dp[i - 1][j], dp[i][j - 1]);
+                else if (i > 0)
+                    dp[i][j] += dp[i - 1][j];
+                else if (j > 0)
+                    dp[i][j] += dp[i][j -1];
+            }
+        }
+        return dp[m - 1][n - 1];
+    }
+
+    public static int[][] reconstructMaxProfitPath(int[][] matrix) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int[][] dp = new int[m][n];
+
+        // Build dp
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                dp[i][j] = matrix[i][j];
+                if (i > 0 && j > 0)
+                    dp[i][j] += Math.max(dp[i - 1][j], dp[i][j - 1]);
+                else if (i > 0)
+                    dp[i][j] += dp[i - 1][j];
+                else if (j > 0)
+                    dp[i][j] += dp[i][j -1];
+            }
+        }
+
+        // Reconstruct path
+        int index = m + n - 2;
+        int[][] path = new int[index + 1][];
+        int i = m - 1;
+        int j = n - 1;
+        path[index--] = new int[] {i, j};
+
+        while (i > 0 || j > 0) {
+            if (i > 0 && j > 0) {
+                if (dp[i - 1][j] > dp[i][j - 1])
+                    i--;
+                else
+                    j--;
+            } else if (i > 0)
+                i--;
+            else
+                j--;
+
+            path[index--] = new int[] {i, j};
+        }
+        return path;
+    }
+
+    public static int paintFence(int n, int k) {
+        if (n == 0)
+            return 0;
+
+        if (n == 1)
+            return k;
+
+        int same = k;
+        int different = k * (k - 1);
+
+        for (int i = 3; i <= n; i++) {
+            int previousDifferent = different;
+            different = (same + different) * (k - 1);
+            same  = previousDifferent;
+        }
+        return same + different;
+    }
+
+
+    public static int makeChange(int amount, int[] coins) {
+        if (amount == 0)
+            return 1;
+        if (coins.length == 0)
+            return 0;
+
+        // dp[i][j] : the number of combinations to make up amount j by using the first i types of coins.
+        int[][] dp = new int[coins.length][amount + 1];
+
+        for(int i = 0 ; i < coins.length; i++) {
+            // Fill the first column
+            dp[i][0] = 1;
+            for(int j = 1 ; j <= amount; j++) {
+                int coin = coins[i];
+                // Do not use the coin at "i" index
+                dp[i][j] += i > 0 ? dp[i - 1][j] : 0;
+
+                // Use the coin at "i" index
+                if(j - coin >= 0)  {
+                    dp[i][j] += dp[i][j - coin];
+                }
+            }
+        }
+        return dp[coins.length - 1][amount];
+    }
+
+
+    public static int makeChangeOptimized(int n, int[] coins) {
+        int[] dp = new int[n + 1];
+        dp[0] = 1;
+        for (int coin : coins) {
+            for (int i = coin; i <= n; i++) {
+                if (i - coin >= 0)
+                    dp[i] += dp[i - coin];
+            }
+        }
+        return dp[n];
+    }
+
+    public static int[][] lengthOfLongestSubsequence(List<Integer> nums, int target) {
+        int n = nums.size();
+
+        int[][] dp = new int[n + 1][target + 1];
+        for (int[] row : dp)
+            Arrays.fill(row, -1);
+
+        for (int i = 0; i <= n; i++)
+            dp[i][0] = 0;
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= target; j++) {
+                // case 1: if we don't take nums[i-1]
+                dp[i][j] = dp[i - 1][j];
+
+                // case 2: if we take nums[i-1]
+                if (j >= nums.get(i - 1) && dp[i - 1][j - nums.get(i - 1)] != -1)
+                    dp[i][j] = Math.max(dp[i][j], 1 + dp[i - 1][j - nums.get(i - 1)]);
+            }
+        }
+        return dp;
+    }
+
+    public static int[] lls(List<Integer> nums, int target) {
+        int[] dp = new int[target + 1];
+        Arrays.fill(dp, -1);
+        dp[0] = 0;
+
+        for (int num : nums) {
+            // Iterate in reverse to avoid overwriting results from this iteration
+            for (int j = target; j >= num; j--) {
+                if (dp[j - num] != -1)
+                    dp[j] = Math.max(dp[j], dp[j - num] + 1);
+            }
+        }
+        return dp;
+    }
+
+
 
 
 }

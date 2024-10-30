@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53e9e4ad-d120-4c42-9905-481d88489533" name="Changes" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/Graph.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/GraphUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/G1edges.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mediumG.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/tinyG.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/CodeDuel/GraphTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CodeDuel/Algorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/Algorithm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/CodeDuel/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/G1edges.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,9 +23,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -63,61 +63,66 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AlgorithmTest.canCompleteCircuit.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AlgorithmTest.canJump.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AlgorithmTest.canJumpI.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AlgorithmTest.candy.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AlgorithmTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AlgorithmTest.hIndex.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AlgorithmTest.jump.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AlgorithmTest.majorityElement.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AlgorithmTest.maxProfit.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AlgorithmTest.maxProfitII.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AlgorithmTest.merge.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AlgorithmTest.productExceptSelf.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.AlgorithmTest.removeDuplicates.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AlgorithmTest.removeDuplicatesII.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AlgorithmTest.rotate.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AlgorithmTest.rotateI.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SlidingWindowTest.constrainedSubsetSum.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SlidingWindowTest.containsNearbyAlmostDuplicate.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SlidingWindowTest.containsNearbyAlmostDuplicateOptimized.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SlidingWindowTest.containsNearbyDuplicate.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SlidingWindowTest.continuousOnes.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SlidingWindowTest.findRepeatedDnaSequences.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SlidingWindowTest.findSubstring.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SlidingWindowTest.lengthOfLongestSubstring.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SlidingWindowTest.longestDupSubstring.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SlidingWindowTest.longestDupSubstringOptimized.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SlidingWindowTest.longestSubstring.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SlidingWindowTest.maximumSumSubarray.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SlidingWindowTest.minSubArrayLen.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SlidingWindowTest.minWindow.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.SlidingWindowTest.shortestSubstring.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SlidingWindowTest.subarrayWithDesiredSum.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.SlidingWindowTest.subarrayWithMaximumContinuousOnes.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;full.screen.before.presentation.mode&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.inline.completion&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.Main.executor": "Run",
+    "JUnit.AlgorithmTest.canCompleteCircuit.executor": "Run",
+    "JUnit.AlgorithmTest.canJump.executor": "Run",
+    "JUnit.AlgorithmTest.canJumpI.executor": "Run",
+    "JUnit.AlgorithmTest.candy.executor": "Run",
+    "JUnit.AlgorithmTest.executor": "Run",
+    "JUnit.AlgorithmTest.hIndex.executor": "Run",
+    "JUnit.AlgorithmTest.jump.executor": "Run",
+    "JUnit.AlgorithmTest.majorityElement.executor": "Run",
+    "JUnit.AlgorithmTest.maxProfit.executor": "Run",
+    "JUnit.AlgorithmTest.maxProfitII.executor": "Run",
+    "JUnit.AlgorithmTest.merge.executor": "Run",
+    "JUnit.AlgorithmTest.productExceptSelf.executor": "Debug",
+    "JUnit.AlgorithmTest.removeDuplicates.executor": "Run",
+    "JUnit.AlgorithmTest.removeDuplicatesII.executor": "Run",
+    "JUnit.AlgorithmTest.rotate.executor": "Run",
+    "JUnit.AlgorithmTest.rotateI.executor": "Run",
+    "JUnit.GraphTest.v.executor": "Run",
+    "JUnit.SlidingWindowTest.constrainedSubsetSum.executor": "Run",
+    "JUnit.SlidingWindowTest.containsNearbyAlmostDuplicate.executor": "Run",
+    "JUnit.SlidingWindowTest.containsNearbyAlmostDuplicateOptimized.executor": "Run",
+    "JUnit.SlidingWindowTest.containsNearbyDuplicate.executor": "Run",
+    "JUnit.SlidingWindowTest.continuousOnes.executor": "Run",
+    "JUnit.SlidingWindowTest.findRepeatedDnaSequences.executor": "Run",
+    "JUnit.SlidingWindowTest.findSubstring.executor": "Run",
+    "JUnit.SlidingWindowTest.lengthOfLongestSubstring.executor": "Run",
+    "JUnit.SlidingWindowTest.longestDupSubstring.executor": "Run",
+    "JUnit.SlidingWindowTest.longestDupSubstringOptimized.executor": "Run",
+    "JUnit.SlidingWindowTest.longestSubstring.executor": "Run",
+    "JUnit.SlidingWindowTest.maximumSumSubarray.executor": "Run",
+    "JUnit.SlidingWindowTest.minSubArrayLen.executor": "Run",
+    "JUnit.SlidingWindowTest.minWindow.executor": "Debug",
+    "JUnit.SlidingWindowTest.shortestSubstring.executor": "Run",
+    "JUnit.SlidingWindowTest.subarrayWithDesiredSum.executor": "Run",
+    "JUnit.SlidingWindowTest.subarrayWithMaximumContinuousOnes.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "extract.method.default.visibility": "private",
+    "full.screen.before.presentation.mode": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/ifidonikhide/Desktop/Code Duel/CodeDuel/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "editor.preferences.inline.completion",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
@@ -125,10 +130,11 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="CodeDuel" />
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.GraphTest.v">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="CodeDuel.Main" />
       <module name="CodeDuel" />
@@ -143,11 +149,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SlidingWindowTest.containsNearbyAlmostDuplicateOptimized" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GraphTest.v" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="SlidingWindowTest" />
-      <option name="METHOD_NAME" value="containsNearbyAlmostDuplicateOptimized" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="CodeDuel.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="CodeDuel" />
+      <option name="MAIN_CLASS_NAME" value="CodeDuel.GraphTest" />
+      <option name="METHOD_NAME" value="v" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -185,18 +197,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.SlidingWindowTest.containsNearbyAlmostDuplicateOptimized" />
+      <item itemvalue="JUnit.GraphTest.v" />
       <item itemvalue="JUnit.SlidingWindowTest.longestDupSubstring" />
       <item itemvalue="JUnit.SlidingWindowTest.longestDupSubstringOptimized" />
       <item itemvalue="JUnit.SlidingWindowTest.longestSubstring" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.GraphTest.v" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.SlidingWindowTest.longestDupSubstringOptimized" />
         <item itemvalue="JUnit.SlidingWindowTest.longestDupSubstring" />
         <item itemvalue="JUnit.SlidingWindowTest.longestSubstring" />
-        <item itemvalue="JUnit.SlidingWindowTest.containsNearbyAlmostDuplicateOptimized" />
       </list>
     </recent_temporary>
   </component>
@@ -227,7 +239,7 @@
       <workItem from="1729174434582" duration="11493000" />
       <workItem from="1729267955888" duration="11003000" />
       <workItem from="1729565228176" duration="32534000" />
-      <workItem from="1729992494333" duration="18901000" />
+      <workItem from="1729992494333" duration="20593000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -461,7 +473,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729646083670</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Initial Commit">
+      <option name="closed" value="true" />
+      <created>1730259537542</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1730259537542</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

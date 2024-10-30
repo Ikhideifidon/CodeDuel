@@ -169,8 +169,6 @@ public class Main {
             System.out.println(Arrays.deepToString(Algorithm.lengthOfLongestSubsequence(new ArrayList<>(List.of(1, 2, 3, 4, 5)), 3)));
             System.out.println(Arrays.toString(Algorithm.lls(new ArrayList<>(List.of(1, 2, 3, 4, 5)), 3)));
 
-            System.out.println("\n\nGraph Theory");
-            Graph G = new Graph("src/main/resources/G1edges.txt");
 //            Graph G = new Graph(13);
 //            G.addEdge(0, 5);
 //            G.addEdge(4, 3);
@@ -185,8 +183,6 @@ public class Main {
 //            G.addEdge(7, 8);
 //            G.addEdge(9, 11);
 //            G.addEdge(5, 3);
-
-            System.out.println(G);
         }
 
 

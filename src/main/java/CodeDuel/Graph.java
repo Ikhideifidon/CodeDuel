@@ -38,7 +38,7 @@ public class Graph implements GraphUtils {
 
         File file = new File(path);
         // Validate the file path and properties
-        if (!file.exists() || file.isDirectory() || file.isHidden() || file.length() == 0)
+        if (!file.exists() || file.isDirectory() || file.isHidden() || file.length() == 0 || file.canRead())
             throw new IllegalArgumentException("Invalid file path or properties.");
 
         try (Scanner scanner = new Scanner(file)) {
@@ -90,14 +90,15 @@ public class Graph implements GraphUtils {
     public Iterable<Integer> neighbors(int v) { return neighbors[v]; }
 
     public String toString() {
-        if (V == 0)
-            return "";
-        StringBuilder sb = new StringBuilder();
         /*
         [0] --> [1]-->[2]-->[3]
         [1] --> [0]-->[4]
         [2]
          */
+
+        if (this.V == 0)
+            return "";
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < V; i++) {
             sb.append("[").append(i).append("]");
             int size = neighbors[i].size();

@@ -5,12 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53e9e4ad-d120-4c42-9905-481d88489533" name="Changes" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mediumG.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tinyG.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/CodeDuel/GraphTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/undirected_graph/BreadthFirstPaths.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/undirected_graph/ConnectedComponent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/undirected_graph/DepthFirstSearch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/undirected_graph/Paths.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/CodeDuel/undirected_graph/BreadthFirstPathsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/CodeDuel/undirected_graph/ConnectedComponentTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/CodeDuel/undirected_graph/DepthFirstSearchTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/CodeDuel/undirected_graph/GraphTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/CodeDuel/undirected_graph/PathsTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CodeDuel/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/G1edges.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CodeDuel/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/undirected_graph/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CodeDuel/GraphUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/undirected_graph/GraphUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/CodeDuel/GraphTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +90,18 @@
     "JUnit.AlgorithmTest.removeDuplicatesII.executor": "Run",
     "JUnit.AlgorithmTest.rotate.executor": "Run",
     "JUnit.AlgorithmTest.rotateI.executor": "Run",
+    "JUnit.BreadthFirstPathsTest.executor": "Run",
+    "JUnit.ConnectedComponentTest.executor": "Run",
+    "JUnit.GraphTest.aveDegree.executor": "Run",
+    "JUnit.GraphTest.degree.executor": "Run",
+    "JUnit.GraphTest.e.executor": "Run",
+    "JUnit.GraphTest.maxDegree.executor": "Run",
+    "JUnit.GraphTest.neighbors.executor": "Run",
     "JUnit.GraphTest.v.executor": "Run",
+    "JUnit.GraphTest.writeToFile.executor": "Run",
+    "JUnit.PathsTest.executor": "Run",
+    "JUnit.SearchTest.executor": "Run",
+    "JUnit.SearchTest.isConnected.executor": "Run",
     "JUnit.SlidingWindowTest.constrainedSubsetSum.executor": "Run",
     "JUnit.SlidingWindowTest.containsNearbyAlmostDuplicate.executor": "Run",
     "JUnit.SlidingWindowTest.containsNearbyAlmostDuplicateOptimized.executor": "Run",
@@ -129,86 +147,106 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="CodeDuel.undirected_graph" />
+    </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="CodeDuel.undirected_graph" />
       <recent name="CodeDuel" />
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GraphTest.v">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="CodeDuel.Main" />
-      <module name="CodeDuel" />
-      <option name="PROGRAM_PARAMETERS" value="-ea" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="CodeDuel.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GraphTest.v" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.ConnectedComponentTest">
+    <configuration name="BreadthFirstPathsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="CodeDuel.*" />
+          <option name="PATTERN" value="CodeDuel.undirected_graph.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="CodeDuel" />
-      <option name="MAIN_CLASS_NAME" value="CodeDuel.GraphTest" />
-      <option name="METHOD_NAME" value="v" />
+      <option name="PACKAGE_NAME" value="CodeDuel.undirected_graph" />
+      <option name="MAIN_CLASS_NAME" value="CodeDuel.undirected_graph.BreadthFirstPathsTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ConnectedComponentTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CodeDuel" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="CodeDuel.undirected_graph.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="CodeDuel.undirected_graph" />
+      <option name="MAIN_CLASS_NAME" value="CodeDuel.undirected_graph.ConnectedComponentTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DepthFirstSearchTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CodeDuel" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="CodeDuel.undirected_graph.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="CodeDuel.undirected_graph" />
+      <option name="MAIN_CLASS_NAME" value="CodeDuel.undirected_graph.DepthFirstSearchTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DepthFirstSearchTest.isConnected" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CodeDuel" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="CodeDuel.undirected_graph.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="CodeDuel.undirected_graph" />
+      <option name="MAIN_CLASS_NAME" value="CodeDuel.undirected_graph.DepthFirstSearchTest" />
+      <option name="METHOD_NAME" value="isConnected" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SlidingWindowTest.longestDupSubstring" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PathsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="SlidingWindowTest" />
-      <option name="METHOD_NAME" value="longestDupSubstring" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SlidingWindowTest.longestDupSubstringOptimized" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CodeDuel" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="SlidingWindowTest" />
-      <option name="METHOD_NAME" value="longestDupSubstringOptimized" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SlidingWindowTest.longestSubstring" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CodeDuel" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="SlidingWindowTest" />
-      <option name="METHOD_NAME" value="longestSubstring" />
-      <option name="TEST_OBJECT" value="method" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="CodeDuel.undirected_graph.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="CodeDuel.undirected_graph" />
+      <option name="MAIN_CLASS_NAME" value="CodeDuel.undirected_graph.PathsTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.GraphTest.v" />
-      <item itemvalue="JUnit.SlidingWindowTest.longestDupSubstring" />
-      <item itemvalue="JUnit.SlidingWindowTest.longestDupSubstringOptimized" />
-      <item itemvalue="JUnit.SlidingWindowTest.longestSubstring" />
+      <item itemvalue="JUnit.BreadthFirstPathsTest" />
+      <item itemvalue="JUnit.ConnectedComponentTest" />
+      <item itemvalue="JUnit.DepthFirstSearchTest" />
+      <item itemvalue="JUnit.DepthFirstSearchTest.isConnected" />
+      <item itemvalue="JUnit.PathsTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.GraphTest.v" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.SlidingWindowTest.longestDupSubstringOptimized" />
-        <item itemvalue="JUnit.SlidingWindowTest.longestDupSubstring" />
-        <item itemvalue="JUnit.SlidingWindowTest.longestSubstring" />
+        <item itemvalue="JUnit.ConnectedComponentTest" />
+        <item itemvalue="JUnit.BreadthFirstPathsTest" />
+        <item itemvalue="JUnit.PathsTest" />
+        <item itemvalue="JUnit.DepthFirstSearchTest" />
+        <item itemvalue="JUnit.DepthFirstSearchTest.isConnected" />
       </list>
     </recent_temporary>
   </component>
@@ -239,7 +277,7 @@
       <workItem from="1729174434582" duration="11493000" />
       <workItem from="1729267955888" duration="11003000" />
       <workItem from="1729565228176" duration="32534000" />
-      <workItem from="1729992494333" duration="20593000" />
+      <workItem from="1729992494333" duration="41768000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -481,7 +519,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730259537542</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Initial Commit">
+      <option name="closed" value="true" />
+      <created>1730297200697</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1730297200697</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

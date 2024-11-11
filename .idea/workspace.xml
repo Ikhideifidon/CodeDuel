@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53e9e4ad-d120-4c42-9905-481d88489533" name="Changes" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/QuickFind.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/undirected_graph/Cycle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/undirected_graph/General.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/cycleG.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/CodeDuel/undirected_graph/CycleTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/CodeDuel/undirected_graph/GeneralTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/undirected_graph/SymbolGraph.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/CodeDuel/undirected_graph/SymbolGraphTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CodeDuel/QuickFind.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/QuickFind.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +22,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -117,6 +114,10 @@
     "JUnit.SlidingWindowTest.shortestSubstring.executor": "Run",
     "JUnit.SlidingWindowTest.subarrayWithDesiredSum.executor": "Run",
     "JUnit.SlidingWindowTest.subarrayWithMaximumContinuousOnes.executor": "Run",
+    "JUnit.SymbolGraphTest.connectedComponents.executor": "Run",
+    "JUnit.SymbolGraphTest.contains.executor": "Run",
+    "JUnit.SymbolGraphTest.index.executor": "Run",
+    "JUnit.SymbolGraphTest.name.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
@@ -154,52 +155,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GeneralTest.findRedundantConnection">
-    <configuration name="ConnectedComponentTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CodeDuel" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="CodeDuel.undirected_graph.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="CodeDuel.undirected_graph" />
-      <option name="MAIN_CLASS_NAME" value="CodeDuel.undirected_graph.ConnectedComponentTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CycleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CodeDuel" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="CodeDuel.undirected_graph.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="CodeDuel.undirected_graph" />
-      <option name="MAIN_CLASS_NAME" value="CodeDuel.undirected_graph.CycleTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GeneralTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CodeDuel" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="CodeDuel.undirected_graph.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="CodeDuel.undirected_graph" />
-      <option name="MAIN_CLASS_NAME" value="CodeDuel.undirected_graph.GeneralTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.SymbolGraphTest.contains">
     <configuration name="GeneralTest.findRedundantConnection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
       <extension name="coverage">
@@ -216,7 +172,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GeneralTest.largestComponentCount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SymbolGraphTest.connectedComponents" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
       <extension name="coverage">
         <pattern>
@@ -225,27 +181,75 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="CodeDuel.undirected_graph" />
-      <option name="MAIN_CLASS_NAME" value="CodeDuel.undirected_graph.GeneralTest" />
-      <option name="METHOD_NAME" value="largestComponentCount" />
+      <option name="MAIN_CLASS_NAME" value="CodeDuel.undirected_graph.SymbolGraphTest" />
+      <option name="METHOD_NAME" value="connectedComponents" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SymbolGraphTest.contains" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CodeDuel" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="CodeDuel.undirected_graph.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="CodeDuel.undirected_graph" />
+      <option name="MAIN_CLASS_NAME" value="CodeDuel.undirected_graph.SymbolGraphTest" />
+      <option name="METHOD_NAME" value="contains" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SymbolGraphTest.index" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CodeDuel" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="CodeDuel.undirected_graph.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="CodeDuel.undirected_graph" />
+      <option name="MAIN_CLASS_NAME" value="CodeDuel.undirected_graph.SymbolGraphTest" />
+      <option name="METHOD_NAME" value="index" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SymbolGraphTest.name" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CodeDuel" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="CodeDuel.undirected_graph.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="CodeDuel.undirected_graph" />
+      <option name="MAIN_CLASS_NAME" value="CodeDuel.undirected_graph.SymbolGraphTest" />
+      <option name="METHOD_NAME" value="name" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.CycleTest" />
-      <item itemvalue="JUnit.GeneralTest" />
       <item itemvalue="JUnit.GeneralTest.findRedundantConnection" />
-      <item itemvalue="JUnit.GeneralTest.largestComponentCount" />
-      <item itemvalue="JUnit.ConnectedComponentTest" />
+      <item itemvalue="JUnit.SymbolGraphTest.connectedComponents" />
+      <item itemvalue="JUnit.SymbolGraphTest.contains" />
+      <item itemvalue="JUnit.SymbolGraphTest.index" />
+      <item itemvalue="JUnit.SymbolGraphTest.name" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SymbolGraphTest.contains" />
+        <item itemvalue="JUnit.SymbolGraphTest.index" />
+        <item itemvalue="JUnit.SymbolGraphTest.connectedComponents" />
+        <item itemvalue="JUnit.SymbolGraphTest.name" />
         <item itemvalue="JUnit.GeneralTest.findRedundantConnection" />
-        <item itemvalue="JUnit.GeneralTest.largestComponentCount" />
-        <item itemvalue="JUnit.GeneralTest" />
-        <item itemvalue="JUnit.CycleTest" />
-        <item itemvalue="JUnit.ConnectedComponentTest" />
       </list>
     </recent_temporary>
   </component>
@@ -277,7 +281,7 @@
       <workItem from="1729267955888" duration="11003000" />
       <workItem from="1729565228176" duration="32534000" />
       <workItem from="1729992494333" duration="42802000" />
-      <workItem from="1730553098179" duration="31376000" />
+      <workItem from="1730553098179" duration="44418000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -535,7 +539,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730425975445</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Initial Commit">
+      <option name="closed" value="true" />
+      <created>1731101880974</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1731101880974</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

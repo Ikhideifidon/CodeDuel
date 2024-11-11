@@ -12,8 +12,8 @@ public class QuickFind {
 
     public QuickFind(int N) {
         id = new int[N];
-        Arrays.setAll(id, i -> i + 1);
-        count = 0;
+        Arrays.setAll(id, i -> i);
+        count = N;
     }
 
     public void union(int p, int q) {
@@ -41,8 +41,8 @@ class QuickUnion {
 
     public QuickUnion(int N) {
         id = new int[N];
-        Arrays.setAll(id, i -> i + 1);
-        count = 0;
+        Arrays.setAll(id, i -> i);
+        count = N;
     }
 
     public void union(int p, int q) {
@@ -58,7 +58,6 @@ class QuickUnion {
     public int find(int p) {
         while (p != id[p])
             p = id[p];
-
         return p;
     }
 }
@@ -73,9 +72,9 @@ class WeightedQuickUnion {
     public WeightedQuickUnion(int N) {
         id = new int[N];
         size = new int[N];
-        Arrays.setAll(id, i -> i + 1);
+        Arrays.setAll(id, i -> i);
         Arrays.fill(size, 1);
-        count = 0;
+        count = N;
     }
 
     public int find(int p) {
@@ -110,9 +109,9 @@ class WeightedQuickUnionWithPathCompression {
     public WeightedQuickUnionWithPathCompression(int N) {
         id = new int[N];
         size = new int[N];
-        Arrays.setAll(id, i -> i + 1);
+        Arrays.setAll(id, i -> i);
         Arrays.fill(size, 1);
-        count = 0;
+        count = N;
     }
 
     public int find(int p) {

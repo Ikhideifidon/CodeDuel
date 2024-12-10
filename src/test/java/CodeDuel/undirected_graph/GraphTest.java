@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class GraphTest {
-    private final static String path = "src/main/resources/mediumG.txt";
+    private final static String path = "src/main/resources/tinyG.txt";
     private final static String outputPath = "src/main/resources/graph_output.txt";
     private Graph G;
 
@@ -33,7 +33,7 @@ class GraphTest {
 
     @Test
     void e() {
-        int edge = 2546;
+        int edge = 13;
         Assertions.assertEquals(edge, G.E());
     }
 

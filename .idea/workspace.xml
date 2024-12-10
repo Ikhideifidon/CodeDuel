@@ -5,10 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53e9e4ad-d120-4c42-9905-481d88489533" name="Changes" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/undirected_graph/SymbolGraph.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/CodeDuel/undirected_graph/SymbolGraphTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/Sample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/directed_graph/Digraph.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/directed_graph/DirectedCycle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/directed_graph/DirectedDFS.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/tinyDG.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/CodeDuel/directed_graph/DigraphTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/CodeDuel/directed_graph/DirectedCycleTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CodeDuel/QuickFind.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/QuickFind.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CodeDuel/Algorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/Algorithm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CodeDuel/undirected_graph/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/undirected_graph/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CodeDuel/undirected_graph/GraphUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/GraphUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/graph_output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graph_output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/AlgorithmTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AlgorithmTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/CodeDuel/undirected_graph/GraphTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/CodeDuel/undirected_graph/GraphTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +32,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -67,23 +77,44 @@
     "Application.Main.executor": "Run",
     "JUnit.AlgorithmTest.canCompleteCircuit.executor": "Run",
     "JUnit.AlgorithmTest.canJump.executor": "Run",
+    "JUnit.AlgorithmTest.canJumpBFS.executor": "Run",
+    "JUnit.AlgorithmTest.canJumpDFS.executor": "Run",
+    "JUnit.AlgorithmTest.canJumpGreed.executor": "Run",
     "JUnit.AlgorithmTest.canJumpI.executor": "Run",
+    "JUnit.AlgorithmTest.canReach.executor": "Run",
     "JUnit.AlgorithmTest.candy.executor": "Run",
+    "JUnit.AlgorithmTest.cheapestStair.executor": "Run",
+    "JUnit.AlgorithmTest.cutRod.executor": "Run",
     "JUnit.AlgorithmTest.executor": "Run",
     "JUnit.AlgorithmTest.hIndex.executor": "Run",
     "JUnit.AlgorithmTest.jump.executor": "Run",
+    "JUnit.AlgorithmTest.jumpGameIIDFS.executor": "Run",
+    "JUnit.AlgorithmTest.jumpGameIIGreedy.executor": "Run",
     "JUnit.AlgorithmTest.majorityElement.executor": "Run",
     "JUnit.AlgorithmTest.maxProfit.executor": "Run",
     "JUnit.AlgorithmTest.maxProfitII.executor": "Run",
+    "JUnit.AlgorithmTest.maxSubArray.executor": "Run",
     "JUnit.AlgorithmTest.merge.executor": "Run",
+    "JUnit.AlgorithmTest.minDistance.executor": "Run",
+    "JUnit.AlgorithmTest.minDistanceDP.executor": "Run",
     "JUnit.AlgorithmTest.productExceptSelf.executor": "Debug",
     "JUnit.AlgorithmTest.removeDuplicates.executor": "Run",
     "JUnit.AlgorithmTest.removeDuplicatesII.executor": "Run",
     "JUnit.AlgorithmTest.rotate.executor": "Run",
     "JUnit.AlgorithmTest.rotateI.executor": "Run",
+    "JUnit.AlgorithmTest.staircase.executor": "Run",
+    "JUnit.AlgorithmTest.staircaseWithKSteps.executor": "Run",
+    "JUnit.AlgorithmTest.staircaseWithKStepsObstaclesDFS.executor": "Run",
     "JUnit.BreadthFirstPathsTest.executor": "Run",
     "JUnit.ConnectedComponentTest.executor": "Run",
     "JUnit.CycleTest.executor": "Run",
+    "JUnit.DigraphTest.e.executor": "Run",
+    "JUnit.DigraphTest.executor": "Run",
+    "JUnit.DigraphTest.inDegree.executor": "Run",
+    "JUnit.DigraphTest.maxInDegree.executor": "Run",
+    "JUnit.DigraphTest.reverse.executor": "Run",
+    "JUnit.DigraphTest.v.executor": "Run",
+    "JUnit.DirectedCycleTest.executor": "Run",
     "JUnit.GeneralTest.executor": "Run",
     "JUnit.GeneralTest.findRedundantConnection.executor": "Debug",
     "JUnit.GeneralTest.largestComponentCount.executor": "Run",
@@ -147,109 +178,81 @@
       <recent name="" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="CodeDuel" />
       <recent name="CodeDuel.undirected_graph" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="CodeDuel.directed_graph" />
       <recent name="CodeDuel.undirected_graph" />
       <recent name="CodeDuel" />
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.SymbolGraphTest.contains">
-    <configuration name="GeneralTest.findRedundantConnection" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.AlgorithmTest.minDistance">
+    <configuration name="AlgorithmTest.cheapestStair" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="CodeDuel.undirected_graph.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="CodeDuel.undirected_graph" />
-      <option name="MAIN_CLASS_NAME" value="CodeDuel.undirected_graph.GeneralTest" />
-      <option name="METHOD_NAME" value="findRedundantConnection" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AlgorithmTest" />
+      <option name="METHOD_NAME" value="cheapestStair" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SymbolGraphTest.connectedComponents" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AlgorithmTest.cutRod" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="CodeDuel.undirected_graph.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="CodeDuel.undirected_graph" />
-      <option name="MAIN_CLASS_NAME" value="CodeDuel.undirected_graph.SymbolGraphTest" />
-      <option name="METHOD_NAME" value="connectedComponents" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AlgorithmTest" />
+      <option name="METHOD_NAME" value="cutRod" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SymbolGraphTest.contains" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AlgorithmTest.maxSubArray" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="CodeDuel.undirected_graph.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="CodeDuel.undirected_graph" />
-      <option name="MAIN_CLASS_NAME" value="CodeDuel.undirected_graph.SymbolGraphTest" />
-      <option name="METHOD_NAME" value="contains" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AlgorithmTest" />
+      <option name="METHOD_NAME" value="maxSubArray" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SymbolGraphTest.index" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AlgorithmTest.minDistance" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="CodeDuel.undirected_graph.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="CodeDuel.undirected_graph" />
-      <option name="MAIN_CLASS_NAME" value="CodeDuel.undirected_graph.SymbolGraphTest" />
-      <option name="METHOD_NAME" value="index" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AlgorithmTest" />
+      <option name="METHOD_NAME" value="minDistance" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SymbolGraphTest.name" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AlgorithmTest.minDistanceDP" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="CodeDuel.undirected_graph.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="CodeDuel.undirected_graph" />
-      <option name="MAIN_CLASS_NAME" value="CodeDuel.undirected_graph.SymbolGraphTest" />
-      <option name="METHOD_NAME" value="name" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="AlgorithmTest" />
+      <option name="METHOD_NAME" value="minDistanceDP" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.GeneralTest.findRedundantConnection" />
-      <item itemvalue="JUnit.SymbolGraphTest.connectedComponents" />
-      <item itemvalue="JUnit.SymbolGraphTest.contains" />
-      <item itemvalue="JUnit.SymbolGraphTest.index" />
-      <item itemvalue="JUnit.SymbolGraphTest.name" />
+      <item itemvalue="JUnit.AlgorithmTest.cheapestStair" />
+      <item itemvalue="JUnit.AlgorithmTest.cutRod" />
+      <item itemvalue="JUnit.AlgorithmTest.maxSubArray" />
+      <item itemvalue="JUnit.AlgorithmTest.minDistance" />
+      <item itemvalue="JUnit.AlgorithmTest.minDistanceDP" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.SymbolGraphTest.contains" />
-        <item itemvalue="JUnit.SymbolGraphTest.index" />
-        <item itemvalue="JUnit.SymbolGraphTest.connectedComponents" />
-        <item itemvalue="JUnit.SymbolGraphTest.name" />
-        <item itemvalue="JUnit.GeneralTest.findRedundantConnection" />
+        <item itemvalue="JUnit.AlgorithmTest.minDistance" />
+        <item itemvalue="JUnit.AlgorithmTest.minDistanceDP" />
+        <item itemvalue="JUnit.AlgorithmTest.maxSubArray" />
+        <item itemvalue="JUnit.AlgorithmTest.cutRod" />
+        <item itemvalue="JUnit.AlgorithmTest.cheapestStair" />
       </list>
     </recent_temporary>
   </component>
@@ -281,7 +284,12 @@
       <workItem from="1729267955888" duration="11003000" />
       <workItem from="1729565228176" duration="32534000" />
       <workItem from="1729992494333" duration="42802000" />
-      <workItem from="1730553098179" duration="44418000" />
+      <workItem from="1730553098179" duration="63111000" />
+      <workItem from="1731518932190" duration="6220000" />
+      <workItem from="1731680630090" duration="207000" />
+      <workItem from="1732367554906" duration="754000" />
+      <workItem from="1732417161259" duration="2448000" />
+      <workItem from="1732724185053" duration="53549000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -547,7 +555,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731101880974</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Initial Commit">
+      <option name="closed" value="true" />
+      <created>1731357254483</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1731357254483</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -897,7 +897,7 @@ public class Algorithm {
             int delta = val - map.getOrDefault(key, 0);
             map.put(key, val);
 
-            MapSum.TrieNode node = root;
+            TrieNode node = root;
             for (char c : key.toCharArray()) {
                 int index = c - 'a';
 
@@ -911,7 +911,7 @@ public class Algorithm {
         }
 
         public int sum(String prefix) {
-            MapSum.TrieNode node = root;
+            TrieNode node = root;
             for (char c : prefix.toCharArray()) {
                 int index = c - 'a';
 
@@ -2306,7 +2306,499 @@ public class Algorithm {
         return dp;
     }
 
+    public int jump(int[] nums) {
+        int n = nums.length;
+        int[] dp = new int[n];
+        Arrays.fill(dp, Integer.MAX_VALUE);
+        dp[0] = 0;
 
+        for (int i = 0; i < n; i++) {
+            for (int j = 1; j <= nums[i] && i + j < n; j++)
+                dp[i + j] = Math.min(dp[i + j], dp[i] + 1);
+        }
+        return dp[n - 1];
+    }
 
+    public static boolean canReachBFS(int[] arr, int start) {
+        if (arr == null || arr.length == 0)
+            return false;
+        int n = arr.length;
+        if (0 > start || start >= n)            // Start is out of bounds
+            return false;
+
+        Deque<Integer> queue = new ArrayDeque<>();
+        queue.offer(start);
+
+        while (!queue.isEmpty()) {
+            // Get current element
+            int currentIndex = queue.poll();
+            if (arr[currentIndex] == 0)
+                return true;
+
+            // Check if within bounds
+            int left = currentIndex - arr[currentIndex];
+            int right = currentIndex + arr[currentIndex];
+            if (left >= 0 && arr[left] >= 0)
+                queue.offer(left);
+            if (right < n && arr[right] >= 0)
+                queue.offer(right);
+
+            arr[currentIndex] = -1;                 // Mark as visited
+        }
+        return false;
+    }
+
+    public static boolean canReachDFS(int[] arr, int start) {
+        if (arr == null || arr.length == 0)
+            return false;
+        int n = arr.length;
+        if (0 > start || start >= n)            // Start is out of bounds
+            return false;
+
+        return canReachDFSHelper(arr, start);
+    }
+
+    private static boolean canReachDFSHelper(int[] arr, int start) {
+        if (start < 0 || start >= arr.length || arr[start] == -1)
+            return false;
+
+        if (arr[start] == 0)
+            return true;
+
+        // Save the value at arr[start]
+        int x = arr[start];
+        // Mark as visited
+        arr[start] = -1;
+        // Go to element at start's neighbors
+        boolean left = canReachDFSHelper(arr, start - x);
+        boolean right = canReachDFSHelper(arr, start + x);
+        return left || right;
+    }
+
+    public static boolean canJumpDFS(int[] nums) {
+        if (nums == null || nums.length == 0)
+            return false;
+
+        int n = nums.length;
+        if (n == 1)
+            return true;
+
+        return canJumpDFSHelper(nums, 0);
+    }
+
+    private static boolean canJumpDFSHelper(int[] nums, int current) {
+        if (current >= nums.length - 1)
+            return true;
+
+        for (int i = 1; i <= nums[current]; i++) {
+            if (canJumpDFSHelper(nums, current + i))
+                return true;
+        }
+        return false;
+    }
+
+    public static boolean canJumpBFS(int[] nums) {
+        if (nums == null || nums.length == 0)
+            return false;
+
+        int n = nums.length;
+        if (n == 1)
+            return true;
+
+        Deque<Integer> queue = new ArrayDeque<>();
+        Set<Integer> visited = new HashSet<>();
+        queue.offer(0);
+        visited.add(0);
+
+        while (!queue.isEmpty()) {
+            int currentIndex = queue.poll();
+
+            if (currentIndex >= nums.length - 1)
+                return true;
+
+            for (int i = 1; i <= nums[currentIndex]; i++) {
+                if (currentIndex + i >= nums.length - 1)
+                    return true;
+
+                if (visited.contains(currentIndex + i))
+                    continue;
+                queue.offer(currentIndex + i);
+                visited.add(currentIndex + i);
+            }
+        }
+        return false;
+    }
+
+    public static boolean canJumpGreed(int[] nums) {
+        if (nums == null || nums.length == 0)
+            return false;
+
+        int n = nums.length;
+        if (n == 1)
+            return true;
+        int farthest = 0;
+        for (int i = 0; i <= farthest; i++) {
+            int current = i + nums[i];
+            farthest = Math.max(farthest, current);
+            if (farthest >= n - 1)
+                return true;
+        }
+        return false;
+    }
+
+    // Jump Game II
+    public static int jumpGameIIDP(int[] nums) {
+        if (nums == null || nums.length == 0)
+            return Integer.MAX_VALUE;
+
+        int n = nums.length;
+        int[] dp = new int[n];
+        Arrays.fill(dp, Integer.MAX_VALUE);
+        dp[0] = 0;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 1; j <= nums[i] && i + j < n; j++)
+                dp[i + j] = Math.min(dp[i + j], dp[i] + 1);
+        }
+        return dp[n - 1];
+    }
+
+    public static int jumpGameIIBFS(int[] nums) {
+        if (nums == null || nums.length == 0)
+            return Integer.MAX_VALUE;
+
+        int n = nums.length;
+        if (n == 1)
+            return 0;
+
+        Deque<Integer> queue = new ArrayDeque<>();
+        boolean[] visited = new boolean[n];
+        queue.offer(0);
+        visited[0] = true;
+        int jumps = 0;
+
+        while (!queue.isEmpty()) {
+            int size = queue.size(); // Number of nodes in the current level
+
+            for (int i = 0; i < size && !queue.isEmpty(); i++) {
+                int index = queue.poll();
+
+                // Explore all reachable indices from the current index
+                for (int j = 1; j <= Math.min(nums[index], n - index - 1); j++) {
+                    int nextIndex = index + j;
+
+                    // If we reach the last index, return the jump count
+                    if (nextIndex == n - 1)
+                        return jumps + 1;
+
+                    // If not visited, add to queue
+                    if (!visited[nextIndex]) {
+                        queue.offer(nextIndex);
+                        visited[nextIndex] = true;
+                    }
+                }
+            }
+            jumps++;
+        }
+        return Integer.MAX_VALUE;
+    }
+
+    public static int jumpGameIIDFS(int[] nums) {
+        if (nums == null || nums.length == 0)
+            return Integer.MAX_VALUE;
+
+        int n = nums.length;
+        if (n == 1)
+            return 0;
+        int[] memo = new int[n];
+        Arrays.fill(memo, -1);
+        return jumpGameIIDFSHelper(nums, 0, memo);
+    }
+
+    private static int jumpGameIIDFSHelper(int[] nums, int start, int[] memo) {
+        if (start >= nums.length - 1)
+            return 0;
+
+        if (memo[start] != -1)
+            return memo[start];
+
+        int minJump = Integer.MAX_VALUE;
+        for (int j = 1; j <= nums[start]; j++) {
+            int result = jumpGameIIDFSHelper(nums, start + j, memo);
+            if (result != Integer.MAX_VALUE)
+                minJump = Math.min(minJump, 1 + result);
+        }
+        memo[start] = minJump;
+        return minJump;
+    }
+
+    public static int jumpGameIIGreedy(int[] nums) {
+        if (nums == null || nums.length == 0)
+            return Integer.MAX_VALUE;
+
+        int n = nums.length;
+        if (n == 1)
+            return 0;
+
+        int farthest = 0;
+        int reach = 0;
+        int jumps = 0;
+        for (int i = 0; i < n; i++) {
+            farthest = Math.max(farthest, i + nums[i]);
+
+            // If we reach the end of the current jump's range
+            if (i == reach) {
+                jumps++;
+                reach = farthest;
+
+                if (reach >= n - 1)
+                    return jumps;
+            }
+        }
+        return Integer.MAX_VALUE;
+    }
+
+    public static int sum(int n) {
+        if (n == 1)
+            return 1;
+        return sum(n - 1) + n;
+    }
+
+    public static int staircase(int n) {
+        if (n <= 1)
+            return n < 0 ? 0 : 1;
+        int[] memo = new int[n + 1];
+        Arrays.fill(memo, -1);
+        return staircaseDFS(n, 0, memo);
+    }
+
+    private static int staircaseDFS(int n, int start, int[] memo) {
+        if (start == n)
+            return 1;
+        if (start > n)
+            return 0;
+
+        if (memo[start] != -1)
+            return memo[start];
+
+        int left = staircaseDFS(n, start + 1, memo);
+        int right = staircaseDFS(n, start + 2, memo);
+        memo[start] = left + right;
+        return memo[start];
+    }
+
+    public static int staircaseWithKSteps(int n, int k) {
+        if (n <= 1)
+            return n < 0 ? 0 : 1;
+
+        if (k > n)
+            return 0;
+        int[] memo = new int[k];
+        Arrays.fill(memo, -1);
+        return staircaseWithKStepsDFS(n, k, 0, memo);
+    }
+
+    // Forward Recursion
+    private static int staircaseWithKStepsDFS(int n, int k, int start, int[] memo) {
+        if (start == n)
+            return 1;
+
+        if (start > n)
+            return 0;
+
+        if (memo[start % k] != -1)
+            return memo[start % k];
+
+        int result = 0;
+        for (int i = 1; i <= k; i++)
+            result += staircaseWithKStepsDFS(n, k, start + i, memo);
+        memo[start % k] = result;
+        return result;
+    }
+
+    public static int staircaseWithKStepsObstacles(int n, int k, int[] obstacles) {
+        if (n <= 0)
+            return n < 0 ? 0 : 1;
+        if (k > n)
+            return 0;
+
+        int[] memo = new int[n + 1];
+        Arrays.fill(memo, -1);
+        Set<Integer> obs = new HashSet<>();
+        Arrays.stream(obstacles).forEach(obs::add);
+        return staircaseWithKStepsObstaclesDFS(n, k, obs, memo);
+    }
+
+    private static int staircaseWithKStepsObstaclesDFS(int n, int k, Set<Integer> obstacles, int[] memo) {
+        if (n == 0)
+            return 1;
+        if (n < 0)
+            return 0;
+        if (memo[n] != -1)
+            return memo[n];
+
+        int result = 0;
+        for (int i = 1; i <= k; i++) {
+            if (!obstacles.contains(n - i))
+                result += staircaseWithKStepsObstaclesDFS(n - i, k, obstacles, memo);
+        }
+        memo[n] = result;
+        return result;
+    }
+
+    public static int cheapestStair(int n, int k, int[] cost) {
+        if (n <= 0)
+            return n < 0 ? 0 : 1;
+        if (k > n)
+            return 0;
+
+        int[] memo = new int[n + 1];
+        Arrays.fill(memo, -1);
+        return cheapestStairDFS(n, k, 0, cost, memo);
+    }
+
+    private static int cheapestStairDFS(int n, int k, int start, int[] cost, int[] memo) {
+        if (start == n)
+            return cost[start];
+
+        if (memo[start] != -1)
+            return memo[start];
+
+        int cheapest = Integer.MAX_VALUE;
+        for (int i = 1; i <= k && start + i <= n; i++) {
+            int nextCost = cost[start] + cheapestStairDFS(n, k, start + i, cost, memo);
+            cheapest = Math.min(cheapest, nextCost);
+        }
+        memo[start] = cheapest;
+        return memo[start];
+    }
+
+    public static int cutRod(int n, int[] price) {          // Price is 1-indexed
+        /*
+            length i | 1  | 2  | 3 |  4 | 5  |  6 |  7 |  8 | 9  | 10 |
+            -----------------------------------------------------------
+            price i  | 1  |  5 | 8 |  9 | 10 | 17 | 17 | 20 | 24 | 30 |
+         */
+        if (n == 0)
+            return 0;
+        if (price == null || price.length == 0)
+            return 0;
+        int[] memo = new int[n + 1];
+        Arrays.fill(memo, -1);
+        return cutRodDFS(n, price, memo);
+    }
+
+    private static int cutRodDFS(int n, int[] price, int[] memo) {
+        if (n == 0)
+            return 0;
+
+        if (memo[n] != -1)
+            return memo[n];
+
+        int local = Integer.MIN_VALUE;
+        for (int i = 1; i <= n; i++) {
+            int x = (i - 1) % price.length;
+            int result = price[x] + cutRodDFS(n - i, price, memo);
+            local = Math.max(local, result);
+        }
+        memo[n] = local;
+        return local;
+    }
+
+    public static int maxSubArray(int[] nums) {
+        if (nums == null || nums.length == 0)
+            return 0;
+
+        int n = nums.length;
+        if (n == 1)
+            return nums[0];
+        int[] memo = new int[n + 1];
+        Arrays.fill(memo, Integer.MIN_VALUE);
+        return maxSubArrayDFS(nums, 0, memo);
+    }
+
+    private static int maxSubArrayDFS(int[] nums, int start, int[] memo) {
+        if (start == nums.length)
+            return 0;
+
+        if (memo[start] != Integer.MIN_VALUE)
+            return memo[start];
+
+        int globalMaximum = Integer.MIN_VALUE;
+        for (int i = start; i < nums.length; i++) {
+            int result = nums[i] + maxSubArrayDFS(nums, i + 1, memo);
+            globalMaximum = Math.max(globalMaximum, result);
+        }
+        memo[start] = globalMaximum;
+        return globalMaximum;
+    }
+
+    public static int minDistance(String word1, String word2) {
+        if (word1 == null || word2 == null)
+            throw new NullPointerException("Input parameters cannot be null");
+
+        int n = word1.length();
+        int m = word2.length();
+
+        if (n == 0 || m == 0)
+            return Math.max(n, m);
+        final int[][] memo = new int[n][m];
+        for (int[] row : memo)
+            Arrays.fill(row, -1);
+
+        return minDistanceDFS(word1, word2, 0, 0, memo);
+    }
+
+    private static int minDistanceDFS(String word1, String word2, int i, int j, int[][] memo) {
+        // If word1 or word2 is exhausted
+        if (i == word1.length() || j == word2.length())
+            return i == word1.length() ? word2.length() - j : word1.length() - i;
+
+        if (memo[i][j] != -1)
+            return memo[i][j];
+
+        if (word1.charAt(i) == word2.charAt(j))
+            memo[i][j] = minDistanceDFS(word1, word2, i + 1, j + 1, memo);
+
+        else {
+            int insert = 1 + minDistanceDFS(word1, word2, i, j + 1, memo);
+            int delete = 1 + minDistanceDFS(word1, word2, i + 1, j, memo);
+            int replace = 1 + minDistanceDFS(word1, word2, i + 1, j + 1, memo);
+            memo[i][j] = Math.min(insert, Math.min(delete, replace));
+        }
+        return memo[i][j];
+    }
+
+    public static int minDistanceDP(String word1, String word2) {
+        if (word1 == null || word2 == null)
+            return Integer.MAX_VALUE;
+
+        int n = word1.length();
+        int m = word2.length();
+
+        if (n == 0 || m == 0)
+            return Math.max(n, m);
+
+        int[][] dp = new int[n + 1][m + 1];
+        for (int[] row : dp)
+            Arrays.fill(row, Integer.MAX_VALUE);
+
+        for (int i = 0; i <= n; i++) {
+            for (int j = 0; j <= m; j++) {
+                if (i == 0)
+                    dp[i][j] = j;
+
+                else if (j == 0)
+                    dp[i][j] = i;
+
+                else if (word1.charAt(i - 1) == word2.charAt(j - 1))
+                    dp[i][j] = dp[i - 1][j - 1];
+
+                else
+                    dp[i][j] = Math.min(dp[i - 1][j], Math.min(dp[i][j - 1], dp[i - 1][j - 1])) + 1;
+            }
+        }
+        return dp[n][m];
+    }
 
 }

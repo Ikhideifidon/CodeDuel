@@ -124,4 +124,93 @@ class AlgorithmTest {
         int[] ratings = {1, 3, 2, 2, 1};
         System.out.println(Algorithm.candy(ratings));
     }
+
+    @Test
+    void canReach() {
+        int[] arr = {3, 0, 2, 1, 2};
+        int start = 2;
+        System.out.println(Algorithm.canReachBFS(arr, start));
+    }
+
+    @Test
+    void canJumpDFS() {
+        int[] nums = {3, 2, 1, 0, 4};
+        System.out.println(Algorithm.canJumpDFS(nums));
+    }
+
+    @Test
+    void canJumpBFS() {
+        int[] nums = {2, 3, 1, 1, 4};
+        System.out.println(Algorithm.canJumpBFS(nums));
+    }
+
+    @Test
+    void canJumpGreed() {
+        int[] nums = {2, 3, 1, 2, 0, 1};
+        System.out.println(Algorithm.canJumpGreed(nums));
+    }
+
+    @Test
+    void jumpGameIIDFS() {
+        int[] nums = {2, 3, 1, 1, 4};
+        System.out.println(Algorithm.jumpGameIIDFS(nums));
+    }
+
+    @Test
+    void jumpGameIIGreedy() {
+        int[] nums = {2, 1};
+        System.out.println(Algorithm.jumpGameIIGreedy(nums));
+        System.out.println(Algorithm.sum(5));
+    }
+    @Test
+    void staircase() {
+        System.out.println(Algorithm.staircase(0));
+    }
+
+    @Test
+    void staircaseWithKSteps() {
+        int n = 5, k = 3;
+        System.out.println(Algorithm.staircaseWithKSteps(n, k));
+    }
+
+    @Test
+    void staircaseWithKStepsObstaclesDFS() {
+        int n = 21, k = 3;
+        int[] obstacles = {1, 3, 4, 15, 18};
+        System.out.println(Algorithm.staircaseWithKStepsObstacles(n, k, obstacles));
+    }
+
+    @Test
+    void cheapestStair() {
+        int n = 3, k = 2;
+        int[] cost = {0, 15, 20, 10, 5};
+        System.out.println(Algorithm.cheapestStair(n, k, cost));
+    }
+
+    @Test
+    void cutRod() {
+        int n = 14;
+        int[] price = {1, 5, 8, 9, 10, 17, 17, 20, 24, 30};
+        System.out.println(Algorithm.cutRod(n, price));
+    }
+
+    @Test
+    void maxSubArray() {
+        int[] nums = {5, 4, -1, 7, 8};
+        System.out.println(Algorithm.maxSubArray(nums));
+    }
+
+    @Test
+    void minDistance() {
+        String word1 = "intention";
+        String word2 = "execution";
+        System.out.println(Algorithm.minDistance(word1, word2));
+    }
+
+    @Test
+    void minDistanceDP() {
+        String word1 = "intention";
+        String word2 = "execution";
+        System.out.println(Algorithm.minDistanceDP(word1, word2));
+    }
 }

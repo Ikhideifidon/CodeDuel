@@ -1,5 +1,8 @@
 package CodeDuel.undirected_graph;
 
+import CodeDuel.GraphUtils;
+import CodeDuel.directed_graph.Digraph;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -9,9 +12,9 @@ import java.util.Scanner;
 
 @SuppressWarnings({"unused", "unchecked"})
 public class Graph implements GraphUtils {
-    private int V;
+    private final int V;
     private int E;
-    private List<Integer>[] neighbors;
+    private final List<Integer>[] neighbors;
 
     public Graph(int V) {
         this.V = V;
@@ -21,45 +24,18 @@ public class Graph implements GraphUtils {
     }
 
     public Graph(String path) {
-        /*
-            V
-            E
-            2 1
-            3 1
-            0 2
+        this(getVertexCount(path));
 
-         Steps
-           Check the validity of this file path
-           Check if the file present in this path is not empty
-           Check if it is readable
-           Extract V
-           Extract E
-           Iterate over the remainder and for each iter, get the edge and addEdge appropriately.
-        */
-
-        if (path == null)
-            throw new NullPointerException("Path must be nonnull.");
-        File file = new File(path);
-        // Validate the file path and properties
-        if (!file.exists() || file.isDirectory() || file.isHidden() || file.length() == 0 || !file.canRead())
-            throw new IllegalArgumentException("Invalid file path or properties.");
-
-        try (Scanner scanner = new Scanner(file)) {
-            if (scanner.hasNextInt()) {
-                this.V = scanner.nextInt();
-                neighbors = new ArrayList[V];
-                for (int i = 0; i < V; i++)
-                    neighbors[i] = new ArrayList<>();
-            } else
-                throw new IllegalArgumentException("File format incorrect: expected number of vertices.");
-
+        try (Scanner scanner = new Scanner(new File(path))) {
+            scanner.nextInt(); // Skip the vertex count, already used it for chaining
+            int edges;
             if (scanner.hasNextInt())
-                E = scanner.nextInt();
+                edges = scanner.nextInt();
             else
                 throw new IllegalArgumentException("File format incorrect: expected number of edges.");
 
             // Read edges and add them to the graph
-            for (int i = 0; i < E; i++) {
+            for (int i = 0; i < edges; i++) {
                 if (scanner.hasNextInt()) {
                     int v = scanner.nextInt();
                     if (scanner.hasNextInt()) {
@@ -69,10 +45,8 @@ public class Graph implements GraphUtils {
                         throw new IllegalArgumentException("File format incorrect: expected second vertex for edge.");
                 }
             }
-        }
-
-        catch (FileNotFoundException e) {
-            System.err.println("File not found: " + file.getAbsolutePath());
+        } catch (IOException e) {
+            System.err.println("File not found: " + new File(path).getAbsolutePath());
         }
     }
 
@@ -93,6 +67,12 @@ public class Graph implements GraphUtils {
     public int degree(int v) { return neighbors[v].size(); }
 
     @Override
+    public int inDegree(int v) { return degree(v); }
+
+    @Override
+    public int outDegree(int v) { return degree(v); }
+
+    @Override
     public int maxDegree() {
         int maximumDegree = 0;
         for (int i = 0; i < V; i++)
@@ -101,7 +81,24 @@ public class Graph implements GraphUtils {
     }
 
     @Override
+    public int maxInDegree() { return maxDegree(); }
+
+    @Override
+    public int maxOutDegree() { return maxInDegree(); }
+
+    @Override
     public int aveDegree() { return 2 * E / V; }
+
+    @Override
+    public int aveInDegree() { return aveDegree(); }
+
+    @Override
+    public int aveOutDegree() { return aveDegree(); }
+
+    @Override
+    public Digraph reverse() {
+        throw new UnsupportedOperationException("This operation is not supported by this graph");
+    }
 
     @Override
     public Iterable<Integer> neighbors(int v) { return neighbors[v]; }
@@ -178,6 +175,42 @@ public class Graph implements GraphUtils {
             System.setOut(fileOut);
         } catch (IOException e) {
             System.err.println("Error handling file: " + filePath + ", " + e.getMessage());
+        }
+    }
+
+    // Helper method to extract vertex count before chaining
+    private static int getVertexCount(String path) {
+        /*
+            V
+            E
+            2 1
+            3 1
+            0 2
+
+         Steps
+           Check the validity of this file path
+           Check if the file present in this path is not empty
+           Check if it is readable
+           Extract V
+           Extract E
+           Iterate over the remainder and for each iter, get the edge and addEdge appropriately.
+        */
+
+        if (path == null)
+            throw new NullPointerException("Path must be nonnull.");
+
+        File file = new File(path);
+        // Validate the file path and properties
+        if (!file.exists() || file.isDirectory() || file.isHidden() || file.length() == 0 || !file.canRead())
+            throw new IllegalArgumentException("Invalid file path or properties.");
+
+        try (Scanner scanner = new Scanner(file)) {
+            if (scanner.hasNextInt())
+                return scanner.nextInt();
+            else
+                throw new IllegalArgumentException("File format incorrect: expected number of vertices.");
+        } catch (IOException e) {
+            throw new RuntimeException("File not found: " + path, e);
         }
     }
 }

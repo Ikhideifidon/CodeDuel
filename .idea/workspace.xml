@@ -5,20 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53e9e4ad-d120-4c42-9905-481d88489533" name="Changes" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/Sample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/directed_graph/Digraph.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/directed_graph/DirectedCycle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/directed_graph/DirectedDFS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/tinyDG.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/CodeDuel/directed_graph/DigraphTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/CodeDuel/directed_graph/DirectedCycleTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/BinarySearchTree.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/CodeDuel/BinarySearchTreeTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/CodeDuel/Algorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/Algorithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CodeDuel/undirected_graph/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/undirected_graph/Graph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CodeDuel/undirected_graph/GraphUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/GraphUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/graph_output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/graph_output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CodeDuel/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/AlgorithmTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/AlgorithmTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/CodeDuel/undirected_graph/GraphTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/CodeDuel/undirected_graph/GraphTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,8 +25,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -90,13 +83,17 @@
     "JUnit.AlgorithmTest.jump.executor": "Run",
     "JUnit.AlgorithmTest.jumpGameIIDFS.executor": "Run",
     "JUnit.AlgorithmTest.jumpGameIIGreedy.executor": "Run",
+    "JUnit.AlgorithmTest.lengthOfLIS.executor": "Run",
     "JUnit.AlgorithmTest.majorityElement.executor": "Run",
     "JUnit.AlgorithmTest.maxProfit.executor": "Run",
     "JUnit.AlgorithmTest.maxProfitII.executor": "Run",
     "JUnit.AlgorithmTest.maxSubArray.executor": "Run",
     "JUnit.AlgorithmTest.merge.executor": "Run",
     "JUnit.AlgorithmTest.minDistance.executor": "Run",
+    "JUnit.AlgorithmTest.minDistance2.executor": "Run",
+    "JUnit.AlgorithmTest.minDistance2DP.executor": "Run",
     "JUnit.AlgorithmTest.minDistanceDP.executor": "Run",
+    "JUnit.AlgorithmTest.minimumDeleteSumRecursion.executor": "Run",
     "JUnit.AlgorithmTest.productExceptSelf.executor": "Debug",
     "JUnit.AlgorithmTest.removeDuplicates.executor": "Run",
     "JUnit.AlgorithmTest.removeDuplicatesII.executor": "Run",
@@ -105,6 +102,11 @@
     "JUnit.AlgorithmTest.staircase.executor": "Run",
     "JUnit.AlgorithmTest.staircaseWithKSteps.executor": "Run",
     "JUnit.AlgorithmTest.staircaseWithKStepsObstaclesDFS.executor": "Run",
+    "JUnit.BinarySearchTreeTest.executor": "Run",
+    "JUnit.BinarySearchTreeTest.findMax.executor": "Run",
+    "JUnit.BinarySearchTreeTest.findMin.executor": "Run",
+    "JUnit.BinarySearchTreeTest.printBST.executor": "Run",
+    "JUnit.BinarySearchTreeTest.successor.executor": "Run",
     "JUnit.BreadthFirstPathsTest.executor": "Run",
     "JUnit.ConnectedComponentTest.executor": "Run",
     "JUnit.CycleTest.executor": "Run",
@@ -182,77 +184,106 @@
       <recent name="CodeDuel.undirected_graph" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="CodeDuel" />
       <recent name="CodeDuel.directed_graph" />
       <recent name="CodeDuel.undirected_graph" />
-      <recent name="CodeDuel" />
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AlgorithmTest.minDistance">
-    <configuration name="AlgorithmTest.cheapestStair" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.BinarySearchTreeTest">
+    <configuration name="BinarySearchTreeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AlgorithmTest" />
-      <option name="METHOD_NAME" value="cheapestStair" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="CodeDuel.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="CodeDuel" />
+      <option name="MAIN_CLASS_NAME" value="CodeDuel.BinarySearchTreeTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BinarySearchTreeTest.findMax" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CodeDuel" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="CodeDuel.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="CodeDuel" />
+      <option name="MAIN_CLASS_NAME" value="CodeDuel.BinarySearchTreeTest" />
+      <option name="METHOD_NAME" value="findMax" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AlgorithmTest.cutRod" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BinarySearchTreeTest.findMin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AlgorithmTest" />
-      <option name="METHOD_NAME" value="cutRod" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="CodeDuel.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="CodeDuel" />
+      <option name="MAIN_CLASS_NAME" value="CodeDuel.BinarySearchTreeTest" />
+      <option name="METHOD_NAME" value="findMin" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AlgorithmTest.maxSubArray" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BinarySearchTreeTest.printBST" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AlgorithmTest" />
-      <option name="METHOD_NAME" value="maxSubArray" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="CodeDuel.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="CodeDuel" />
+      <option name="MAIN_CLASS_NAME" value="CodeDuel.BinarySearchTreeTest" />
+      <option name="METHOD_NAME" value="printBST" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AlgorithmTest.minDistance" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BinarySearchTreeTest.successor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AlgorithmTest" />
-      <option name="METHOD_NAME" value="minDistance" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AlgorithmTest.minDistanceDP" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CodeDuel" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="AlgorithmTest" />
-      <option name="METHOD_NAME" value="minDistanceDP" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="CodeDuel.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="CodeDuel" />
+      <option name="MAIN_CLASS_NAME" value="CodeDuel.BinarySearchTreeTest" />
+      <option name="METHOD_NAME" value="successor" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.AlgorithmTest.cheapestStair" />
-      <item itemvalue="JUnit.AlgorithmTest.cutRod" />
-      <item itemvalue="JUnit.AlgorithmTest.maxSubArray" />
-      <item itemvalue="JUnit.AlgorithmTest.minDistance" />
-      <item itemvalue="JUnit.AlgorithmTest.minDistanceDP" />
+      <item itemvalue="JUnit.BinarySearchTreeTest.successor" />
+      <item itemvalue="JUnit.BinarySearchTreeTest" />
+      <item itemvalue="JUnit.BinarySearchTreeTest.findMax" />
+      <item itemvalue="JUnit.BinarySearchTreeTest.findMin" />
+      <item itemvalue="JUnit.BinarySearchTreeTest.printBST" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AlgorithmTest.minDistance" />
-        <item itemvalue="JUnit.AlgorithmTest.minDistanceDP" />
-        <item itemvalue="JUnit.AlgorithmTest.maxSubArray" />
-        <item itemvalue="JUnit.AlgorithmTest.cutRod" />
-        <item itemvalue="JUnit.AlgorithmTest.cheapestStair" />
+        <item itemvalue="JUnit.BinarySearchTreeTest" />
+        <item itemvalue="JUnit.BinarySearchTreeTest.successor" />
+        <item itemvalue="JUnit.BinarySearchTreeTest.findMin" />
+        <item itemvalue="JUnit.BinarySearchTreeTest.findMax" />
+        <item itemvalue="JUnit.BinarySearchTreeTest.printBST" />
       </list>
     </recent_temporary>
   </component>
@@ -289,7 +320,10 @@
       <workItem from="1731680630090" duration="207000" />
       <workItem from="1732367554906" duration="754000" />
       <workItem from="1732417161259" duration="2448000" />
-      <workItem from="1732724185053" duration="53549000" />
+      <workItem from="1732724185053" duration="66442000" />
+      <workItem from="1734140890021" duration="23447000" />
+      <workItem from="1734305471673" duration="8310000" />
+      <workItem from="1734371600832" duration="6408000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -563,7 +597,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731357254483</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Initial Commit">
+      <option name="closed" value="true" />
+      <created>1733792186047</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1733792186047</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

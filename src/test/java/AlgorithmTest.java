@@ -213,4 +213,32 @@ class AlgorithmTest {
         String word2 = "execution";
         System.out.println(Algorithm.minDistanceDP(word1, word2));
     }
+
+    @Test
+    void minDistance2() {
+        String word1 = "eat";
+        String word2 = "sea";
+        System.out.println(Algorithm.minDistance2(word1, word2));
+    }
+
+    @Test
+    void minDistance2DP() {
+        String word1 = "eat";
+        String word2 = "sea";
+        System.out.println(Algorithm.minDistance2DP(word1, word2));
+    }
+
+    @Test
+    void minimumDeleteSumRecursion() {
+        String word1 = "delete";
+        String word2 = "leet";
+        System.out.println(Algorithm.minimumDeleteSumRecursion(word1, word2));
+        System.out.println(Algorithm.minimumDeleteSumDP(word1, word2));
+    }
+
+    @Test
+    void  lengthOfLIS() {
+        int[] nums = {10, 9, 2, 5, 3, 7, 101, 18};
+        System.out.println(Algorithm.lengthOfLIS(nums));
+    }
 }

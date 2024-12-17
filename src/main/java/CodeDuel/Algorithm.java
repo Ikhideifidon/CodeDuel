@@ -2801,4 +2801,166 @@ public class Algorithm {
         return dp[n][m];
     }
 
+    // Delete Operation for Two Strings
+    public static int minDistance2(String word1, String word2) {
+        if (word1 == null || word2 == null)
+            return Integer.MAX_VALUE;
+
+        int n = word1.length();
+        int m = word2.length();
+
+        if (n == 0 || m == 0)
+            return Math.max(n, m);
+
+        int[][] memo = new int[n][m];
+        for (int[] row : memo)
+            Arrays.fill(row, -1);
+        return minDistance2DFS(word1, word2, 0, 0, memo);
+    }
+
+    private static int minDistance2DFS(String word1, String word2, int i, int j, int[][] memo) {
+        if (i == word1.length() || j == word2.length())
+            return i == word1.length() ? word2.length() - j : word1.length() - i;
+
+        if (memo[i][j] != -1)
+            return memo[i][j];
+
+        if (word1.charAt(i) == word2.charAt(j))
+            memo[i][j] = minDistance2DFS(word1, word2, i + 1, j + 1, memo);
+        else {
+            int delete1 = 1 + minDistance2DFS(word1, word2, i + 1, j, memo);
+            int delete2 = 1 + minDistance2DFS(word1, word2, i, j + 1, memo);
+            memo[i][j] = Math.min(delete1, delete2);
+        }
+        return memo[i][j];
+    }
+
+    public static int minDistance2DP(String word1, String word2) {
+        if (word1 == null || word2 == null)
+            return Integer.MAX_VALUE;
+
+        int n = word1.length();
+        int m = word2.length();
+
+        if (n == 0 || m == 0)
+            return Math.max(n, m);
+
+        int[][] dp = new int[n + 1][m + 1];
+        for (int[] row : dp)
+            Arrays.fill(row, Integer.MAX_VALUE);
+
+        for (int i = 0; i <= n; i++) {
+            for (int j = 0; j <= m; j++) {
+                if (i == 0)
+                    dp[i][j] = j;
+
+                else if (j == 0)
+                    dp[i][j] = i;
+
+                else if (word1.charAt(i - 1) == word2.charAt(j - 1))
+                    dp[i][j] = dp[i - 1][j - 1];
+
+                else
+                    dp[i][j] = Math.min(dp[i - 1][j], dp[i][j - 1]) + 1;
+            }
+        }
+        return dp[n][m];
+    }
+
+    public static int minimumDeleteSumRecursion(String word1, String word2) {
+        if (word1 == null || word2 == null)
+            return Integer.MAX_VALUE;
+
+        int n = word1.length();
+        int m = word2.length();
+
+        if (n == 0 || m == 0)
+            return n == 0 ? ASCIIValue(word2, 0) : ASCIIValue(word1, 0);
+
+        int[][] memo = new int[n][m];
+        for (int[] row : memo)
+            Arrays.fill(row, -1);
+
+        return minimumDeleteSumDFS(word1, word2, 0, 0, memo);
+    }
+
+    private static int minimumDeleteSumDFS(String word1, String word2, int i, int j, int[][] memo) {
+        if (i == word1.length() || j == word2.length())
+            return i == word1.length() ? ASCIIValue(word2, j) : ASCIIValue(word1, i);
+
+        if (memo[i][j] != -1)
+            return memo[i][j];
+
+        if (word1.charAt(i) == word2.charAt(j))
+            memo[i][j] = minimumDeleteSumDFS(word1, word2, i + 1, j + 1, memo);
+
+        else {
+            int delete1 = word1.charAt(i) + minimumDeleteSumDFS(word1, word2, i + 1, j, memo);
+            int delete2 = word2.charAt(j) + minimumDeleteSumDFS(word1, word2, i, j + 1, memo);
+            memo[i][j] = Math.min(delete1, delete2);
+        }
+        return memo[i][j];
+    }
+
+    private static int ASCIIValue(String word, int start) {
+        int sum = 0;
+        for (int i = start; i < word.length(); i++) {
+            char c = word.charAt(i);
+            sum += c;
+        }
+        return sum;
+    }
+
+    public static int minimumDeleteSumDP(String s1, String s2) {
+        if (s1 == null || s2 == null)
+            return Integer.MAX_VALUE;
+
+        int n = s1.length();
+        int m = s2.length();
+
+        if (n == 0 || m == 0)
+            return n == 0 ? s2.chars().sum() : s1.chars().sum();
+
+        int[][] dp = new int[n + 1][m + 1];
+
+        // Base cases
+        for (int i = 1; i <= n; i++)
+            dp[i][0] = dp[i - 1][0] + s1.charAt(i - 1);
+
+        for (int j = 1; j <= m; j++)
+            dp[0][j] = dp[0][j - 1] + s2.charAt(j - 1);
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= m; j++) {
+                if (s1.charAt(i - 1) == s2.charAt(j - 1))
+                    dp[i][j] = dp[i - 1][j - 1];
+
+                else
+                    dp[i][j] = Math.min(s1.charAt(i - 1) + dp[i - 1][j], s2.charAt(j - 1) + dp[i][j - 1]);
+            }
+        }
+        return dp[n][m];
+    }
+
+    public static int lengthOfLIS(int[] nums) {
+        if (nums == null)
+            throw new NullPointerException("Input Array cannot be null.");
+
+        int n = nums.length;
+        if (n == 0)
+            return 1;
+
+        int LIS = 1;
+        int[] dp = new int[n];
+        Arrays.fill(dp, 1);
+        for (int i = 1; i < n; i++) {
+            for (int j = 0; j < i; j++) {
+                if (nums[j] < nums[i])
+                    dp[i] = Math.max(dp[i], dp[j] + 1);
+            }
+            LIS = Math.max(LIS, dp[i]);
+        }
+        return LIS;
+    }
+
 }

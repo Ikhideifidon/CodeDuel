@@ -1,4 +1,5 @@
-import CodeDuel.Algorithm;
+package CodeDuel;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -240,5 +241,12 @@ class AlgorithmTest {
     void  lengthOfLIS() {
         int[] nums = {10, 9, 2, 5, 3, 7, 101, 18};
         System.out.println(Algorithm.lengthOfLIS(nums));
+    }
+
+    @Test
+    void constrainedSubsetSum() {
+        int[] nums = {5, 6, 7, -2, 8};
+        int k = 3;
+        System.out.println(Algorithm.constrainedSubsetSum(nums, k));
     }
 }

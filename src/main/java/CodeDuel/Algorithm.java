@@ -2963,4 +2963,38 @@ public class Algorithm {
         return LIS;
     }
 
+    public static int constrainedSubsetSum(int[] nums, int k) {
+        /*
+            Constraints:
+                1 <= k <= nums.length <= 10^5
+                -10^4 <= nums[i] <= 10^4
+         */
+        int n = nums.length;
+        if (n == 1)
+            return nums[0];
+
+        int[] memo = new int[n];
+        Arrays.fill(memo, Integer.MIN_VALUE);
+
+        int maxResult = Integer.MIN_VALUE;
+        for (int i = 0; i < n; i++)
+            maxResult = Math.max(maxResult, constrainedSubsetSumDFS(nums, k, i, memo));
+        return maxResult;
+    }
+
+    private static int constrainedSubsetSumDFS(int[] nums, int k, int start, int[] memo) {
+        if (start >= nums.length)
+            return 0;
+
+        if (memo[start] != Integer.MIN_VALUE)
+            return memo[start];
+
+        int maxSum = nums[start];
+        for (int j = start + 1; j <= Math.min(start + k, nums.length - 1) ; j++)
+            maxSum = Math.max(maxSum, nums[start] + constrainedSubsetSumDFS(nums, k, j, memo));
+
+        memo[start] = maxSum;
+        return maxSum;
+    }
+
 }

@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="53e9e4ad-d120-4c42-9905-481d88489533" name="Changes" comment="Initial Commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/AVLTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/CodeDuel/AVLTreeTest.java" afterDir="false" />
+    <list default="true" id="53e9e4ad-d120-4c42-9905-481d88489533" name="Changes" comment="New Commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CodeDuel/Algorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/Algorithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CodeDuel/BinarySearchTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/BinarySearchTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tree.dot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tree.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tree.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/AlgorithmTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/CodeDuel/AlgorithmTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/CodeDuel/BinarySearchTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/CodeDuel/BinarySearchTreeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/SlidingWindowTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/CodeDuel/SlidingWindowTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CodeDuel/AVLTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/AVLTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/avl_tree.dot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/CodeDuel/AVLTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/CodeDuel/AVLTreeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,8 +69,13 @@
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Application.Main.executor": "Run",
+    "JUnit.AVLTreeTest.delete.executor": "Run",
     "JUnit.AVLTreeTest.executor": "Run",
+    "JUnit.AVLTreeTest.insert.executor": "Run",
+    "JUnit.AVLTreeTest.kthSmallest.executor": "Run",
     "JUnit.AVLTreeTest.printTree.executor": "Run",
+    "JUnit.AVLTreeTest.testToString.executor": "Run",
+    "JUnit.AVLTreeTest.zigzagLevelOrder.executor": "Run",
     "JUnit.AlgorithmTest.canCompleteCircuit.executor": "Run",
     "JUnit.AlgorithmTest.canJump.executor": "Run",
     "JUnit.AlgorithmTest.canJumpBFS.executor": "Run",
@@ -219,6 +218,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AVLTreeTest.delete" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CodeDuel" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="CodeDuel.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="CodeDuel" />
+      <option name="MAIN_CLASS_NAME" value="CodeDuel.AVLTreeTest" />
+      <option name="METHOD_NAME" value="delete" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AVLTreeTest.kthSmallest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CodeDuel" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="CodeDuel.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="CodeDuel" />
+      <option name="MAIN_CLASS_NAME" value="CodeDuel.AVLTreeTest" />
+      <option name="METHOD_NAME" value="kthSmallest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AVLTreeTest.printTree" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
       <extension name="coverage">
@@ -235,7 +266,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AlgorithmTest.constrainedSubsetSum" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AVLTreeTest.zigzagLevelOrder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
       <extension name="coverage">
         <pattern>
@@ -244,39 +275,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="CodeDuel" />
-      <option name="MAIN_CLASS_NAME" value="CodeDuel.AlgorithmTest" />
-      <option name="METHOD_NAME" value="constrainedSubsetSum" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BinarySearchTreeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CodeDuel" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="CodeDuel.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="CodeDuel" />
-      <option name="MAIN_CLASS_NAME" value="CodeDuel.BinarySearchTreeTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BinarySearchTreeTest.delete" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CodeDuel" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="CodeDuel.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="CodeDuel" />
-      <option name="MAIN_CLASS_NAME" value="CodeDuel.BinarySearchTreeTest" />
-      <option name="METHOD_NAME" value="delete" />
+      <option name="MAIN_CLASS_NAME" value="CodeDuel.AVLTreeTest" />
+      <option name="METHOD_NAME" value="zigzagLevelOrder" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -284,18 +284,18 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.AVLTreeTest" />
+      <item itemvalue="JUnit.AVLTreeTest.delete" />
+      <item itemvalue="JUnit.AVLTreeTest.kthSmallest" />
       <item itemvalue="JUnit.AVLTreeTest.printTree" />
-      <item itemvalue="JUnit.AlgorithmTest.constrainedSubsetSum" />
-      <item itemvalue="JUnit.BinarySearchTreeTest.delete" />
-      <item itemvalue="JUnit.BinarySearchTreeTest" />
+      <item itemvalue="JUnit.AVLTreeTest.zigzagLevelOrder" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.AVLTreeTest" />
+        <item itemvalue="JUnit.AVLTreeTest.zigzagLevelOrder" />
+        <item itemvalue="JUnit.AVLTreeTest.kthSmallest" />
+        <item itemvalue="JUnit.AVLTreeTest.delete" />
         <item itemvalue="JUnit.AVLTreeTest.printTree" />
-        <item itemvalue="JUnit.AlgorithmTest.constrainedSubsetSum" />
-        <item itemvalue="JUnit.BinarySearchTreeTest.delete" />
-        <item itemvalue="JUnit.BinarySearchTreeTest" />
       </list>
     </recent_temporary>
   </component>
@@ -339,7 +339,7 @@
       <workItem from="1734482160372" duration="20258000" />
       <workItem from="1734534655076" duration="7618000" />
       <workItem from="1734577596896" duration="49644000" />
-      <workItem from="1735333769603" duration="11589000" />
+      <workItem from="1735333769603" duration="53547000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -637,7 +637,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734456601263</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="New Commit">
+      <option name="closed" value="true" />
+      <created>1735347608602</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1735347608602</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -645,6 +653,23 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial Commit" />
+    <MESSAGE value="New Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="New Commit" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/CodeDuel/AVLTree.java</url>
+          <line>268</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/CodeDuel/AVLTree.java</url>
+          <line>299</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

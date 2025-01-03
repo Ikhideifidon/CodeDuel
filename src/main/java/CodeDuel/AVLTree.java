@@ -2,10 +2,10 @@ package CodeDuel;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Comparator;
+import java.util.*;
 
 /*
-    This AVL is based on empty tree has -1 height, singleton tree has 0 height.
+    This AVL is based on: Empty tree has -1 height and a singleton tree has 0 height.
  */
 @SuppressWarnings("unused")
 public class AVLTree<T> {
@@ -13,7 +13,7 @@ public class AVLTree<T> {
     // ..... Light-weight Node class
     static class Node<T> {
         private static final int EMPTY_HEIGHT = -1;
-        private final T data;
+        private T data;
         private int height;
         private Node<T> left = null;
         private Node<T> right = null;
@@ -38,21 +38,32 @@ public class AVLTree<T> {
         this.root = null;
     }
 
-    public AVLTree(Comparator<T> comparator, T data) {
+    public AVLTree(Comparator<T> comparator, T key) {
         this.comparator = comparator;
-        this.root = new Node<>(data);
+        this.root = new Node<>(key);
     }
 
-    public void insert(T data) {
+    public void insert(T key) {
         size++;
-        root = insert(root, data);
+        root = insert(root, key);
     }
 
-    public boolean search(T data) {
-        return search(root, data);
+    public boolean delete(T key) {
+        Node<T> deleted = delete(root, key);
+        if (deleted != null) {
+            size--;
+            return true;
+        }
+        return false;
+    }
+
+    public final boolean search(T key) {
+        return search(root, key);
     }
 
     public int size() { return this.size; }
+
+    public int height() { return root.height; }
 
     @Override
     public String toString() {
@@ -66,6 +77,17 @@ public class AVLTree<T> {
         return "";
     }
 
+    public void printTree(String filePath) {
+        if (root != null) {
+            StringBuilder dot = new StringBuilder();
+            dot.append("DIGRAPH AVL {\n");
+            dot.append("  Node [shape=circle, style=filled, color=lightblue, fontname=Arial];\n");
+            generateDOT(root, dot);
+            dot.append("}\n");
+            writeToFile(filePath, dot.toString());
+        }
+    }
+
     // Utility Functions
     private Node<T> insert(Node<T> node, T key) {
         if (node == null)
@@ -77,41 +99,16 @@ public class AVLTree<T> {
             else
                 node.right = insert(node.right, key);
         }
-
         // Update height of the ancestor
-        node.height = 1 + Math.max(height(node.left), height(node.right));
-
-        // Get balance Factor
-        int balance = getBalance(node);
-
-        // Left Subtree of the Left child
-        if (balance > 1 && comparator.compare(key, node.left.data) < 0)
-            return rightRotation(node);
-
-        // Right Subtree of the Right Child
-        if (balance < -1 && comparator.compare(key, node.right.data) > 0)
-            return leftRotation(node);
-
-        // Left Subtree of the Right Child
-        if (balance < -1 && comparator.compare(key, node.right.data) < 0) {
-            node.right = rightRotation(node.right);
-            return leftRotation(node);
-        }
-
-        // Right Subtree of the Left Child
-        if (balance > 1 && comparator.compare(key, node.left.data) > 0) {
-            node.left = leftRotation(node.left);
-            return rightRotation(node);
-        }
-        return node;
+        return rebalanced(node, key);
     }
 
     // Left Rotation
     private Node<T> leftRotation(Node<T> node) {
         Node<T> temp = node.right;
-        Node<T> x = temp.left;
+        Node<T> T2 = temp.left;
         temp.left = node;
-        node.right = x;
+        node.right = T2;
 
         node.height = Math.max(height(node.left), height(node.right)) + 1;
         temp.height = Math.max(height(temp.left), height(temp.right)) + 1;
@@ -119,11 +116,12 @@ public class AVLTree<T> {
         return temp;
     }
 
+    // Right Rotation
     private Node<T> rightRotation(Node<T> node) {
         Node<T> temp = node.left;
-        Node<T> x = temp.right;
+        Node<T> T2 = temp.right;
         temp.right = node;
-        node.left = x;
+        node.left = T2;
 
         node.height = 1 + Math.max(height(node.left), height(node.right));
         temp.height = 1 + Math.max(height(temp.left), height(temp.right));
@@ -152,19 +150,10 @@ public class AVLTree<T> {
         return node == null ? Node.EMPTY_HEIGHT : height(node.left) - height(node.right);
     }
 
-    public void printTree(String filePath) {
-        if (root != null) {
-            StringBuilder dot = new StringBuilder();
-            dot.append("DIGRAPH AVL {\n");
-            dot.append("  Node [shape=circle, style=filled, color=lightblue, fontname=Arial];\n");
-            generateDOT(root, dot);
-            dot.append("}\n");
-            writeToFile(filePath, dot.toString());
-        }
-    }
-
     private void generateDOT(Node<T> node, StringBuilder dot) {
+
         /*
+            Preorder Traversal
             {
                 45;
                 45 -> 30;
@@ -194,5 +183,119 @@ public class AVLTree<T> {
             //noinspection CallToPrintStackTrace
             e.printStackTrace();
         }
+    }
+
+    private Node<T> delete(Node<T> node, T key) {
+        if (node == null)
+            return null;
+
+        if (comparator.compare(key, node.data) < 0)
+            node.left = delete(node.left, key);
+
+        else if (comparator.compare(key, node.data) > 0)
+            node.right = delete(node.right, key);
+
+        else {
+            // Node found
+            // Case 1: No children (leaf node)
+            if (node.left == null && node.right == null)
+                return null;
+
+            // Case 2: One child
+            if (node.left == null)
+                return node.right;
+
+            else if (node.right == null)
+                return node.left;
+
+            // Case 3: Two children
+            Node<T> successor = findMin(node.right);
+            node.data = successor.data;
+            node.right = delete(node.right, successor.data);
+        }
+        // Update height of the ancestor
+        return rebalanced(node, key);
+    }
+
+    private Node<T> rebalanced(Node<T> node, T key) {
+        node.height = 1 + Math.max(height(node.left), height(node.right));
+
+        // Get balance Factor
+        int balance = getBalance(node);
+
+        // Left-heavy cases
+        if (balance > 1) {
+            if (getBalance(node.left) < 0) // Left-Left case
+                node.left = leftRotation(node.left);
+            return rightRotation(node);
+        }
+
+        // Right-heavy cases
+        if (balance < -1) {
+            if (getBalance(node.right) > 0) // Right-Right case
+                node.right = rightRotation(node.right);
+            return leftRotation(node);
+        }
+        return node; // Return the balanced node
+    }
+
+    // Helper method to find the minimum node in a subtree
+    private Node<T> findMin(Node<T> node) {
+        while (node.left != null)
+            node = node.left;
+        return node;
+    }
+
+    public T kthSmallest(int k) {
+        return kthSmallest(root, k, new int[1]);
+    }
+
+    private T kthSmallest(Node<T> node, int k, int[] count) {
+        if (node == null)
+            return null;
+
+        T left = kthSmallest(node.left, k, count);
+        if (left != null)
+            return left;
+        count[0]++;
+        if (count[0] == k)
+            return node.data;
+        return kthSmallest(node.right, k, count);
+    }
+
+    public List<List<T>> zigzagLevelOrder() { return zigzagLevelOrder(root); }
+
+    private List<List<T>> zigzagLevelOrder(Node<T> node) {
+        if (node == null)
+            return new ArrayList<>();
+
+        List<List<T>> result = new ArrayList<>();
+        Deque<Node<T>> queue = new ArrayDeque<>();
+        queue.offer(node);
+        boolean leftToRight = true;
+
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            List<T> levelList = new ArrayList<>(size);
+
+            for (int i = 0; i < size; i++) {
+                Node<T> current = queue.poll();
+                assert current != null;
+
+               if (leftToRight)
+                    levelList.add(current.data);
+                else
+                    levelList.add(0, current.data);
+
+                if (current.left != null)
+                    queue.offer(current.left);
+                if (current.right != null)
+                    queue.offer(current.right);
+            }
+
+            leftToRight = !leftToRight;
+            result.add(levelList);
+        }
+        return result;
     }
 }

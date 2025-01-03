@@ -33,27 +33,27 @@ class AVLTreeTest {
     void insert() {
     }
 
-//    @Test
-//    void search() {
-//        int value = 42;
-//        tree.insert(value);
-//        assertTrue(tree.search(value), String.format("The tree should find the inserted value of %d", value));
-//        assertFalse(tree.search(UPPER_BOUND + 2), String.format("The tree should not find a value of %d that was not inserted", UPPER_BOUND + 2));
-//    }
-//
-//    @Test
-//    void delete() {
-//        System.out.println(tree.delete(26));
-//        tree.printTree(filePath);
-//    }
+    @Test
+    void search() {
+        int value = 42;
+        tree.insert(value);
+        assertTrue(tree.search(value), String.format("The tree should find the inserted value of %d", value));
+        assertFalse(tree.search(UPPER_BOUND + 2), String.format("The tree should not find a value of %d that was not inserted", UPPER_BOUND + 2));
+    }
 
-//    @Test
-//    void size() {
-//        int initialSize = tree.size();
-//        tree.insert(55);
-//        tree.insert(65);
-//        assertEquals(initialSize + 2, tree.size(), "The size should increase by 2 after inserting two elements.");
-//    }
+    @Test
+    void delete() {
+        System.out.println(tree.delete(26));
+        tree.printTree(filePath);
+    }
+
+    @Test
+    void size() {
+        int initialSize = tree.size();
+        tree.insert(55);
+        tree.insert(65);
+        assertEquals(initialSize + 2, tree.size(), "The size should increase by 2 after inserting two elements.");
+    }
 
     @Test
     void testToString() {

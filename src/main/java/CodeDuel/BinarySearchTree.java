@@ -7,7 +7,7 @@ import java.util.*;
 @SuppressWarnings("unused")
 public class BinarySearchTree<T extends Comparable<T>> {
     // Light-weight class
-    static class TreeNode<T> {
+    private static class TreeNode<T> {
         private T val;
         private TreeNode<T> left;
         private TreeNode<T> right;

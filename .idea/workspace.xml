@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53e9e4ad-d120-4c42-9905-481d88489533" name="Changes" comment="New Commit">
+      <change afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/DoublyLinkedList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/TreeNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/CodeDuel/DoublyLinkedListTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/CodeDuel/AVLTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/AVLTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/avl_tree.dot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CodeDuel/BinarySearchTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CodeDuel/BinarySearchTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/avl_tree.dot" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/avl_tree.dot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/CodeDuel/AVLTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/CodeDuel/AVLTreeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -129,6 +133,21 @@
     "JUnit.DigraphTest.reverse.executor": "Run",
     "JUnit.DigraphTest.v.executor": "Run",
     "JUnit.DirectedCycleTest.executor": "Run",
+    "JUnit.DoublyLinkedListTest.delete.executor": "Run",
+    "JUnit.DoublyLinkedListTest.executor": "Run",
+    "JUnit.DoublyLinkedListTest.extendLeft.executor": "Run",
+    "JUnit.DoublyLinkedListTest.extendRight.executor": "Run",
+    "JUnit.DoublyLinkedListTest.insertLeft.executor": "Run",
+    "JUnit.DoublyLinkedListTest.insertRight.executor": "Run",
+    "JUnit.DoublyLinkedListTest.replaceTest.executor": "Run",
+    "JUnit.DoublyLinkedListTest.reverse.executor": "Run",
+    "JUnit.DoublyLinkedListTest.reversed.executor": "Run",
+    "JUnit.DoublyLinkedListTest.search.executor": "Run",
+    "JUnit.DoublyLinkedListTest.size.executor": "Run",
+    "JUnit.DoublyLinkedListTest.test.executor": "Run",
+    "JUnit.DoublyLinkedListTest.testDelete.executor": "Run",
+    "JUnit.DoublyLinkedListTest.testReplace.executor": "Run",
+    "JUnit.DoublyLinkedListTest.testToString.executor": "Run",
     "JUnit.GeneralTest.executor": "Run",
     "JUnit.GeneralTest.findRedundantConnection.executor": "Debug",
     "JUnit.GeneralTest.largestComponentCount.executor": "Run",
@@ -202,8 +221,8 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AVLTreeTest">
-    <configuration name="AVLTreeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.DoublyLinkedListTest.delete">
+    <configuration name="DoublyLinkedListTest.delete" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
       <extension name="coverage">
         <pattern>
@@ -212,29 +231,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="CodeDuel" />
-      <option name="MAIN_CLASS_NAME" value="CodeDuel.AVLTreeTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AVLTreeTest.delete" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CodeDuel" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="CodeDuel.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="CodeDuel" />
-      <option name="MAIN_CLASS_NAME" value="CodeDuel.AVLTreeTest" />
+      <option name="MAIN_CLASS_NAME" value="CodeDuel.DoublyLinkedListTest" />
       <option name="METHOD_NAME" value="delete" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AVLTreeTest.kthSmallest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DoublyLinkedListTest.replaceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
       <extension name="coverage">
         <pattern>
@@ -243,14 +247,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="CodeDuel" />
-      <option name="MAIN_CLASS_NAME" value="CodeDuel.AVLTreeTest" />
-      <option name="METHOD_NAME" value="kthSmallest" />
+      <option name="MAIN_CLASS_NAME" value="CodeDuel.DoublyLinkedListTest" />
+      <option name="METHOD_NAME" value="replaceTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AVLTreeTest.printTree" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DoublyLinkedListTest.size" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
       <extension name="coverage">
         <pattern>
@@ -259,14 +263,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="CodeDuel" />
-      <option name="MAIN_CLASS_NAME" value="CodeDuel.AVLTreeTest" />
-      <option name="METHOD_NAME" value="printTree" />
+      <option name="MAIN_CLASS_NAME" value="CodeDuel.DoublyLinkedListTest" />
+      <option name="METHOD_NAME" value="size" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AVLTreeTest.zigzagLevelOrder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DoublyLinkedListTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CodeDuel" />
       <extension name="coverage">
         <pattern>
@@ -275,27 +279,43 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="CodeDuel" />
-      <option name="MAIN_CLASS_NAME" value="CodeDuel.AVLTreeTest" />
-      <option name="METHOD_NAME" value="zigzagLevelOrder" />
+      <option name="MAIN_CLASS_NAME" value="CodeDuel.DoublyLinkedListTest" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DoublyLinkedListTest.testReplace" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CodeDuel" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="CodeDuel.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="CodeDuel" />
+      <option name="MAIN_CLASS_NAME" value="CodeDuel.DoublyLinkedListTest" />
+      <option name="METHOD_NAME" value="testReplace" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.AVLTreeTest" />
-      <item itemvalue="JUnit.AVLTreeTest.delete" />
-      <item itemvalue="JUnit.AVLTreeTest.kthSmallest" />
-      <item itemvalue="JUnit.AVLTreeTest.printTree" />
-      <item itemvalue="JUnit.AVLTreeTest.zigzagLevelOrder" />
+      <item itemvalue="JUnit.DoublyLinkedListTest.delete" />
+      <item itemvalue="JUnit.DoublyLinkedListTest.replaceTest" />
+      <item itemvalue="JUnit.DoublyLinkedListTest.size" />
+      <item itemvalue="JUnit.DoublyLinkedListTest.test" />
+      <item itemvalue="JUnit.DoublyLinkedListTest.testReplace" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AVLTreeTest" />
-        <item itemvalue="JUnit.AVLTreeTest.zigzagLevelOrder" />
-        <item itemvalue="JUnit.AVLTreeTest.kthSmallest" />
-        <item itemvalue="JUnit.AVLTreeTest.delete" />
-        <item itemvalue="JUnit.AVLTreeTest.printTree" />
+        <item itemvalue="JUnit.DoublyLinkedListTest.delete" />
+        <item itemvalue="JUnit.DoublyLinkedListTest.test" />
+        <item itemvalue="JUnit.DoublyLinkedListTest.size" />
+        <item itemvalue="JUnit.DoublyLinkedListTest.replaceTest" />
+        <item itemvalue="JUnit.DoublyLinkedListTest.testReplace" />
       </list>
     </recent_temporary>
   </component>
@@ -339,7 +359,10 @@
       <workItem from="1734482160372" duration="20258000" />
       <workItem from="1734534655076" duration="7618000" />
       <workItem from="1734577596896" duration="49644000" />
-      <workItem from="1735333769603" duration="53547000" />
+      <workItem from="1735333769603" duration="63708000" />
+      <workItem from="1736556364305" duration="6378000" />
+      <workItem from="1736949664027" duration="1081000" />
+      <workItem from="1736951231893" duration="35375000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <option name="closed" value="true" />
@@ -645,7 +668,23 @@
       <option name="project" value="LOCAL" />
       <updated>1735347608602</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="New Commit">
+      <option name="closed" value="true" />
+      <created>1735870621426</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1735870621426</updated>
+    </task>
+    <task id="LOCAL-00040" summary="New Commit">
+      <option name="closed" value="true" />
+      <created>1735870672547</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1735870672547</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -655,21 +694,5 @@
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="New Commit" />
     <option name="LAST_COMMIT_MESSAGE" value="New Commit" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/CodeDuel/AVLTree.java</url>
-          <line>268</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/CodeDuel/AVLTree.java</url>
-          <line>299</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

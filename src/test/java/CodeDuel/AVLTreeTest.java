@@ -58,6 +58,12 @@ class AVLTreeTest {
     @Test
     void testToString() {
         System.out.println(tree);
+        Deque<Integer> deque = new ArrayDeque<>();
+        deque.offerLast(10);
+        deque.offerLast(12);
+        deque.offerLast(15);
+        deque.offerFirst(5);
+        System.out.println(deque);
     }
 
     @Test

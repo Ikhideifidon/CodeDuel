@@ -20,7 +20,7 @@ public class AVLTree<T> {
 
         private Node() {
             this.data = null;
-            this.height = EMPTY_HEIGHT;
+            this.height = Node.EMPTY_HEIGHT;
         }
 
         private Node(T data) {
@@ -81,7 +81,7 @@ public class AVLTree<T> {
         if (root != null) {
             StringBuilder dot = new StringBuilder();
             dot.append("DIGRAPH AVL {\n");
-            dot.append("  Node [shape=circle, style=filled, color=lightblue, fontname=Arial];\n");
+            dot.append("  Node [shape=circle, style=filled, color=green, fontname=Arial];\n");
             generateDOT(root, dot);
             dot.append("}\n");
             writeToFile(filePath, dot.toString());
@@ -236,7 +236,7 @@ public class AVLTree<T> {
                 node.right = rightRotation(node.right);
             return leftRotation(node);
         }
-        return node; // Return the balanced node
+        return node;
     }
 
     // Helper method to find the minimum node in a subtree
@@ -276,25 +276,24 @@ public class AVLTree<T> {
 
         while (!queue.isEmpty()) {
             int size = queue.size();
-            List<T> levelList = new ArrayList<>(size);
+            Deque<T> levelDeque = new ArrayDeque<>(size);
 
             for (int i = 0; i < size; i++) {
                 Node<T> current = queue.poll();
                 assert current != null;
 
                if (leftToRight)
-                    levelList.add(current.data);
+                    levelDeque.offerLast(current.data);
                 else
-                    levelList.add(0, current.data);
+                    levelDeque.offerFirst(current.data);
 
                 if (current.left != null)
                     queue.offer(current.left);
                 if (current.right != null)
                     queue.offer(current.right);
             }
-
             leftToRight = !leftToRight;
-            result.add(levelList);
+            result.add(new ArrayList<>(levelDeque));
         }
         return result;
     }
